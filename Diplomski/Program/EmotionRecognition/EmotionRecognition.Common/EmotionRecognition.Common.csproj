@@ -78,7 +78,11 @@
     <Content Include="HaarCascade\haarcascade_russian_plate_number.xml" />
     <Content Include="HaarCascade\haarcascade_smile.xml" />
     <Content Include="HaarCascade\haarcascade_upperbody.xml" />
+    <Content Include="HaarCascade\LEye.xml" />
     <Content Include="HaarCascade\Mouth.xml" />
+    <Content Include="HaarCascade\Nose 18x15.xml" />
+    <Content Include="HaarCascade\Nose 25x15.xml" />
+    <Content Include="HaarCascade\REye.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

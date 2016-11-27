@@ -105,6 +105,7 @@
   <ItemGroup>
     <Compile Include="Classifier.cs" />
     <Compile Include="GaborFeatures.cs" />
+    <Compile Include="ImageCrop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

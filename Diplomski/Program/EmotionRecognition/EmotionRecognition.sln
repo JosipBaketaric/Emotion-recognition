@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmotionRecognition.Service"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmotionRecognition.Common", "EmotionRecognition.Common\EmotionRecognition.Common.csproj", "{32DF0217-997C-42A3-9B45-79B62B62C578}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmotionRecognition.Test", "EmotionRecognition.Test\EmotionRecognition.Test.csproj", "{A49B941E-2D73-46B7-A4DA-17FEF0BDA094}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmotionRecognition.FeatureExtraction", "EmotionRecognition.FeatureExtraction\EmotionRecognition.FeatureExtraction.csproj", "{C19B43E5-ED41-4190-A832-D7C244F707F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,14 +43,14 @@ Global
 		{32DF0217-997C-42A3-9B45-79B62B62C578}.Release|Any CPU.Build.0 = Release|Any CPU
 		{32DF0217-997C-42A3-9B45-79B62B62C578}.Release|x64.ActiveCfg = Release|x64
 		{32DF0217-997C-42A3-9B45-79B62B62C578}.Release|x64.Build.0 = Release|x64
-		{A49B941E-2D73-46B7-A4DA-17FEF0BDA094}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A49B941E-2D73-46B7-A4DA-17FEF0BDA094}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A49B941E-2D73-46B7-A4DA-17FEF0BDA094}.Debug|x64.ActiveCfg = Debug|x64
-		{A49B941E-2D73-46B7-A4DA-17FEF0BDA094}.Debug|x64.Build.0 = Debug|x64
-		{A49B941E-2D73-46B7-A4DA-17FEF0BDA094}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A49B941E-2D73-46B7-A4DA-17FEF0BDA094}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A49B941E-2D73-46B7-A4DA-17FEF0BDA094}.Release|x64.ActiveCfg = Release|x64
-		{A49B941E-2D73-46B7-A4DA-17FEF0BDA094}.Release|x64.Build.0 = Release|x64
+		{C19B43E5-ED41-4190-A832-D7C244F707F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C19B43E5-ED41-4190-A832-D7C244F707F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C19B43E5-ED41-4190-A832-D7C244F707F7}.Debug|x64.ActiveCfg = Debug|x64
+		{C19B43E5-ED41-4190-A832-D7C244F707F7}.Debug|x64.Build.0 = Debug|x64
+		{C19B43E5-ED41-4190-A832-D7C244F707F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C19B43E5-ED41-4190-A832-D7C244F707F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C19B43E5-ED41-4190-A832-D7C244F707F7}.Release|x64.ActiveCfg = Release|x64
+		{C19B43E5-ED41-4190-A832-D7C244F707F7}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

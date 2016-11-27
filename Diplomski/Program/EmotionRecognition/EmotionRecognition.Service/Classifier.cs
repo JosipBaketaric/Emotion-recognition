@@ -16,12 +16,16 @@ namespace EmotionRecognition.Service
         private string TrainingSets { get; set; }
         private int MinSize { get; set; }
         private int MaxSize { get; set; }
+        private double ScaleFactor { get; set; }
+        private int MinNeighbours { get; set; }
 
-        public Classifier(string trainingSets, int minSize, int maxSize)
+        public Classifier(string trainingSets, int minSize, int maxSize, int minNeighbours, double scaleFactor)
         {
             this.TrainingSets = trainingSets;
             this.MinSize = minSize;
             this.MaxSize = maxSize;
+            this.MinNeighbours = minNeighbours;
+            this.ScaleFactor = scaleFactor;
             this.CascadeClassifier = new CascadeClassifier(trainingSets);
         }
 
@@ -31,7 +35,7 @@ namespace EmotionRecognition.Service
             //To gray scale
             Image<Gray, byte> grayScaleImage = imageFrame.Convert<Gray, byte>();
 
-            Rectangle[] rectangles = CascadeClassifier.DetectMultiScale(grayScaleImage, 1.3, 1, new Size(MinSize, MinSize), new Size(MaxSize, MaxSize));
+            Rectangle[] rectangles = CascadeClassifier.DetectMultiScale(grayScaleImage, ScaleFactor, MinNeighbours, new Size(MinSize, MinSize), new Size(MaxSize, MaxSize));
 
             //Check result
             if (rectangles.Length == 0)

@@ -107,6 +107,7 @@
     <Compile Include="GaborFeatures.cs" />
     <Compile Include="ImageCrop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResizeImage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

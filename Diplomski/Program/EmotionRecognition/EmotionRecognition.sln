@@ -3,7 +3,55 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmotionRecognition.WebApi", "EmotionRecognition.WebApi\EmotionRecognition.WebApi.csproj", "{8EE6826B-8A66-4180-873A-A0B119744FB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmotionRecognition.Service", "EmotionRecognition.Service\EmotionRecognition.Service.csproj", "{A7E9080C-BA65-4778-BCEB-52A1A5BE3ADC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmotionRecognition.Common", "EmotionRecognition.Common\EmotionRecognition.Common.csproj", "{32DF0217-997C-42A3-9B45-79B62B62C578}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmotionRecognition.Test", "EmotionRecognition.Test\EmotionRecognition.Test.csproj", "{A49B941E-2D73-46B7-A4DA-17FEF0BDA094}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EE6826B-8A66-4180-873A-A0B119744FB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EE6826B-8A66-4180-873A-A0B119744FB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EE6826B-8A66-4180-873A-A0B119744FB9}.Debug|x64.ActiveCfg = Debug|x64
+		{8EE6826B-8A66-4180-873A-A0B119744FB9}.Debug|x64.Build.0 = Debug|x64
+		{8EE6826B-8A66-4180-873A-A0B119744FB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EE6826B-8A66-4180-873A-A0B119744FB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EE6826B-8A66-4180-873A-A0B119744FB9}.Release|x64.ActiveCfg = Release|x64
+		{8EE6826B-8A66-4180-873A-A0B119744FB9}.Release|x64.Build.0 = Release|x64
+		{A7E9080C-BA65-4778-BCEB-52A1A5BE3ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7E9080C-BA65-4778-BCEB-52A1A5BE3ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7E9080C-BA65-4778-BCEB-52A1A5BE3ADC}.Debug|x64.ActiveCfg = Debug|x64
+		{A7E9080C-BA65-4778-BCEB-52A1A5BE3ADC}.Debug|x64.Build.0 = Debug|x64
+		{A7E9080C-BA65-4778-BCEB-52A1A5BE3ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7E9080C-BA65-4778-BCEB-52A1A5BE3ADC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7E9080C-BA65-4778-BCEB-52A1A5BE3ADC}.Release|x64.ActiveCfg = Release|x64
+		{A7E9080C-BA65-4778-BCEB-52A1A5BE3ADC}.Release|x64.Build.0 = Release|x64
+		{32DF0217-997C-42A3-9B45-79B62B62C578}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32DF0217-997C-42A3-9B45-79B62B62C578}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32DF0217-997C-42A3-9B45-79B62B62C578}.Debug|x64.ActiveCfg = Debug|x64
+		{32DF0217-997C-42A3-9B45-79B62B62C578}.Debug|x64.Build.0 = Debug|x64
+		{32DF0217-997C-42A3-9B45-79B62B62C578}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32DF0217-997C-42A3-9B45-79B62B62C578}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32DF0217-997C-42A3-9B45-79B62B62C578}.Release|x64.ActiveCfg = Release|x64
+		{32DF0217-997C-42A3-9B45-79B62B62C578}.Release|x64.Build.0 = Release|x64
+		{A49B941E-2D73-46B7-A4DA-17FEF0BDA094}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A49B941E-2D73-46B7-A4DA-17FEF0BDA094}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A49B941E-2D73-46B7-A4DA-17FEF0BDA094}.Debug|x64.ActiveCfg = Debug|x64
+		{A49B941E-2D73-46B7-A4DA-17FEF0BDA094}.Debug|x64.Build.0 = Debug|x64
+		{A49B941E-2D73-46B7-A4DA-17FEF0BDA094}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A49B941E-2D73-46B7-A4DA-17FEF0BDA094}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A49B941E-2D73-46B7-A4DA-17FEF0BDA094}.Release|x64.ActiveCfg = Release|x64
+		{A49B941E-2D73-46B7-A4DA-17FEF0BDA094}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

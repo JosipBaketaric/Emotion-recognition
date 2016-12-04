@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmotionRecognition.Common",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmotionRecognition.FeatureExtraction", "EmotionRecognition.FeatureExtraction\EmotionRecognition.FeatureExtraction.csproj", "{C19B43E5-ED41-4190-A832-D7C244F707F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmotionRecognition.Weka", "EmotionRecognition.Weka\EmotionRecognition.Weka.csproj", "{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,14 @@ Global
 		{C19B43E5-ED41-4190-A832-D7C244F707F7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C19B43E5-ED41-4190-A832-D7C244F707F7}.Release|x64.ActiveCfg = Release|x64
 		{C19B43E5-ED41-4190-A832-D7C244F707F7}.Release|x64.Build.0 = Release|x64
+		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Debug|x64.Build.0 = Debug|Any CPU
+		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Release|x64.ActiveCfg = Release|Any CPU
+		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

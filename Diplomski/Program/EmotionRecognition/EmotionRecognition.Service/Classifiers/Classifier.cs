@@ -41,7 +41,6 @@ namespace EmotionRecognition.Service
             if (rectangles.Length == 0)
                 return null;
 
-            //TODO MOVE THIS IN FUNCTION, ADD REST PARAMETERS TO CONSTRUCTOR, AND FIND FACE ON BOTTOM OF FACE IMAGE
             int targetRectangle = 0;
             int targetSize = 0;
 
@@ -50,14 +49,19 @@ namespace EmotionRecognition.Service
             
                 for(int i = 0; i < rectangles.Length; i++)
                 {
-                    if(targetSize < rectangles[i].Height)
+                    if(targetSize < (rectangles[i].Height * rectangles[i].Width))
                     {
                         targetRectangle = i;
-                        targetSize = rectangles[i].Height;
+                        targetSize = rectangles[i].Height * rectangles[i].Width;
                     }                       
                 }
             }
+
+            //calculate 15%
+            //int width10 = (int)Math.Round(((double)rectangles[targetRectangle].Width * 0.10));
+            //int height15 = (int)Math.Round(((double)rectangles[targetRectangle].Height * 0.15));
             //Get only marked object from image
+            //rectangles[targetRectangle].Inflate(width10, 0);
             Bitmap responseImage = GetObject(image, rectangles[targetRectangle]);
 
             return responseImage;

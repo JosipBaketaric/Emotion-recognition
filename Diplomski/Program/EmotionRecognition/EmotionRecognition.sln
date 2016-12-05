@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmotionRecognition.WebApi", "EmotionRecognition.WebApi\EmotionRecognition.WebApi.csproj", "{8EE6826B-8A66-4180-873A-A0B119744FB9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmotionRecognition.Service", "EmotionRecognition.Service\EmotionRecognition.Service.csproj", "{A7E9080C-BA65-4778-BCEB-52A1A5BE3ADC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmotionRecognition.Common", "EmotionRecognition.Common\EmotionRecognition.Common.csproj", "{32DF0217-997C-42A3-9B45-79B62B62C578}"
@@ -12,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmotionRecognition.FeatureExtraction", "EmotionRecognition.FeatureExtraction\EmotionRecognition.FeatureExtraction.csproj", "{C19B43E5-ED41-4190-A832-D7C244F707F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmotionRecognition.Weka", "EmotionRecognition.Weka\EmotionRecognition.Weka.csproj", "{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmotionRecognitionForm", "EmotionRecognitionForm\EmotionRecognitionForm.csproj", "{2018FB64-09B3-4C76-819A-9C5F3BCBE722}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,14 +21,6 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8EE6826B-8A66-4180-873A-A0B119744FB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8EE6826B-8A66-4180-873A-A0B119744FB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8EE6826B-8A66-4180-873A-A0B119744FB9}.Debug|x64.ActiveCfg = Debug|x64
-		{8EE6826B-8A66-4180-873A-A0B119744FB9}.Debug|x64.Build.0 = Debug|x64
-		{8EE6826B-8A66-4180-873A-A0B119744FB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8EE6826B-8A66-4180-873A-A0B119744FB9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8EE6826B-8A66-4180-873A-A0B119744FB9}.Release|x64.ActiveCfg = Release|x64
-		{8EE6826B-8A66-4180-873A-A0B119744FB9}.Release|x64.Build.0 = Release|x64
 		{A7E9080C-BA65-4778-BCEB-52A1A5BE3ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A7E9080C-BA65-4778-BCEB-52A1A5BE3ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7E9080C-BA65-4778-BCEB-52A1A5BE3ADC}.Debug|x64.ActiveCfg = Debug|x64
@@ -55,12 +47,20 @@ Global
 		{C19B43E5-ED41-4190-A832-D7C244F707F7}.Release|x64.Build.0 = Release|x64
 		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Debug|x64.Build.0 = Debug|Any CPU
+		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Debug|x64.ActiveCfg = Debug|x64
+		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Debug|x64.Build.0 = Debug|x64
 		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Release|x64.ActiveCfg = Release|Any CPU
-		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Release|x64.Build.0 = Release|Any CPU
+		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Release|x64.ActiveCfg = Release|x64
+		{ABA35B73-A074-45E3-ADDD-713EB0DA46AA}.Release|x64.Build.0 = Release|x64
+		{2018FB64-09B3-4C76-819A-9C5F3BCBE722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2018FB64-09B3-4C76-819A-9C5F3BCBE722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2018FB64-09B3-4C76-819A-9C5F3BCBE722}.Debug|x64.ActiveCfg = Debug|x64
+		{2018FB64-09B3-4C76-819A-9C5F3BCBE722}.Debug|x64.Build.0 = Debug|x64
+		{2018FB64-09B3-4C76-819A-9C5F3BCBE722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2018FB64-09B3-4C76-819A-9C5F3BCBE722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2018FB64-09B3-4C76-819A-9C5F3BCBE722}.Release|x64.ActiveCfg = Release|x64
+		{2018FB64-09B3-4C76-819A-9C5F3BCBE722}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

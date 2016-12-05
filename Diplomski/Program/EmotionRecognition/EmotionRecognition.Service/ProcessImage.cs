@@ -1,16 +1,11 @@
 ﻿using EmotionRecognition.Service.Utils;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmotionRecognition.Service
 {
     public static class ProcessImage
-    {
-        public static string EyeClassifierTrainingSet = @"C:\Users\Josip\Desktop\Emotion-recognition\Diplomski\Program\EmotionRecognition\EmotionRecognition.Common\HaarCascade\haarcascade_eye.xml";
+    {       
         public static List<double> Process(Bitmap image)
         {
             //50x85 1% lower than 150x200
@@ -28,7 +23,7 @@ namespace EmotionRecognition.Service
 
             var imgCropLowerLeft = ImageUtils.Crop(imgCropLower, (float)0.0, (float)0.6, (float)0.0, (float)0.0);   //0.6, 0, 0, 0
             var imgCropLowerMiddle = ImageUtils.Crop(imgCropLower, (float)0.3, (float)0.3, (float)0.0, (float)0.0); //0.3, 0.3, 0, 0
-            var imgCropLowerRight = ImageUtils.Crop(imgCropLower, (float)0.6, (float)0.0, (float)0.0, (float)0.0);  //0.6, 0, 0, 0
+            var imgCropLowerRight = ImageUtils.Crop(imgCropLower, (float)0.6, (float)0.0, (float)0.0, (float)0.0);  //0.6, 0, 0, 0      
 
 
             //Feature extraction (Gabor filters + PCA)
@@ -52,6 +47,7 @@ namespace EmotionRecognition.Service
                 upperAndLowerFeatures.Add(item);
             foreach (var item in featuresLowerRight)
                 upperAndLowerFeatures.Add(item);
+
 
             return upperAndLowerFeatures;
         }

@@ -67,37 +67,17 @@ namespace EmotionRecognition.Service.Utils
             List<double> featuresList = new List<double>();
 
             image = ImageUtils.ConvertTo24bpp(image);
-            double theta = (Math.PI / 180) * 22.5;
+            double theta = (Math.PI / 180) * 22.5;  //(Math.PI / 180) * 22.5;
 
-            //for (int i = 0; i < 18; i++)
-            //{
-            //    for (int j = 0; j < 4; j++)
-            //    {
-            //        var filter = new Accord.Imaging.Filters.GaborFilter();
-            //        //Setup
-            //        filter.Lambda = i + 2;
-            //        filter.Theta = theta * j;
-            //        filter.Gamma = 0.5 + (j / 2); //67.2% filter.Gamma = 0.5 + (j/2);
-            //        filter.Sigma = Math.PI; //PI
-            //        filter.Psi = 0.5;   //0.5
-            //        filter.Size = 2;    //2
-
-            //        var filteredImage = filter.Apply(image);
-
-            //        filteredImagesList.Add(new GaborFilteredImage() { Image = filteredImage, Orientation = theta, Wavelength = i });
-            //        //filteredImage.Save(@"C:\Users\Josip\Desktop\filteri\" + i.ToString() + "-" + j.ToString() + ".bmp");
-            //    }
-            //}
-
-
-            theta = (Math.PI / 180) * 22.5;
-            for (int i = 0; i < 8; i++)
+            //i=0; i < 4
+            for (int i = 0; i < 4; i++)
             {
+                //j = 0; j < 4
                 for (int j = 0; j < 4; j++)
                 {
                     var filter = new Accord.Imaging.Filters.GaborFilter();
                     //Setup
-                    filter.Lambda = i + 6;  //i + 6      68.30
+                    filter.Lambda = i + 6;  //i + 6
                     filter.Theta = theta * j;
                     filter.Gamma = 0.5 + (j/2); //filter.Gamma = 0.5 + (j/2);
                     filter.Sigma = Math.PI; //PI
@@ -113,7 +93,7 @@ namespace EmotionRecognition.Service.Utils
 
             featuresList = ImageUtils.GaborFeatures(filteredImagesList);
             return featuresList;
-        }      
+        }
 
 
     }

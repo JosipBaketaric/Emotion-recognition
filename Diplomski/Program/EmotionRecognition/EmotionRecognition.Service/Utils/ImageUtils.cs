@@ -2,6 +2,7 @@
 using Emgu.CV.Structure;
 using EmotionRecognition.Common;
 using EmotionRecognition.Service.Utils;
+using OpenCV.Net;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -315,25 +316,23 @@ namespace EmotionRecognition.Service
         public static List<double> PCA (Bitmap img)
         {
             var pca = new Accord.Statistics.Analysis.PrincipalComponentAnalysis();
-            
+
             var imgMatrix = ImageUtils.To2DimDoubleArray(img);
             var jaggedMatrix = ArrayConverters.ToJaggedArray(imgMatrix);
 
             pca.Learn(jaggedMatrix);
 
             var pcaTransformResult = pca.Transform(jaggedMatrix);
-            
+
             var pcaResult = ArrayConverters.ArrayToList(pca.Means);  //pca.Eigenvalues
 
-            ////Remove first 3 values
-            //List<double> Response = new List<double>();
-            //int counter = 0;
-            //foreach(var item in pcaResult)
-            //{
-            //    if (counter > 2)
-            //        Response.Add(item);
-            //    counter++;
-            //}
+            //Remove first two values = slightly better results
+            pcaResult.RemoveAt(0);
+            pcaResult.RemoveAt(0);
+
+            //Remove last two
+            pcaResult.Remove(pcaResult.Count - 1);
+            pcaResult.Remove(pcaResult.Count - 1);
 
             return pcaResult;
         }
@@ -351,6 +350,7 @@ namespace EmotionRecognition.Service
 
             return result;
         }
+
 
 
     }

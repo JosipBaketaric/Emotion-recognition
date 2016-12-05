@@ -109,7 +109,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classifiers\Classifier.cs" />
-    <Compile Include="Classifiers\SVM.cs" />
     <Compile Include="ProcessImage.cs" />
     <Compile Include="Utils\ArrayConverters.cs" />
     <Compile Include="Utils\ImageUtils.cs" />

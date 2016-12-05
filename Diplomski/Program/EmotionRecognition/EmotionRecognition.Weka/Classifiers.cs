@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using weka.classifiers;
 using weka.classifiers.meta;
 using weka.classifiers.trees;
+using weka.core;
 
 namespace EmotionRecognition.Weka
 {
@@ -16,35 +17,13 @@ namespace EmotionRecognition.Weka
         {
             try
             {
-                int percentSplit = 66;
-                weka.core.Instances insts = new weka.core.Instances(new java.io.FileReader(trainingData));
+                Instances data = new Instances(new java.io.FileReader(trainingData));
+                data.setClassIndex(data.numAttributes() - 1);
 
-                insts.setClassIndex(insts.numAttributes() - 1);
+                Classifier classifier = new RandomForest();
+                classifier.buildClassifier(data);
 
-                weka.classifiers.Classifier cl = new weka.classifiers.trees.RandomForest();
-
-                //randomize the order of the instances in the dataset. This is for testing
-                weka.filters.Filter myRandom = new weka.filters.unsupervised.instance.Randomize();
-                myRandom.setInputFormat(insts);
-                insts = weka.filters.Filter.useFilter(insts, myRandom);
-
-                int trainSize = insts.numInstances() * percentSplit / 100;
-                int testSize = insts.numInstances() - trainSize;
-                weka.core.Instances train = new weka.core.Instances(insts, 0, trainSize);
-
-                cl.buildClassifier(train);
-                int numCorrect = 0;
-                for (int i = trainSize; i < insts.numInstances(); i++)
-                {
-                    weka.core.Instance currentInst = insts.instance(i);
-                    double predictedClass = cl.classifyInstance(currentInst);
-                    if (predictedClass == insts.instance(i).classValue())
-                        numCorrect++;
-                }
-
-                double percentage = (double)numCorrect / (double)testSize;
-
-                return cl;
+                return classifier;
             }
             catch(Exception e)
             {
@@ -53,49 +32,39 @@ namespace EmotionRecognition.Weka
 
         }
 
-        public static Classifier AdaBoostJ48(string trainingData)
+        public static double RandomForestKFoldEval(string trainingData)
         {
-            try
+            weka.core.Instances data = new weka.core.Instances(new java.io.FileReader(trainingData));
+            data.setClassIndex(data.numAttributes() - 1);
+
+            weka.classifiers.Classifier classifier = new weka.classifiers.trees.RandomForest();
+
+            int folds = 10;
+            int runs = 10;
+            int seed = 1;
+
+            java.util.Random rand = new java.util.Random(seed);
+            var randData = new Instances(data);
+            randData.randomize(rand);
+            Evaluation evalAll = new Evaluation(randData);
+            for (int n = 0; n < folds; n++)
             {
-                int percentSplit = 75;
-                weka.core.Instances insts = new weka.core.Instances(new java.io.FileReader(trainingData));
-                insts.setClassIndex(insts.numAttributes() - 1);
+                Evaluation eval = new Evaluation(randData);
+                Instances train = randData.trainCV(folds, n);
+                Instances test = randData.testCV(folds, n);
 
-                //Classifier
-                weka.classifiers.meta.AdaBoostM1 cl = new weka.classifiers.meta.AdaBoostM1();
-                var optionString = "-P 100 -S 1 -I 10 -W weka.classifiers.trees.RandomForest";
-                var optionsSplit = optionString.Split(' ');
-                cl.setOptions(optionsSplit);
-                cl.setWeightThreshold(90);  //To speed up               
-                cl.buildClassifier(insts);
-
-                //randomize the order of the instances in the dataset.  this is for testing
-                weka.filters.Filter myRandom = new weka.filters.unsupervised.instance.Randomize();
-                myRandom.setInputFormat(insts);
-                insts = weka.filters.Filter.useFilter(insts, myRandom);
-
-                int trainSize = insts.numInstances() * percentSplit / 100;
-                int testSize = insts.numInstances() - trainSize;
-                weka.core.Instances train = new weka.core.Instances(insts, 0, trainSize);
-
-                int numCorrect = 0;
-                for (int i = trainSize; i < insts.numInstances(); i++)
-                {
-                    weka.core.Instance currentInst = insts.instance(i);
-                    double predictedClass = cl.classifyInstance(currentInst);
-                    if (predictedClass == insts.instance(i).classValue())
-                        numCorrect++;
-                }
-
-                double percentage = (double)numCorrect / (double)testSize;
-                return cl;
+                Classifier clsCopy = classifier;
+                clsCopy.buildClassifier(train);
+                eval.evaluateModel(clsCopy, test);
+                evalAll.evaluateModel(clsCopy, test);
             }
-           catch(Exception e)
-            {
-                throw e;
-            }
+            var cm = evalAll.confusionMatrix();
 
+            double result = (double)evalAll.correct() / (double)(evalAll.incorrect() + evalAll.correct());
+            return result;
         }
+
+
 
 
     }

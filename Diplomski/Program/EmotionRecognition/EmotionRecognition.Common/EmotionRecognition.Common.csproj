@@ -62,30 +62,6 @@
     <Compile Include="GaborFilteredImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="HaarCascade\haarcascade_eye.xml" />
-    <Content Include="HaarCascade\haarcascade_eye_tree_eyeglasses.xml" />
-    <Content Include="HaarCascade\haarcascade_frontalcatface.xml" />
-    <Content Include="HaarCascade\haarcascade_frontalcatface_extended.xml" />
-    <Content Include="HaarCascade\haarcascade_frontalface_alt.xml" />
-    <Content Include="HaarCascade\haarcascade_frontalface_alt2.xml" />
-    <Content Include="HaarCascade\haarcascade_frontalface_alt_tree.xml" />
-    <Content Include="HaarCascade\haarcascade_frontalface_default.xml" />
-    <Content Include="HaarCascade\haarcascade_fullbody.xml" />
-    <Content Include="HaarCascade\haarcascade_lefteye_2splits.xml" />
-    <Content Include="HaarCascade\haarcascade_licence_plate_rus_16stages.xml" />
-    <Content Include="HaarCascade\haarcascade_lowerbody.xml" />
-    <Content Include="HaarCascade\haarcascade_profileface.xml" />
-    <Content Include="HaarCascade\haarcascade_righteye_2splits.xml" />
-    <Content Include="HaarCascade\haarcascade_russian_plate_number.xml" />
-    <Content Include="HaarCascade\haarcascade_smile.xml" />
-    <Content Include="HaarCascade\haarcascade_upperbody.xml" />
-    <Content Include="HaarCascade\LEye.xml" />
-    <Content Include="HaarCascade\Mouth.xml" />
-    <Content Include="HaarCascade\Nose 18x15.xml" />
-    <Content Include="HaarCascade\Nose 25x15.xml" />
-    <Content Include="HaarCascade\REye.xml" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

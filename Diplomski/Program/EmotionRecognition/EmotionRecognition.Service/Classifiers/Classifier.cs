@@ -31,54 +31,68 @@ namespace EmotionRecognition.Service
 
         public Bitmap Find(Bitmap image)
         {
-            Image<Bgr, byte> imageFrame = new Image<Bgr, byte>(image);
-            //To gray scale
-            Image<Gray, byte> grayScaleImage = imageFrame.Convert<Gray, byte>();
-
-            Rectangle[] rectangles = CascadeClassifier.DetectMultiScale(grayScaleImage, ScaleFactor, MinNeighbours, new Size(MinSize, MinSize), new Size(MaxSize, MaxSize));
-
-            //Check result
-            if (rectangles.Length == 0)
-                return null;
-
-            int targetRectangle = 0;
-            int targetSize = 0;
-
-            if (rectangles.Length > 1)
+            try
             {
-            
-                for(int i = 0; i < rectangles.Length; i++)
+                Image<Bgr, byte> imageFrame = new Image<Bgr, byte>(image);
+                //To gray scale
+                Image<Gray, byte> grayScaleImage = imageFrame.Convert<Gray, byte>();
+
+                Rectangle[] rectangles = CascadeClassifier.DetectMultiScale(grayScaleImage, ScaleFactor, MinNeighbours, new Size(MinSize, MinSize), new Size(MaxSize, MaxSize));
+
+                //Check result
+                if (rectangles.Length == 0)
+                    return null;
+
+                int targetRectangle = 0;
+                int targetSize = 0;
+
+                if (rectangles.Length > 1)
                 {
-                    if(targetSize < (rectangles[i].Height * rectangles[i].Width))
+
+                    for (int i = 0; i < rectangles.Length; i++)
                     {
-                        targetRectangle = i;
-                        targetSize = rectangles[i].Height * rectangles[i].Width;
-                    }                       
+                        if (targetSize < (rectangles[i].Height * rectangles[i].Width))
+                        {
+                            targetRectangle = i;
+                            targetSize = rectangles[i].Height * rectangles[i].Width;
+                        }
+                    }
                 }
+
+                //calculate 15%
+                //int width10 = (int)Math.Round(((double)rectangles[targetRectangle].Width * 0.10));
+                //int height15 = (int)Math.Round(((double)rectangles[targetRectangle].Height * 0.15));
+                //Get only marked object from image
+                //rectangles[targetRectangle].Inflate(width10, 0);
+                Bitmap responseImage = GetObject(image, rectangles[targetRectangle]);
+
+                return responseImage;
             }
-
-            //calculate 15%
-            //int width10 = (int)Math.Round(((double)rectangles[targetRectangle].Width * 0.10));
-            //int height15 = (int)Math.Round(((double)rectangles[targetRectangle].Height * 0.15));
-            //Get only marked object from image
-            //rectangles[targetRectangle].Inflate(width10, 0);
-            Bitmap responseImage = GetObject(image, rectangles[targetRectangle]);
-
-            return responseImage;
+           catch(Exception e)
+            {
+                throw e;
+            }
         }
 
         private Bitmap GetObject(Bitmap sourceImage, Rectangle section)
         {
-            Bitmap bmp = new Bitmap(section.Width, section.Height);
-            Graphics g = Graphics.FromImage(bmp);
+            try
+            {
+                Bitmap bmp = new Bitmap(section.Width, section.Height);
+                Graphics g = Graphics.FromImage(bmp);
 
-            Rectangle destination = new Rectangle(0, 0, bmp.Width, bmp.Height);
+                Rectangle destination = new Rectangle(0, 0, bmp.Width, bmp.Height);
 
-            g.DrawImage(sourceImage, destination, section, GraphicsUnit.Pixel);
+                g.DrawImage(sourceImage, destination, section, GraphicsUnit.Pixel);
 
-            g.Dispose();
+                g.Dispose();
 
-            return bmp;
+                return bmp;
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
 
     }

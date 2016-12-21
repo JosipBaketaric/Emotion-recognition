@@ -9,12 +9,12 @@ namespace EmotionRecognition.Weka
 {
     public class Classify
     {
-        private weka.classifiers.Classifier RandomForest = null;
+        private weka.classifiers.Classifier Classifier = null;
         private static Classify Instance = null;
 
         private Classify()
         {
-            RandomForest = Classifiers.RandomForestKFoldEval(@"C:\Users\Josip\Desktop\Emotion-recognition\Diplomski\Program\EmotionRecognition\Data\TrainingFeatures\FeaturesArff.arff");
+            Classifier = Classifiers.SVMKFoldEval(@"C:\Users\Josip\Desktop\Emotion-recognition\Diplomski\Program\EmotionRecognition\Data\TrainingFeatures\FeaturesArff.arff");
         }
 
         public static Classify GetInstance()
@@ -68,7 +68,7 @@ namespace EmotionRecognition.Weka
             //Define class attribute position
             dataset.setClassIndex(dataset.numAttributes() - 1);
 
-            var result = RandomForest.classifyInstance(dataset.instance(0));
+            var result = Classifier.classifyInstance(dataset.instance(0));
 
             return result;
         }

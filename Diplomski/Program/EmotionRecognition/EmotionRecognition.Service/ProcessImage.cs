@@ -14,7 +14,7 @@ namespace EmotionRecognition.Service
                 //50x85 1% lower than 150x200
                 List<double> upperAndLowerFeatures = new List<double>();
                 var faceImage = ImageUtils.Resize(image, 68, 80);               
-
+         
                 faceImage = ImageUtils.ToGrayScale(faceImage);
 
                 var imgCropUpper = ImageUtils.Crop(faceImage, (float)0.05, (float)0.05, (float)0.02, (float)0.45);  //0.05, 0.05, 0.02, 0.45
@@ -28,7 +28,7 @@ namespace EmotionRecognition.Service
                 var imgCropLowerLeft = ImageUtils.Crop(imgCropLower, (float)0.0, (float)0.6, (float)0.0, (float)0.0);   //0.6, 0, 0, 0
                 var imgCropLowerMiddle = ImageUtils.Crop(imgCropLower, (float)0.3, (float)0.3, (float)0.0, (float)0.0); //0.3, 0.3, 0, 0
                 var imgCropLowerRight = ImageUtils.Crop(imgCropLower, (float)0.6, (float)0.0, (float)0.0, (float)0.0);  //0.6, 0, 0, 0      
-
+                
 
                 //Feature extraction (Gabor filters + PCA)
                 var featuresUpperLeft = Filters.GaborFilter(imgCropUpperLeft);

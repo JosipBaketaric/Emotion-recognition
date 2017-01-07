@@ -41,6 +41,7 @@
             this.btnLoadImg = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnInfo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbResult)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -49,7 +50,7 @@
             // 
             // btnPokreni
             // 
-            this.btnPokreni.Location = new System.Drawing.Point(24, 672);
+            this.btnPokreni.Location = new System.Drawing.Point(13, 702);
             this.btnPokreni.Name = "btnPokreni";
             this.btnPokreni.Size = new System.Drawing.Size(121, 34);
             this.btnPokreni.TabIndex = 0;
@@ -70,14 +71,14 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(24, 622);
+            this.comboBox1.Location = new System.Drawing.Point(6, 629);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(280, 24);
             this.comboBox1.TabIndex = 2;
             // 
             // btnProcess
             // 
-            this.btnProcess.Location = new System.Drawing.Point(442, 672);
+            this.btnProcess.Location = new System.Drawing.Point(431, 702);
             this.btnProcess.Name = "btnProcess";
             this.btnProcess.Size = new System.Drawing.Size(121, 34);
             this.btnProcess.TabIndex = 3;
@@ -87,7 +88,7 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(183, 672);
+            this.btnStop.Location = new System.Drawing.Point(172, 702);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(121, 34);
             this.btnStop.TabIndex = 4;
@@ -99,7 +100,7 @@
             // 
             this.lblResult.AutoSize = true;
             this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblResult.Location = new System.Drawing.Point(47, 18);
+            this.lblResult.Location = new System.Drawing.Point(57, 18);
             this.lblResult.Name = "lblResult";
             this.lblResult.Size = new System.Drawing.Size(168, 44);
             this.lblResult.TabIndex = 5;
@@ -109,7 +110,7 @@
             // 
             // pbResult
             // 
-            this.pbResult.Location = new System.Drawing.Point(50, 86);
+            this.pbResult.Location = new System.Drawing.Point(60, 86);
             this.pbResult.Name = "pbResult";
             this.pbResult.Size = new System.Drawing.Size(165, 198);
             this.pbResult.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -118,12 +119,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnInfo);
             this.groupBox1.Controls.Add(this.lblEmocija);
             this.groupBox1.Controls.Add(this.pbResult);
             this.groupBox1.Controls.Add(this.lblResult);
             this.groupBox1.Location = new System.Drawing.Point(1050, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(314, 604);
+            this.groupBox1.Size = new System.Drawing.Size(283, 604);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
@@ -131,7 +133,7 @@
             // 
             this.lblEmocija.AutoSize = true;
             this.lblEmocija.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblEmocija.Location = new System.Drawing.Point(94, 307);
+            this.lblEmocija.Location = new System.Drawing.Point(104, 307);
             this.lblEmocija.Name = "lblEmocija";
             this.lblEmocija.Size = new System.Drawing.Size(81, 25);
             this.lblEmocija.TabIndex = 7;
@@ -148,13 +150,13 @@
             this.groupBox2.Controls.Add(this.btnPokreni);
             this.groupBox2.Location = new System.Drawing.Point(12, 9);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1032, 718);
+            this.groupBox2.Size = new System.Drawing.Size(1032, 748);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             // 
             // btnLoadImg
             // 
-            this.btnLoadImg.Location = new System.Drawing.Point(893, 672);
+            this.btnLoadImg.Location = new System.Drawing.Point(882, 702);
             this.btnLoadImg.Name = "btnLoadImg";
             this.btnLoadImg.Size = new System.Drawing.Size(121, 34);
             this.btnLoadImg.TabIndex = 6;
@@ -164,7 +166,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(661, 672);
+            this.button1.Location = new System.Drawing.Point(650, 702);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 34);
             this.button1.TabIndex = 5;
@@ -174,7 +176,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(1234, 693);
+            this.btnExit.Location = new System.Drawing.Point(1212, 711);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(121, 34);
             this.btnExit.TabIndex = 9;
@@ -182,11 +184,22 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // btnInfo
+            // 
+            this.btnInfo.Location = new System.Drawing.Point(88, 564);
+            this.btnInfo.Name = "btnInfo";
+            this.btnInfo.Size = new System.Drawing.Size(121, 34);
+            this.btnInfo.TabIndex = 8;
+            this.btnInfo.Text = "Info";
+            this.btnInfo.UseVisualStyleBackColor = true;
+            this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1367, 738);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1362, 763);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -221,6 +234,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnLoadImg;
+        private System.Windows.Forms.Button btnInfo;
     }
 }
 

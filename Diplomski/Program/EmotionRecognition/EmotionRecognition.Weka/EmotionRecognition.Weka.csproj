@@ -131,8 +131,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classifiers.cs" />
+    <Compile Include="ClassifierTransfer.cs" />
     <Compile Include="Classify.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EmotionRecognition.Common\EmotionRecognition.Common.csproj">
+      <Project>{32df0217-997c-42a3-9b45-79b62b62c578}</Project>
+      <Name>EmotionRecognition.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

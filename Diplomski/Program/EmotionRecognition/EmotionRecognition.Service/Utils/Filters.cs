@@ -40,8 +40,7 @@ namespace EmotionRecognition.Service.Utils
 
             sobel = gray.Sobel(0, 1, 3).Add(gray.Sobel(1, 1, 3)).AbsDiff(new Gray(0.0));
             sobelBitmap = sobel.ToBitmap();
-            sobelBitmap.Save(@"C:\Users\Josip\Desktop\sobelTest\0-1.bmp");
-
+            //PCA
             featuresList = ImageUtils.PCA(sobelBitmap);
             return featuresList;
         }

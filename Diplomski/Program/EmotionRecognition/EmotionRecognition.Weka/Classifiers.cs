@@ -66,7 +66,7 @@ namespace EmotionRecognition.Weka
 
 
 
-        public static Classifier SVMKFoldEval(string trainingData)
+        public static ClassifierTransfer SVMKFoldEval(string trainingData)
         {
             weka.core.Instances data = new weka.core.Instances(new java.io.FileReader(trainingData));
             data.setClassIndex(data.numAttributes() - 1);
@@ -97,7 +97,10 @@ namespace EmotionRecognition.Weka
             var cm = evalAll.confusionMatrix();
 
             double result = (double)evalAll.correct() / (double)(evalAll.incorrect() + evalAll.correct());
-            return classifier;
+
+            ClassifierTransfer cf = new ClassifierTransfer() { Classifier = classifier, ConfusionMatrix = cm, Accurancy = result };
+
+            return cf;
         }
 
 

@@ -13,12 +13,14 @@ using EmotionRecognition.Service;
 using EmotionRecognition.Weka;
 using System.Timers;
 using System.Threading;
+using EmotionRecognition.Common;
+using System.IO;
 
 namespace EmotionRecognitionForm
 {
     public partial class Form1 : Form
     {
-        private static string TrainingSet = @"C:\Users\Josip\Desktop\Emotion-recognition\Diplomski\Program\EmotionRecognition\Data\HaarCascade\haarcascade_frontalface_alt_tree.xml";
+        private static string TrainingSet = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Data\HaarCascade\haarcascade_frontalface_alt_tree.xml");
         private FilterInfoCollection VideoCaptureDevices;   //All devices
         private VideoCaptureDevice FinalVideoSource;    //Used one
         private Classifier faceClassifier;
@@ -26,11 +28,16 @@ namespace EmotionRecognitionForm
         private volatile string[] Emotions = new string[7] { "Strah", "Srdžba", "Gađenje", "Radost", "Neutralno", "Tuga", "Iznenađenje" };
         private bool FirstStart = true;
         private PleaseWaitForm pleaseWait;
+        private InfoForm infoForm;
         private object lockObject = new object();
+        private ResultTransfer rf;
 
         public Form1()
         {
             InitializeComponent();
+
+            TrainingSet = Path.GetFullPath(TrainingSet);
+
             VideoCaptureDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
 
             foreach(FilterInfo device in VideoCaptureDevices)
@@ -124,12 +131,17 @@ namespace EmotionRecognitionForm
                     {
                         FirstStart = false;
                         pleaseWait.Close();
+                     
+                        if (result != null)
+                        {
+                            rf = result;
+                        }
                     }
 
                     if(result != null)
                     {
                         int emotion;
-                        int.TryParse(result.ToString(), out emotion);
+                        int.TryParse(result.Result.ToString(), out emotion);
                         UpdateLabel(Emotions[emotion]);
                     }
                     
@@ -167,12 +179,17 @@ namespace EmotionRecognitionForm
                 {
                     FirstStart = false;
                     pleaseWait.Close();
+
+                    if(result != null)
+                    {
+                        rf = result;
+                    }
                 }
 
                 if (result != null)
                 {
                     int emotion;
-                    int.TryParse(result.ToString(), out emotion);
+                    int.TryParse(result.Result.ToString(), out emotion);
                     UpdateLabel(Emotions[emotion]);
                 }
             }
@@ -312,5 +329,19 @@ namespace EmotionRecognitionForm
             }
         }
 
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            if(rf != null)
+            {
+                infoForm = new InfoForm(rf, Emotions);
+                infoForm.Show();
+                Application.DoEvents();
+            }
+            else
+            {
+                MessageBox.Show("Unavaible");
+            }
+
+        }
     }
 }

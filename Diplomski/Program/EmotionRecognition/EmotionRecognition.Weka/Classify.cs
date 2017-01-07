@@ -1,5 +1,7 @@
-﻿using System;
+﻿using EmotionRecognition.Common;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,10 +13,15 @@ namespace EmotionRecognition.Weka
     {
         private weka.classifiers.Classifier Classifier = null;
         private static Classify Instance = null;
+        private ClassifierTransfer cf;
 
         private Classify()
         {
-            Classifier = Classifiers.SVMKFoldEval(@"C:\Users\Josip\Desktop\Emotion-recognition\Diplomski\Program\EmotionRecognition\Data\TrainingFeatures\FeaturesArff.arff");
+            string featurePath = Path.Combine(System.Environment.CurrentDirectory, @"..\..\..\..\Data\TrainingFeatures\FeaturesArff.arff");
+            featurePath = Path.GetFullPath(featurePath);
+
+            cf = Classifiers.SVMKFoldEval(featurePath);
+            Classifier = cf.Classifier;
         }
 
         public static Classify GetInstance()
@@ -25,7 +32,7 @@ namespace EmotionRecognition.Weka
             return Instance;
         }
 
-        public double GetClass(List<double> data)
+        public ResultTransfer GetClass(List<double> data)
         {
             //Create attributes
             List<weka.core.Attribute> attributes = new List<weka.core.Attribute>();
@@ -70,7 +77,9 @@ namespace EmotionRecognition.Weka
 
             var result = Classifier.classifyInstance(dataset.instance(0));
 
-            return result;
+            ResultTransfer rt = new ResultTransfer() { Result = result, Accurancy = cf.Accurancy, ConfusionMatrix = cf.ConfusionMatrix };
+
+            return rt;
         }
 
     }

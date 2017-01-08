@@ -77,7 +77,7 @@ namespace EmotionRecognition.Weka
 
             var result = Classifier.classifyInstance(dataset.instance(0));
 
-            ResultTransfer rt = new ResultTransfer() { Result = result, Accurancy = cf.Accurancy, ConfusionMatrix = cf.ConfusionMatrix };
+            ResultTransfer rt = new ResultTransfer() { Result = result, Accurancy = cf.Accurancy, ConfusionMatrix = cf.ConfusionMatrix, TimeToTrain = cf.TimeToTrain };
 
             return rt;
         }

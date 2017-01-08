@@ -17,6 +17,7 @@ namespace EmotionRecognitionForm
         {
             InitializeComponent();
 
+            rtbInfo.AppendText("Vrijeme potrebno za treniranje: " + result.TimeToTrain.ToString() + "\n\n");
 
             rtbInfo.AppendText("Preciznost: " + result.Accurancy.ToString() + "\n\n");
 

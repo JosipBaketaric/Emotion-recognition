@@ -29,8 +29,12 @@ namespace EmotionRecognitionForm
         private bool FirstStart = true;
         private PleaseWaitForm pleaseWait;
         private InfoForm infoForm;
+        private TestForm testForm;
         private object lockObject = new object();
         private ResultTransfer rf;
+
+        private bool testDone = false;
+        private double[,] TestResultMatrix;
 
         public Form1()
         {
@@ -343,5 +347,104 @@ namespace EmotionRecognitionForm
             }
 
         }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            //Process everything
+            TestResultMatrix = ProcessTest(); //Return results
+
+            testForm = new TestForm(TestResultMatrix);  //Send results
+            testForm.Show();
+            Application.DoEvents();
+            testDone = true;
+        }
+
+        private double[,] ProcessTest()
+        {
+            TestResultMatrix = new double[7,7];
+            //Init
+            for(int i = 0; i < TestResultMatrix.Length/7; i++)
+            {
+                for (int j = 0; j < TestResultMatrix.Length/7; j++)
+                {
+                    TestResultMatrix[i, j] = 0;
+                }
+            }
+                
+
+            string database = @"C:\Users\" + Environment.UserName + @"\Desktop\cohn-kanade-images\";
+            string emotionCodesDatabase = @"C:\Users\" + Environment.UserName + @"\Desktop\Emotion\";
+
+            //string[] Emotions = new string[7] { "Strah", "Srdžba", "Gađenje", "Radost", "Neutralno", "Tuga", "Iznenađenje" };
+            int[] emotionCodes = new int[8] { 4, 1, -1, 2, 0, 3, 5, 6 };
+
+            List<string> dirs = new List<string>(System.IO.Directory.EnumerateDirectories(database));
+
+            foreach(var directory in dirs)
+            {
+                List<string> subDirs = new List<string>(System.IO.Directory.EnumerateDirectories(directory));
+                foreach(var subDirectory in subDirs)
+                {
+                    List<string> files = new List<string>(System.IO.Directory.EnumerateFiles(subDirectory));
+                    //Target image
+                    Bitmap targetItem = new Bitmap(files.Last());
+                    //Find emotion code
+                    string emotionCode;
+                    try
+                    {
+                        string emotionCodePath = emotionCodesDatabase + Path.GetFileName(Path.GetDirectoryName(subDirectory)) + @"\" + Path.GetFileName(subDirectory);
+                        List<string> emotionCodeFiles = new List<string>(System.IO.Directory.EnumerateFiles(emotionCodePath));
+
+                        emotionCode = File.ReadAllText(emotionCodeFiles.First());
+                        if (emotionCode.Equals(""))
+                            continue;
+                    }
+                    catch
+                    {
+                        continue;
+                    }
+                    int emotionCodeInt = -1; ;
+                    
+                    for(int i = 0; i < emotionCode.Length; i++)
+                    {
+                        if (emotionCode.Substring(i, 1).Equals("0") || emotionCode.Substring(i, 1).Equals("1") || emotionCode.Substring(i, 1).Equals("2")
+                            || emotionCode.Substring(i, 1).Equals("3") || emotionCode.Substring(i, 1).Equals("4") || emotionCode.Substring(i, 1).Equals("5")
+                            || emotionCode.Substring(i, 1).Equals("6") || emotionCode.Substring(i, 1).Equals("7"))
+                        {
+                            int.TryParse(emotionCode.Substring(i, 1), out emotionCodeInt);
+                            break;
+                        }                           
+                    }
+
+                    if (emotionCodeInt == -1 || emotionCodeInt == 2)    //2 = contempt
+                        continue;
+
+                    //Classfy
+                    var faceImg = faceClassifier.Find(targetItem);
+                    if (faceImg == null)
+                        continue;
+                    var data = ProcessImage.Process(faceImg);
+                    var result = Classify.GetInstance().GetClass(data);
+
+                    int emotion;
+                    int.TryParse(result.Result.ToString(), out emotion);
+                    //True
+                    if (emotion.Equals(emotionCodes[emotionCodeInt]))
+                    {
+                        TestResultMatrix[emotion, emotion] += 1;
+                    }
+                    //Failed
+                    else
+                    {
+                        TestResultMatrix[emotionCodes[emotionCodeInt], emotion] += 1;
+                    }
+
+                }
+
+            }
+            return TestResultMatrix;
+        }
+
+
     }
 }

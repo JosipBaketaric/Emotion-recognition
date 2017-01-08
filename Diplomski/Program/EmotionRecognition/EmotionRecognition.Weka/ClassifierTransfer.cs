@@ -11,5 +11,6 @@ namespace EmotionRecognition.Weka
         public double[][] ConfusionMatrix { get; set; }
         public double Accurancy { get; set; }
         public weka.classifiers.Classifier Classifier { get; set; }
+        public double TimeToTrain { get; set; }
     }
 }

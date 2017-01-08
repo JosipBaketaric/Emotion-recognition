@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,6 +69,8 @@ namespace EmotionRecognition.Weka
 
         public static ClassifierTransfer SVMKFoldEval(string trainingData)
         {
+            Stopwatch stopWatch = new Stopwatch();
+
             weka.core.Instances data = new weka.core.Instances(new java.io.FileReader(trainingData));
             data.setClassIndex(data.numAttributes() - 1);
 
@@ -83,6 +86,8 @@ namespace EmotionRecognition.Weka
             var randData = new Instances(data);
             randData.randomize(rand);
             Evaluation evalAll = new Evaluation(randData);
+
+            stopWatch.Start();
             for (int n = 0; n < folds; n++)
             {
                 Evaluation eval = new Evaluation(randData);
@@ -94,11 +99,15 @@ namespace EmotionRecognition.Weka
                 eval.evaluateModel(clsCopy, test);
                 evalAll.evaluateModel(clsCopy, test);
             }
+            stopWatch.Stop();
+
             var cm = evalAll.confusionMatrix();
 
             double result = (double)evalAll.correct() / (double)(evalAll.incorrect() + evalAll.correct());
 
-            ClassifierTransfer cf = new ClassifierTransfer() { Classifier = classifier, ConfusionMatrix = cm, Accurancy = result };
+            var timeToTrain = (double)((double)stopWatch.ElapsedMilliseconds / (double)1000 / (double)60);
+
+            ClassifierTransfer cf = new ClassifierTransfer() { Classifier = classifier, ConfusionMatrix = cm, Accurancy = result, TimeToTrain = timeToTrain };
 
             return cf;
         }

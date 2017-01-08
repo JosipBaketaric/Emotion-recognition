@@ -36,12 +36,13 @@
             this.lblResult = new System.Windows.Forms.Label();
             this.pbResult = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnInfo = new System.Windows.Forms.Button();
             this.lblEmocija = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnLoadImg = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnInfo = new System.Windows.Forms.Button();
+            this.btnTest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbResult)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -129,6 +130,16 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
+            // btnInfo
+            // 
+            this.btnInfo.Location = new System.Drawing.Point(88, 564);
+            this.btnInfo.Name = "btnInfo";
+            this.btnInfo.Size = new System.Drawing.Size(121, 34);
+            this.btnInfo.TabIndex = 8;
+            this.btnInfo.Text = "Info";
+            this.btnInfo.UseVisualStyleBackColor = true;
+            this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
+            // 
             // lblEmocija
             // 
             this.lblEmocija.AutoSize = true;
@@ -184,15 +195,15 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnInfo
+            // btnTest
             // 
-            this.btnInfo.Location = new System.Drawing.Point(88, 564);
-            this.btnInfo.Name = "btnInfo";
-            this.btnInfo.Size = new System.Drawing.Size(121, 34);
-            this.btnInfo.TabIndex = 8;
-            this.btnInfo.Text = "Info";
-            this.btnInfo.UseVisualStyleBackColor = true;
-            this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
+            this.btnTest.Location = new System.Drawing.Point(1050, 711);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(121, 34);
+            this.btnTest.TabIndex = 10;
+            this.btnTest.Text = "Test";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // Form1
             // 
@@ -200,6 +211,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1362, 763);
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -235,6 +247,7 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnLoadImg;
         private System.Windows.Forms.Button btnInfo;
+        private System.Windows.Forms.Button btnTest;
     }
 }
 

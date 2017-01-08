@@ -11,5 +11,6 @@ namespace EmotionRecognition.Common
         public double[][] ConfusionMatrix { get; set; }
         public double Accurancy { get; set; }
         public double Result { get; set; }
+        public double TimeToTrain { get; set; }
     }
 }

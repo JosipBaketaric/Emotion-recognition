@@ -20,7 +20,10 @@ namespace EmotionRecognitionForm
 {
     public partial class Form1 : Form
     {
+        //Strict
         private static string TrainingSet = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Data\HaarCascade\haarcascade_frontalface_alt_tree.xml");
+        //Loose
+        //private static string TrainingSet = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Data\HaarCascade\haarcascade_frontalface_alt.xml");
         private FilterInfoCollection VideoCaptureDevices;   //All devices
         private VideoCaptureDevice FinalVideoSource;    //Used one
         private Classifier faceClassifier;
@@ -351,7 +354,8 @@ namespace EmotionRecognitionForm
         private void btnTest_Click(object sender, EventArgs e)
         {
             //Process everything
-            TestResultMatrix = ProcessTest(); //Return results
+            if(testDone == false)
+                TestResultMatrix = ProcessTest(); //Return results
 
             testForm = new TestForm(TestResultMatrix);  //Send results
             testForm.Show();

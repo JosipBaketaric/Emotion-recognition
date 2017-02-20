@@ -12,6 +12,8 @@ namespace EmotionRecognitionForm
 {
     public partial class TestForm : Form
     {
+        double overallAccuracy = 0;
+        double count = 0;
         public TestForm(double[,] resultMatrix)
         {
             InitializeComponent();
@@ -27,9 +29,14 @@ namespace EmotionRecognitionForm
                 for (int j = 0; j < resultMatrix.Length / 7; j++)
                 {
                     rtbTest.AppendText(resultMatrix[i, j].ToString() + "\t");
+
+                    count+= resultMatrix[i, j];
+                    if (i == j)
+                        overallAccuracy += resultMatrix[i, j];
                 }
                 rtbTest.AppendText("\n\n");
             }
+            rtbTest.AppendText("Overall Accurancy: " + (overallAccuracy/count) + "\n\n");
         }
 
     }

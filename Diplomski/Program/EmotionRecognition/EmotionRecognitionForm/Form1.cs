@@ -105,7 +105,14 @@ namespace EmotionRecognitionForm
 
         private void btnProcess_Click(object sender, EventArgs e)
         {
-            Process();
+            try{
+                Process();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Error occured in Process method");
+            }
+
         }
 
         public void Process()
@@ -253,7 +260,14 @@ namespace EmotionRecognitionForm
 
         public void TimerMethod(object source, ElapsedEventArgs e)
         {
-            Process();            
+            try
+            {
+                Process();
+            }
+               catch(Exception)
+            {
+                MessageBox.Show("Error while using automatic recognition");
+            }     
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -263,56 +277,84 @@ namespace EmotionRecognitionForm
 
         private void btnLoadImg_Click(object sender, EventArgs e)
         {
-            string path;
-            OpenFileDialog file = new OpenFileDialog();
-            if (file.ShowDialog() == DialogResult.OK)
+            try
             {
-                path = file.FileName;
-                Bitmap img = new Bitmap(path);
-                //
-                StopCamera();
+                string path;
+                OpenFileDialog file = new OpenFileDialog();
+                if (file.ShowDialog() == DialogResult.OK)
+                {
+                    path = file.FileName;
+                    Bitmap img = new Bitmap(path);
+                    //
+                    StopCamera();
 
-                UpdatePreviewBox((Bitmap)img.Clone());
+                    UpdatePreviewBox((Bitmap)img.Clone());
 
-                Process(img);
-                img.Dispose();               
+                    Process(img);
+                    img.Dispose();
+                }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Error while loading image!");
             }
         }
 
 
         private void UpdateLabel(string text)
         {
-            if (this.lblEmocija.InvokeRequired)
+            try
             {
-                this.lblEmocija.BeginInvoke((MethodInvoker)delegate () { this.lblEmocija.Text = text; ; });
+                if (this.lblEmocija.InvokeRequired)
+                {
+                    this.lblEmocija.BeginInvoke((MethodInvoker)delegate () { this.lblEmocija.Text = text; ; });
+                }
+                else
+                {
+                    this.lblEmocija.Text = text; ;
+                }
             }
-            else
+            catch(Exception)
             {
-                this.lblEmocija.Text = text; ;
+                MessageBox.Show("Error while updating label text");
             }
         }
 
         private void UpdatePictureBox(Bitmap img)
         {
-            if (this.pbResult.InvokeRequired)
+            try
             {
-                this.pbResult.BeginInvoke((MethodInvoker)delegate () { this.pbResult.Image = img; });
+                if (this.pbResult.InvokeRequired)
+                {
+                    this.pbResult.BeginInvoke((MethodInvoker)delegate () { this.pbResult.Image = img; });
+                }
+                else
+                {
+                    this.pbResult.Image = img;
+                }
             }
-            else
+            catch(Exception)
             {
-                this.pbResult.Image = img;
+                MessageBox.Show("Error while updating picture box");
             }
         }
 
         private void UpdatePreviewBox(Bitmap img)
         {
-            if (this.pictureBox1.InvokeRequired)
+            try
             {
-                this.pictureBox1.BeginInvoke((MethodInvoker)delegate () { this.pictureBox1.Image = img; });
+                if (this.pictureBox1.InvokeRequired)
+                {
+                    this.pictureBox1.BeginInvoke((MethodInvoker)delegate () { this.pictureBox1.Image = img; });
+                }
+                else
+                {
+                    this.pictureBox1.Image = img;
+                }
             }
-            else
+            catch(Exception)
             {
-                this.pictureBox1.Image = img;
+                MessageBox.Show("Error while updating preview box");
             }
         }
 
@@ -353,14 +395,21 @@ namespace EmotionRecognitionForm
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            //Process everything
-            if(testDone == false)
-                TestResultMatrix = ProcessTest(); //Return results
+            try
+            {
+                //Process everything
+                if (testDone == false)
+                    TestResultMatrix = ProcessTest(); //Return results
 
-            testForm = new TestForm(TestResultMatrix);  //Send results
-            testForm.Show();
-            Application.DoEvents();
-            testDone = true;
+                testForm = new TestForm(TestResultMatrix);  //Send results
+                testForm.Show();
+                Application.DoEvents();
+                testDone = true;
+            }
+           catch(Exception)
+            {
+                MessageBox.Show("Error while trying to execute Test! (Missing Con-kanade database on desktop or emotion folder on desktop?)");
+            }
         }
 
         private double[,] ProcessTest()

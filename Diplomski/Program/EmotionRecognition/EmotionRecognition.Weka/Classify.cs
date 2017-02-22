@@ -17,10 +17,27 @@ namespace EmotionRecognition.Weka
 
         private Classify()
         {
-            string featurePath = Path.Combine(System.Environment.CurrentDirectory, @"..\..\..\..\Data\TrainingFeatures\FeaturesArff.arff");
-            featurePath = Path.GetFullPath(featurePath);
+            string featurePathDebug = Path.Combine(System.Environment.CurrentDirectory, @"..\..\..\..\Data\TrainingFeatures\FeaturesArff.arff");
+            string featurePathFinal = Path.Combine(System.Environment.CurrentDirectory, @"\Data\TrainingFeatures\FeaturesArff.arff");
 
-            cf = Classifiers.SVMKFoldEval(featurePath);
+            featurePathDebug = Path.GetFullPath(featurePathDebug);
+            featurePathFinal = Path.GetFullPath(featurePathFinal);
+
+            if(File.Exists(featurePathDebug))
+            {
+                cf = Classifiers.SVMKFoldEval(featurePathDebug);
+            }
+            else if (File.Exists(System.Environment.CurrentDirectory + "\\Data\\TrainingFeatures\\FeaturesArff.arff"))
+            {
+                cf = Classifiers.SVMKFoldEval(System.Environment.CurrentDirectory + "\\Data\\TrainingFeatures\\FeaturesArff.arff");
+            }
+            else
+            {
+                throw new FileNotFoundException();
+            }
+
+
+
             Classifier = cf.Classifier;
         }
 

@@ -21,7 +21,9 @@ namespace EmotionRecognitionForm
     public partial class Form1 : Form
     {
         //Strict
-        private static string TrainingSet = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Data\HaarCascade\haarcascade_frontalface_alt_tree.xml");
+        private static string TrainingSetDebug = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Data\HaarCascade\haarcascade_frontalface_alt_tree.xml");
+        private string TrainingSetFinal;
+        
         //Loose
         //private static string TrainingSet = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Data\HaarCascade\haarcascade_frontalface_alt.xml");
         private FilterInfoCollection VideoCaptureDevices;   //All devices
@@ -43,7 +45,7 @@ namespace EmotionRecognitionForm
         {
             InitializeComponent();
 
-            TrainingSet = Path.GetFullPath(TrainingSet);
+            TrainingSetDebug = Path.GetFullPath(TrainingSetDebug);
 
             VideoCaptureDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
 
@@ -52,9 +54,29 @@ namespace EmotionRecognitionForm
 
             comboBox1.SelectedIndex = 0;
 
-            faceClassifier = new Classifier(TrainingSet, 80, 700, 2, 1.05);
-            myTimer = new System.Timers.Timer();
+            TrainingSetFinal = Environment.CurrentDirectory + "\\Data\\HaarCascade\\haarcascade_frontalface_alt_tree.xml";
 
+            if (File.Exists(TrainingSetDebug))
+            {
+                faceClassifier = new Classifier(TrainingSetDebug, 80, 700, 2, 1.05);
+            }
+            else if (File.Exists(TrainingSetFinal))
+            {
+                try
+                {
+                    faceClassifier = new Classifier(TrainingSetFinal, 80, 700, 2, 1.05);
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show("Exception: " + e.ToString());
+                }
+            }
+            else
+            {                
+                MessageBox.Show("Missing HaarCascade training set!" + "\n" + TrainingSetFinal);
+            }
+
+            myTimer = new System.Timers.Timer();
             pleaseWait = new PleaseWaitForm();
 
             //Buttons
@@ -108,9 +130,10 @@ namespace EmotionRecognitionForm
             try{
                 Process();
             }
-            catch(Exception)
+            catch(Exception ex)
             {
                 MessageBox.Show("Error occured in Process method");
+                MessageBox.Show(ex.ToString());
             }
 
         }
@@ -399,16 +422,23 @@ namespace EmotionRecognitionForm
             {
                 //Process everything
                 if (testDone == false)
+                {
                     TestResultMatrix = ProcessTest(); //Return results
+                }
+                
+                if(TestResultMatrix != null)
+                {
+                    testForm = new TestForm(TestResultMatrix);  //Send results
+                    testForm.Show();
+                    Application.DoEvents();
+                    testDone = true;
+                }
 
-                testForm = new TestForm(TestResultMatrix);  //Send results
-                testForm.Show();
-                Application.DoEvents();
-                testDone = true;
+                
             }
            catch(Exception)
             {
-                MessageBox.Show("Error while trying to execute Test! (Missing Con-kanade database on desktop or emotion folder on desktop?)");
+                MessageBox.Show("Error while trying to execute Test!");
             }
         }
 
@@ -427,6 +457,18 @@ namespace EmotionRecognitionForm
 
             string database = @"C:\Users\" + Environment.UserName + @"\Desktop\cohn-kanade-images\";
             string emotionCodesDatabase = @"C:\Users\" + Environment.UserName + @"\Desktop\Emotion\";
+
+            if (!Directory.Exists(database))
+            {
+                MessageBox.Show("Missing: " + database);
+                return null;
+            }
+            if (!Directory.Exists(emotionCodesDatabase))
+            {
+                MessageBox.Show("Missing: " + emotionCodesDatabase);
+                return null;
+            }
+
 
             //string[] Emotions = new string[7] { "Strah", "Srdžba", "Gađenje", "Radost", "Neutralno", "Tuga", "Iznenađenje" };
             int[] emotionCodes = new int[8] { 4, 1, -1, 2, 0, 3, 5, 6 };
@@ -498,6 +540,14 @@ namespace EmotionRecognitionForm
             return TestResultMatrix;
         }
 
+        private void lblTestWait_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Drawing;
 using Emgu.CV;
 using Emgu.CV.Structure;
@@ -68,9 +63,9 @@ namespace EmotionRecognition.Service
 
                 return responseImage;
             }
-           catch(Exception e)
+           catch(Exception)
             {
-                throw e;
+                throw new Exception("Error in Haar Classifier");
             }
         }
 

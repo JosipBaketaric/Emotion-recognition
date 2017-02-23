@@ -23,9 +23,16 @@ namespace EmotionRecognitionForm
         //Strict
         private static string TrainingSetDebug = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Data\HaarCascade\haarcascade_frontalface_alt_tree.xml");
         private string TrainingSetFinal;
+        private string TrainingSet1;
+        private string TrainingSet2;
+        private string TrainingSet3;
+        private string TrainingSet4;
+        private string TrainingSet5;
+        private List<string> ComboTrainingSets;
+
+        private int TimerInterval = 2000;
+        private List<int> ComboIntervalTimes;
         
-        //Loose
-        //private static string TrainingSet = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Data\HaarCascade\haarcascade_frontalface_alt.xml");
         private FilterInfoCollection VideoCaptureDevices;   //All devices
         private VideoCaptureDevice FinalVideoSource;    //Used one
         private Classifier faceClassifier;
@@ -45,6 +52,9 @@ namespace EmotionRecognitionForm
         {
             InitializeComponent();
 
+            ComboTrainingSets = new List<string>();
+            ComboIntervalTimes = new List<int>();
+
             TrainingSetDebug = Path.GetFullPath(TrainingSetDebug);
 
             VideoCaptureDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
@@ -55,6 +65,37 @@ namespace EmotionRecognitionForm
             comboBox1.SelectedIndex = 0;
 
             TrainingSetFinal = Environment.CurrentDirectory + "\\Data\\HaarCascade\\haarcascade_frontalface_alt_tree.xml";
+            TrainingSet1 = Environment.CurrentDirectory + "\\Data\\HaarCascade\\haarcascade_frontalcatface.xml";
+            TrainingSet2 = Environment.CurrentDirectory + "\\Data\\HaarCascade\\haarcascade_frontalcatface_extended.xml";
+            TrainingSet3 = Environment.CurrentDirectory + "\\Data\\HaarCascade\\haarcascade_frontalface_alt.xml";
+            TrainingSet4 = Environment.CurrentDirectory + "\\Data\\HaarCascade\\haarcascade_frontalface_alt2.xml";
+            TrainingSet5 = Environment.CurrentDirectory + "\\Data\\HaarCascade\\haarcascade_frontalface_default.xml";
+
+            ComboTrainingSets.Add(TrainingSetFinal);
+            ComboTrainingSets.Add(TrainingSet1);
+            ComboTrainingSets.Add(TrainingSet2);
+            ComboTrainingSets.Add(TrainingSet3);
+            ComboTrainingSets.Add(TrainingSet4);
+            ComboTrainingSets.Add(TrainingSet5);
+
+            foreach (var item in ComboTrainingSets)
+                cbClassifiers.Items.Add(item);
+
+            cbClassifiers.SelectedIndex = 0;
+
+            ComboIntervalTimes.Add(2000);
+            ComboIntervalTimes.Add(2500);
+            ComboIntervalTimes.Add(3000);
+            ComboIntervalTimes.Add(3500);
+            ComboIntervalTimes.Add(4000);
+            ComboIntervalTimes.Add(4500);
+            ComboIntervalTimes.Add(5000);
+
+            foreach (var item in ComboIntervalTimes)
+                cbIntervalTimes.Items.Add(item);
+
+            cbIntervalTimes.SelectedIndex = 0;
+
 
             if (File.Exists(TrainingSetDebug))
             {
@@ -68,12 +109,12 @@ namespace EmotionRecognitionForm
                 }
                 catch(Exception e)
                 {
-                    MessageBox.Show("Exception: " + e.ToString());
+                    MessageBox.Show("Iznimka: " + e.ToString());
                 }
             }
             else
             {                
-                MessageBox.Show("Missing HaarCascade training set!" + "\n" + TrainingSetFinal);
+                MessageBox.Show("Nedostaje HaarCascade set za treniranje!" + "\n" + TrainingSetFinal);
             }
 
             myTimer = new System.Timers.Timer();
@@ -132,7 +173,7 @@ namespace EmotionRecognitionForm
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Error occured in Process method");
+                MessageBox.Show("Greška se dogodila u metodi za obradu!");
                 MessageBox.Show(ex.ToString());
             }
 
@@ -265,7 +306,7 @@ namespace EmotionRecognitionForm
             {
                 button1.Text = "Zaustavi";               
                 myTimer.Elapsed += new ElapsedEventHandler(TimerMethod);
-                myTimer.Interval = 2000; // 2000 ms is two seconds
+                myTimer.Interval = TimerInterval; // 2000 ms is two seconds
                 myTimer.Start();
 
                 btnProcess.Enabled = false;
@@ -289,7 +330,7 @@ namespace EmotionRecognitionForm
             }
                catch(Exception)
             {
-                MessageBox.Show("Error while using automatic recognition");
+                MessageBox.Show("Greška se dogodila prilikom upotrebe opcije za automatsko prepoznavanje");
             }     
         }
 
@@ -319,7 +360,7 @@ namespace EmotionRecognitionForm
             }
             catch(Exception)
             {
-                MessageBox.Show("Error while loading image!");
+                MessageBox.Show("Greška prilikom učitavanja slike!");
             }
         }
 
@@ -339,7 +380,7 @@ namespace EmotionRecognitionForm
             }
             catch(Exception)
             {
-                MessageBox.Show("Error while updating label text");
+                MessageBox.Show("Greška prilikom promjene teksta na labeli");
             }
         }
 
@@ -358,7 +399,7 @@ namespace EmotionRecognitionForm
             }
             catch(Exception)
             {
-                MessageBox.Show("Error while updating picture box");
+                MessageBox.Show("Greška prilikom promjene slike");
             }
         }
 
@@ -377,7 +418,7 @@ namespace EmotionRecognitionForm
             }
             catch(Exception)
             {
-                MessageBox.Show("Error while updating preview box");
+                MessageBox.Show("Greška prilikom promjene slike");
             }
         }
 
@@ -411,7 +452,7 @@ namespace EmotionRecognitionForm
             }
             else
             {
-                MessageBox.Show("Unavaible");
+                MessageBox.Show("Nedostupno");
             }
 
         }
@@ -420,124 +461,161 @@ namespace EmotionRecognitionForm
         {
             try
             {
-                //Process everything
-                if (testDone == false)
+                if(FirstStart == true)
                 {
-                    TestResultMatrix = ProcessTest(); //Return results
+                    MessageBox.Show("Prvo je potrebno istrenirati klasifikator");                  
                 }
-                
-                if(TestResultMatrix != null)
+                else
                 {
-                    testForm = new TestForm(TestResultMatrix);  //Send results
-                    testForm.Show();
-                    Application.DoEvents();
-                    testDone = true;
-                }
+                    //Process everything
+                    if (testDone == false)
+                    {
+                        MessageBox.Show("Ovo može potrajati minutu - dvije (ovisno o performansama računala)\nPrilikom izvođenja testiranja preporučava se ne korištenje programa");
+                        new Thread(() =>
+                        {
+                            if (this.btnTest.InvokeRequired)
+                                this.btnTest.BeginInvoke((MethodInvoker)delegate () { this.btnTest.Enabled = false; });
+                            else
+                                this.btnTest.Enabled = false;
 
-                
+                            TestResultMatrix = ProcessTest(); //Return results
+
+                            if (this.btnTest.InvokeRequired)
+                                this.btnTest.BeginInvoke((MethodInvoker)delegate () { this.btnTest.Enabled = true; btnTest.Text = "Rezultati"; });
+                            else
+                            {
+                                this.btnTest.Enabled = true;
+                                btnTest.Text = "Rezultati";
+                            }
+
+                            faceClassifier = new Classifier(ComboTrainingSets.ElementAt(cbClassifiers.SelectedIndex), 80, 700, 2, 1.05);
+
+                            testDone = true;
+                        }).Start();
+
+                    }
+
+                    if (TestResultMatrix != null)
+                    {
+                        testForm = new TestForm(TestResultMatrix);  //Send results
+                        testForm.Show();
+                        Application.DoEvents();
+                        testDone = true;
+                    }
+                }
+                              
             }
            catch(Exception)
             {
-                MessageBox.Show("Error while trying to execute Test!");
+                MessageBox.Show("Greška prilikom pokušaja izvršenja testa");
             }
         }
 
         private double[,] ProcessTest()
         {
-            TestResultMatrix = new double[7,7];
-            //Init
-            for(int i = 0; i < TestResultMatrix.Length/7; i++)
+            try
             {
-                for (int j = 0; j < TestResultMatrix.Length/7; j++)
+                TestResultMatrix = new double[7, 7];
+                //Init
+                for (int i = 0; i < TestResultMatrix.Length / 7; i++)
                 {
-                    TestResultMatrix[i, j] = 0;
+                    for (int j = 0; j < TestResultMatrix.Length / 7; j++)
+                    {
+                        TestResultMatrix[i, j] = 0;
+                    }
                 }
-            }
-                
-
-            string database = @"C:\Users\" + Environment.UserName + @"\Desktop\cohn-kanade-images\";
-            string emotionCodesDatabase = @"C:\Users\" + Environment.UserName + @"\Desktop\Emotion\";
-
-            if (!Directory.Exists(database))
-            {
-                MessageBox.Show("Missing: " + database);
-                return null;
-            }
-            if (!Directory.Exists(emotionCodesDatabase))
-            {
-                MessageBox.Show("Missing: " + emotionCodesDatabase);
-                return null;
-            }
 
 
-            //string[] Emotions = new string[7] { "Strah", "Srdžba", "Gađenje", "Radost", "Neutralno", "Tuga", "Iznenađenje" };
-            int[] emotionCodes = new int[8] { 4, 1, -1, 2, 0, 3, 5, 6 };
+                string database = @"C:\Users\" + Environment.UserName + @"\Desktop\cohn-kanade-images\";
+                string emotionCodesDatabase = @"C:\Users\" + Environment.UserName + @"\Desktop\Emotion\";
 
-            List<string> dirs = new List<string>(System.IO.Directory.EnumerateDirectories(database));
-
-            foreach(var directory in dirs)
-            {
-                List<string> subDirs = new List<string>(System.IO.Directory.EnumerateDirectories(directory));
-                foreach(var subDirectory in subDirs)
+                if (!Directory.Exists(database))
                 {
-                    List<string> files = new List<string>(System.IO.Directory.EnumerateFiles(subDirectory));
-                    //Target image
-                    Bitmap targetItem = new Bitmap(files.Last());
-                    //Find emotion code
-                    string emotionCode;
-                    try
-                    {
-                        string emotionCodePath = emotionCodesDatabase + Path.GetFileName(Path.GetDirectoryName(subDirectory)) + @"\" + Path.GetFileName(subDirectory);
-                        List<string> emotionCodeFiles = new List<string>(System.IO.Directory.EnumerateFiles(emotionCodePath));
+                    MessageBox.Show("Nedostaje: " + database);
+                    return null;
+                }
+                if (!Directory.Exists(emotionCodesDatabase))
+                {
+                    MessageBox.Show("Nedostaje: " + emotionCodesDatabase);
+                    return null;
+                }
 
-                        emotionCode = File.ReadAllText(emotionCodeFiles.First());
-                        if (emotionCode.Equals(""))
-                            continue;
-                    }
-                    catch
+
+                //string[] Emotions = new string[7] { "Strah", "Srdžba", "Gađenje", "Radost", "Neutralno", "Tuga", "Iznenađenje" };
+                int[] emotionCodes = new int[8] { 4, 1, -1, 2, 0, 3, 5, 6 };
+
+                List<string> dirs = new List<string>(System.IO.Directory.EnumerateDirectories(database));
+
+                foreach (var directory in dirs)
+                {
+                    List<string> subDirs = new List<string>(System.IO.Directory.EnumerateDirectories(directory));
+                    foreach (var subDirectory in subDirs)
                     {
-                        continue;
-                    }
-                    int emotionCodeInt = -1; ;
-                    
-                    for(int i = 0; i < emotionCode.Length; i++)
-                    {
-                        if (emotionCode.Substring(i, 1).Equals("0") || emotionCode.Substring(i, 1).Equals("1") || emotionCode.Substring(i, 1).Equals("2")
-                            || emotionCode.Substring(i, 1).Equals("3") || emotionCode.Substring(i, 1).Equals("4") || emotionCode.Substring(i, 1).Equals("5")
-                            || emotionCode.Substring(i, 1).Equals("6") || emotionCode.Substring(i, 1).Equals("7"))
+                        List<string> files = new List<string>(System.IO.Directory.EnumerateFiles(subDirectory));
+                        //Target image
+                        Bitmap targetItem = new Bitmap(files.Last());
+                        //Find emotion code
+                        string emotionCode;
+                        try
                         {
-                            int.TryParse(emotionCode.Substring(i, 1), out emotionCodeInt);
-                            break;
-                        }                           
-                    }
+                            string emotionCodePath = emotionCodesDatabase + Path.GetFileName(Path.GetDirectoryName(subDirectory)) + @"\" + Path.GetFileName(subDirectory);
+                            List<string> emotionCodeFiles = new List<string>(System.IO.Directory.EnumerateFiles(emotionCodePath));
 
-                    if (emotionCodeInt == -1 || emotionCodeInt == 2)    //2 = contempt
-                        continue;
+                            emotionCode = File.ReadAllText(emotionCodeFiles.First());
+                            if (emotionCode.Equals(""))
+                                continue;
+                        }
+                        catch
+                        {
+                            continue;
+                        }
+                        int emotionCodeInt = -1; ;
 
-                    //Classfy
-                    var faceImg = faceClassifier.Find(targetItem);
-                    if (faceImg == null)
-                        continue;
-                    var data = ProcessImage.Process(faceImg);
-                    var result = Classify.GetInstance().GetClass(data);
+                        for (int i = 0; i < emotionCode.Length; i++)
+                        {
+                            if (emotionCode.Substring(i, 1).Equals("0") || emotionCode.Substring(i, 1).Equals("1") || emotionCode.Substring(i, 1).Equals("2")
+                                || emotionCode.Substring(i, 1).Equals("3") || emotionCode.Substring(i, 1).Equals("4") || emotionCode.Substring(i, 1).Equals("5")
+                                || emotionCode.Substring(i, 1).Equals("6") || emotionCode.Substring(i, 1).Equals("7"))
+                            {
+                                int.TryParse(emotionCode.Substring(i, 1), out emotionCodeInt);
+                                break;
+                            }
+                        }
 
-                    int emotion;
-                    int.TryParse(result.Result.ToString(), out emotion);
-                    //True
-                    if (emotion.Equals(emotionCodes[emotionCodeInt]))
-                    {
-                        TestResultMatrix[emotion, emotion] += 1;
-                    }
-                    //Failed
-                    else
-                    {
-                        TestResultMatrix[emotionCodes[emotionCodeInt], emotion] += 1;
+                        if (emotionCodeInt == -1 || emotionCodeInt == 2)    //2 = contempt
+                            continue;
+
+                        //Classfy
+                        var faceImg = faceClassifier.Find(targetItem);
+                        if (faceImg == null)
+                            continue;
+                        var data = ProcessImage.Process(faceImg);
+                        var result = Classify.GetInstance().GetClass(data);
+
+                        int emotion;
+                        int.TryParse(result.Result.ToString(), out emotion);
+                        //True
+                        if (emotion.Equals(emotionCodes[emotionCodeInt]))
+                        {
+                            TestResultMatrix[emotion, emotion] += 1;
+                        }
+                        //Failed
+                        else
+                        {
+                            TestResultMatrix[emotionCodes[emotionCodeInt], emotion] += 1;
+                        }
+
                     }
 
                 }
-
+                return TestResultMatrix;
             }
-            return TestResultMatrix;
+            catch(Exception ex)
+            {
+                MessageBox.Show("Greška prilikom izvršenja testa! \n " + ex);
+                return null;
+            }
+            
         }
 
         private void lblTestWait_Click(object sender, EventArgs e)
@@ -548,6 +626,24 @@ namespace EmotionRecognitionForm
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbClassifiers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                faceClassifier = new Classifier(ComboTrainingSets.ElementAt(cbClassifiers.SelectedIndex), 80, 700, 2, 1.05);
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show("Nemoguće pronaći: " + ComboTrainingSets.ElementAt(cbClassifiers.SelectedIndex) + "\n" + "Greška:" + "\n" + ex);
+            }
+            
+        }
+
+        private void cbIntervalTimes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TimerInterval = ComboIntervalTimes.ElementAt(cbIntervalTimes.SelectedIndex);
         }
     }
 }

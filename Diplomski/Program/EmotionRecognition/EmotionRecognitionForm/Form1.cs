@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using AForge.Video;
 using AForge.Video.DirectShow;
@@ -20,15 +16,12 @@ namespace EmotionRecognitionForm
 {
     public partial class Form1 : Form
     {
-        //Strict
-        private static string TrainingSetDebug = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Data\HaarCascade\haarcascade_frontalface_alt_tree.xml");
-        private string TrainingSetFinal;
-        private string TrainingSet1;
-        private string TrainingSet2;
-        private string TrainingSet3;
-        private string TrainingSet4;
-        private string TrainingSet5;
-        private List<string> ComboTrainingSets;
+        private List<string> haarNamesList;
+        private List<string> haarPathList;
+
+        List<String> modelNamesList;
+        List<string> modelPathList;
+
 
         private int TimerInterval = 2000;
         private List<int> ComboIntervalTimes;
@@ -38,7 +31,7 @@ namespace EmotionRecognitionForm
         private Classifier faceClassifier;
         private System.Timers.Timer myTimer;
         private volatile string[] Emotions = new string[7] { "Strah", "Srdžba", "Gađenje", "Radost", "Neutralno", "Tuga", "Iznenađenje" };
-        private bool FirstStart = true;
+        //private bool FirstStart = true;
         private PleaseWaitForm pleaseWait;
         private InfoForm infoForm;
         private TestForm testForm;
@@ -48,41 +41,47 @@ namespace EmotionRecognitionForm
         private bool testDone = false;
         private double[,] TestResultMatrix;
 
+        private bool fEvaluated;
+
         public Form1()
         {
             InitializeComponent();
+            comboSetup();                         
 
-            ComboTrainingSets = new List<string>();
+            myTimer = new System.Timers.Timer();
+            pleaseWait = new PleaseWaitForm();
+
+            fEvaluated = false;
+
+            //Buttons
+            btnStop.Enabled = false;
+            btnProcess.Enabled = false;
+            button1.Enabled = false;
+            btnProcess.Enabled = false;
+            btnPokreni.Enabled = true;
+
+        }
+
+        private void comboSetup()
+        {
+            //Combo setup
             ComboIntervalTimes = new List<int>();
 
-            TrainingSetDebug = Path.GetFullPath(TrainingSetDebug);
-
+            //Camera combo
             VideoCaptureDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-
-            foreach(FilterInfo device in VideoCaptureDevices)
+            foreach (FilterInfo device in VideoCaptureDevices)
                 comboBox1.Items.Add(device.Name);
 
             comboBox1.SelectedIndex = 0;
 
-            TrainingSetFinal = Environment.CurrentDirectory + "\\Data\\HaarCascade\\haarcascade_frontalface_alt_tree.xml";
-            TrainingSet1 = Environment.CurrentDirectory + "\\Data\\HaarCascade\\haarcascade_frontalcatface.xml";
-            TrainingSet2 = Environment.CurrentDirectory + "\\Data\\HaarCascade\\haarcascade_frontalcatface_extended.xml";
-            TrainingSet3 = Environment.CurrentDirectory + "\\Data\\HaarCascade\\haarcascade_frontalface_alt.xml";
-            TrainingSet4 = Environment.CurrentDirectory + "\\Data\\HaarCascade\\haarcascade_frontalface_alt2.xml";
-            TrainingSet5 = Environment.CurrentDirectory + "\\Data\\HaarCascade\\haarcascade_frontalface_default.xml";
-
-            ComboTrainingSets.Add(TrainingSetFinal);
-            ComboTrainingSets.Add(TrainingSet1);
-            ComboTrainingSets.Add(TrainingSet2);
-            ComboTrainingSets.Add(TrainingSet3);
-            ComboTrainingSets.Add(TrainingSet4);
-            ComboTrainingSets.Add(TrainingSet5);
-
-            foreach (var item in ComboTrainingSets)
+            //Face classifiers combo
+            LoadHaarComboList();
+            foreach (var item in haarNamesList)
                 cbClassifiers.Items.Add(item);
 
             cbClassifiers.SelectedIndex = 0;
 
+            //Time intervals combo
             ComboIntervalTimes.Add(2000);
             ComboIntervalTimes.Add(2500);
             ComboIntervalTimes.Add(3000);
@@ -96,37 +95,12 @@ namespace EmotionRecognitionForm
 
             cbIntervalTimes.SelectedIndex = 0;
 
+            //Models combo
+            LoadModelsList();
+            foreach (var item in modelNamesList)
+                cbClassificatorList.Items.Add(item);
 
-            if (File.Exists(TrainingSetDebug))
-            {
-                faceClassifier = new Classifier(TrainingSetDebug, 80, 700, 2, 1.05);
-            }
-            else if (File.Exists(TrainingSetFinal))
-            {
-                try
-                {
-                    faceClassifier = new Classifier(TrainingSetFinal, 80, 700, 2, 1.05);
-                }
-                catch(Exception e)
-                {
-                    MessageBox.Show("Iznimka: " + e.ToString());
-                }
-            }
-            else
-            {                
-                MessageBox.Show("Nedostaje HaarCascade set za treniranje!" + "\n" + TrainingSetFinal);
-            }
-
-            myTimer = new System.Timers.Timer();
-            pleaseWait = new PleaseWaitForm();
-
-            //Buttons
-            btnStop.Enabled = false;
-            btnProcess.Enabled = false;
-            button1.Enabled = false;
-            btnProcess.Enabled = false;
-            btnPokreni.Enabled = true;
-
+            cbClassificatorList.SelectedIndex = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -169,6 +143,7 @@ namespace EmotionRecognitionForm
         private void btnProcess_Click(object sender, EventArgs e)
         {
             try{
+                
                 Process();
             }
             catch(Exception ex)
@@ -190,31 +165,12 @@ namespace EmotionRecognitionForm
                 var faceImg = faceClassifier.Find(imgBitmap);
                 if (faceImg != null)
                 {
-                    if (FirstStart)
-                    {
-                        pleaseWait.Show();
-                        Application.DoEvents();
-                    }
-
                     //Set img to result
                     UpdatePictureBox((Bitmap)faceImg.Clone());
                     //Get data           
-
                     var data = ProcessImage.Process(faceImg);
                     //Get class
-
                     var result = Classify.GetInstance().GetClass(data);
-
-                    if (FirstStart)
-                    {
-                        FirstStart = false;
-                        pleaseWait.Close();
-                     
-                        if (result != null)
-                        {
-                            rf = result;
-                        }
-                    }
 
                     if(result != null)
                     {
@@ -245,24 +201,7 @@ namespace EmotionRecognitionForm
                 //Get data
                 var data = ProcessImage.Process(faceImg);
                 //Get class
-                if (FirstStart)
-                {
-                    pleaseWait.Show();
-                    Application.DoEvents();
-                }
-
                 var result = Classify.GetInstance().GetClass(data);
-
-                if (FirstStart)
-                {
-                    FirstStart = false;
-                    pleaseWait.Close();
-
-                    if(result != null)
-                    {
-                        rf = result;
-                    }
-                }
 
                 if (result != null)
                 {
@@ -444,7 +383,7 @@ namespace EmotionRecognitionForm
 
         private void btnInfo_Click(object sender, EventArgs e)
         {
-            if(rf != null)
+            if (fEvaluated)
             {
                 infoForm = new InfoForm(rf, Emotions);
                 infoForm.Show();
@@ -452,58 +391,102 @@ namespace EmotionRecognitionForm
             }
             else
             {
-                MessageBox.Show("Nedostupno");
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    string dataSetPath = openFileDialog1.FileName;
+                    evaluate(dataSetPath);
+                }
+               
+            }           
+            
+        }
+
+        private void evaluate(string path)
+        {
+
+            if (!File.Exists(path))
+            {
+                MessageBox.Show("Error! dataset not found: " + path);
+                return;
             }
 
+            pleaseWait.Show();
+            Application.DoEvents();
+
+            //Button disable
+            if (this.btnInfo.InvokeRequired)
+                this.btnInfo.BeginInvoke((MethodInvoker)delegate () { this.btnInfo.Enabled = false; });
+            else
+                this.btnInfo.Enabled = false;
+
+            //Evaluate
+            Classify.GetInstance().evaluateClassifier(path);
+            rf = Classify.GetInstance().rf;
+
+            pleaseWait.Hide();
+
+            //Button enable
+            if (this.btnInfo.InvokeRequired)
+                    this.btnInfo.BeginInvoke((MethodInvoker)delegate () { this.btnInfo.Enabled = true; });
+                else
+                    this.btnInfo.Enabled = true;
+
+                //Show results
+                if (rf != null)
+                {
+                    this.btnInfo.Text = "Results";
+                    fEvaluated = true;
+                    infoForm = new InfoForm(rf, Emotions);
+                    infoForm.Show();
+                    Application.DoEvents();
+
+            }
+                else
+                {
+                    MessageBox.Show("Nedostupno");
+                }
         }
+
 
         private void btnTest_Click(object sender, EventArgs e)
         {
             try
             {
-                if(FirstStart == true)
+                //Process everything
+                if (testDone == false)
                 {
-                    MessageBox.Show("Prvo je potrebno istrenirati klasifikator");                  
-                }
-                else
-                {
-                    //Process everything
-                    if (testDone == false)
+                    MessageBox.Show("Ovo može potrajati minutu - dvije (ovisno o performansama računala)\nPrilikom izvođenja testiranja preporučava se ne korištenje programa");
+                    new Thread(() =>
                     {
-                        MessageBox.Show("Ovo može potrajati minutu - dvije (ovisno o performansama računala)\nPrilikom izvođenja testiranja preporučava se ne korištenje programa");
-                        new Thread(() =>
+                        if (this.btnTest.InvokeRequired)
+                            this.btnTest.BeginInvoke((MethodInvoker)delegate () { this.btnTest.Enabled = false; });
+                        else
+                            this.btnTest.Enabled = false;
+
+                        TestResultMatrix = ProcessTest(); //Return results
+
+                        if (this.btnTest.InvokeRequired)
+                            this.btnTest.BeginInvoke((MethodInvoker)delegate () { this.btnTest.Enabled = true; btnTest.Text = "Rezultati"; });
+                        else
                         {
-                            if (this.btnTest.InvokeRequired)
-                                this.btnTest.BeginInvoke((MethodInvoker)delegate () { this.btnTest.Enabled = false; });
-                            else
-                                this.btnTest.Enabled = false;
+                            this.btnTest.Enabled = true;
+                            btnTest.Text = "Rezultati";
+                        }
 
-                            TestResultMatrix = ProcessTest(); //Return results
+                        faceClassifier = new Classifier(haarPathList.ElementAt(cbClassifiers.SelectedIndex), 80, 700, 2, 1.05);
 
-                            if (this.btnTest.InvokeRequired)
-                                this.btnTest.BeginInvoke((MethodInvoker)delegate () { this.btnTest.Enabled = true; btnTest.Text = "Rezultati"; });
-                            else
-                            {
-                                this.btnTest.Enabled = true;
-                                btnTest.Text = "Rezultati";
-                            }
-
-                            faceClassifier = new Classifier(ComboTrainingSets.ElementAt(cbClassifiers.SelectedIndex), 80, 700, 2, 1.05);
-
-                            testDone = true;
-                        }).Start();
-
-                    }
-
-                    if (TestResultMatrix != null)
-                    {
-                        testForm = new TestForm(TestResultMatrix);  //Send results
-                        testForm.Show();
-                        Application.DoEvents();
                         testDone = true;
-                    }
+                    }).Start();
+
                 }
-                              
+
+                if (TestResultMatrix != null)
+                {
+                    testForm = new TestForm(TestResultMatrix);  //Send results
+                    testForm.Show();
+                    Application.DoEvents();
+                    testDone = true;
+                }                             
             }
            catch(Exception)
             {
@@ -632,11 +615,11 @@ namespace EmotionRecognitionForm
         {
             try
             {
-                faceClassifier = new Classifier(ComboTrainingSets.ElementAt(cbClassifiers.SelectedIndex), 80, 700, 2, 1.05);
+                faceClassifier = new Classifier(haarPathList.ElementAt(cbClassifiers.SelectedIndex), 80, 700, 2, 1.05);
             }
             catch (FileNotFoundException ex)
             {
-                MessageBox.Show("Nemoguće pronaći: " + ComboTrainingSets.ElementAt(cbClassifiers.SelectedIndex) + "\n" + "Greška:" + "\n" + ex);
+                MessageBox.Show("Nemoguće pronaći: " + haarNamesList.ElementAt(cbClassifiers.SelectedIndex) + "\n\n" + "Greška:" + "\n" + ex);
             }
             
         }
@@ -644,6 +627,73 @@ namespace EmotionRecognitionForm
         private void cbIntervalTimes_SelectedIndexChanged(object sender, EventArgs e)
         {
             TimerInterval = ComboIntervalTimes.ElementAt(cbIntervalTimes.SelectedIndex);
+        }
+
+
+        private void LoadModelsList()
+        {
+            modelNamesList = new List<string>();
+            modelPathList = new List<string>();
+
+            String modelsFolderPath = Environment.CurrentDirectory + "\\Data\\Models\\";
+            String[] allModels = Directory.GetFiles(modelsFolderPath);
+            MessageBox.Show("MODELS:" + modelsFolderPath);
+            foreach (var model in allModels)
+            {
+                var modelSplit = model.Split('\\');
+                
+                modelNamesList.Add( modelSplit.Last() );
+                modelPathList.Add(model);
+            }
+
+        }
+
+        private void LoadHaarComboList()
+        {
+            haarNamesList = new List<string>();
+            haarPathList = new List<string>();
+
+            String modelsFolderPath = Environment.CurrentDirectory + "\\Data\\HaarCascade\\";
+            String[] allHaars = Directory.GetFiles(modelsFolderPath);
+            MessageBox.Show("HAAR:" + modelsFolderPath);
+
+            foreach (var model in allHaars)
+            {
+                var haarSplit = model.Split('\\');
+                string name;
+
+                name = haarSplit.Last();
+
+                haarNamesList.Add(name);
+                haarPathList.Add(model);
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbClassificatorList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Classify.GetInstance().setClassifier( modelPathList.ElementAt(cbClassificatorList.SelectedIndex) );
+                fEvaluated = false;
+                btnInfo.Text = "Evaluate";
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show("Nemoguće pronaći: " + modelNamesList.ElementAt(cbClassificatorList.SelectedIndex) + "\n\n" + "Greška:" + "\n" + ex);
+            }
+        }
+
+        private void btnCustomSet_Click(object sender, EventArgs e)
+        {
+            //Show form and send data
+            CustomDataForm customDataForm = new CustomDataForm(faceClassifier);
+            customDataForm.Show();
+            Application.DoEvents();
         }
     }
 }

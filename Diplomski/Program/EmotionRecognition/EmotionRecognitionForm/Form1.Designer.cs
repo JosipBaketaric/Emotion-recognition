@@ -33,6 +33,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnLoadImg = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbClassificatorList = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbIntervalTimes = new System.Windows.Forms.ComboBox();
+            this.cbClassifiers = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnProcess = new System.Windows.Forms.Button();
@@ -43,11 +50,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pbResult = new System.Windows.Forms.PictureBox();
             this.lblResult = new System.Windows.Forms.Label();
-            this.cbClassifiers = new System.Windows.Forms.ComboBox();
-            this.cbIntervalTimes = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.btnCustomSet = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -76,7 +80,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(650, 702);
+            this.button1.Location = new System.Drawing.Point(737, 702);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 34);
             this.button1.TabIndex = 5;
@@ -96,6 +100,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.cbClassificatorList);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
@@ -113,6 +119,70 @@
             this.groupBox2.Size = new System.Drawing.Size(1032, 748);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(546, 618);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(129, 17);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Model klasifikatora:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // cbClassificatorList
+            // 
+            this.cbClassificatorList.FormattingEnabled = true;
+            this.cbClassificatorList.Location = new System.Drawing.Point(549, 649);
+            this.cbClassificatorList.Name = "cbClassificatorList";
+            this.cbClassificatorList.Size = new System.Drawing.Size(122, 24);
+            this.cbClassificatorList.TabIndex = 12;
+            this.cbClassificatorList.SelectedIndexChanged += new System.EventHandler(this.cbClassificatorList_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(761, 618);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(148, 17);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Vrijeme okidanja slika:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(344, 618);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(125, 17);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Klasifikator za lice:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 618);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 17);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Kamera:";
+            // 
+            // cbIntervalTimes
+            // 
+            this.cbIntervalTimes.FormattingEnabled = true;
+            this.cbIntervalTimes.Location = new System.Drawing.Point(764, 649);
+            this.cbIntervalTimes.Name = "cbIntervalTimes";
+            this.cbIntervalTimes.Size = new System.Drawing.Size(166, 24);
+            this.cbIntervalTimes.TabIndex = 8;
+            this.cbIntervalTimes.SelectedIndexChanged += new System.EventHandler(this.cbIntervalTimes_SelectedIndexChanged);
+            // 
+            // cbClassifiers
+            // 
+            this.cbClassifiers.FormattingEnabled = true;
+            this.cbClassifiers.Location = new System.Drawing.Point(347, 649);
+            this.cbClassifiers.Name = "cbClassifiers";
+            this.cbClassifiers.Size = new System.Drawing.Size(181, 24);
+            this.cbClassifiers.TabIndex = 7;
+            this.cbClassifiers.SelectedIndexChanged += new System.EventHandler(this.cbClassifiers_SelectedIndexChanged);
             // 
             // pictureBox1
             // 
@@ -135,9 +205,9 @@
             // 
             // btnProcess
             // 
-            this.btnProcess.Location = new System.Drawing.Point(412, 702);
+            this.btnProcess.Location = new System.Drawing.Point(347, 702);
             this.btnProcess.Name = "btnProcess";
-            this.btnProcess.Size = new System.Drawing.Size(121, 34);
+            this.btnProcess.Size = new System.Drawing.Size(328, 34);
             this.btnProcess.TabIndex = 3;
             this.btnProcess.Text = "Prepoznaj";
             this.btnProcess.UseVisualStyleBackColor = true;
@@ -179,7 +249,7 @@
             this.btnInfo.Name = "btnInfo";
             this.btnInfo.Size = new System.Drawing.Size(121, 34);
             this.btnInfo.TabIndex = 8;
-            this.btnInfo.Text = "Info";
+            this.btnInfo.Text = "Ocijeni";
             this.btnInfo.UseVisualStyleBackColor = true;
             this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
             // 
@@ -216,50 +286,19 @@
             this.lblResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblResult.Click += new System.EventHandler(this.label1_Click);
             // 
-            // cbClassifiers
+            // btnCustomSet
             // 
-            this.cbClassifiers.FormattingEnabled = true;
-            this.cbClassifiers.Location = new System.Drawing.Point(398, 649);
-            this.cbClassifiers.Name = "cbClassifiers";
-            this.cbClassifiers.Size = new System.Drawing.Size(166, 24);
-            this.cbClassifiers.TabIndex = 7;
-            this.cbClassifiers.SelectedIndexChanged += new System.EventHandler(this.cbClassifiers_SelectedIndexChanged);
+            this.btnCustomSet.Location = new System.Drawing.Point(1050, 627);
+            this.btnCustomSet.Name = "btnCustomSet";
+            this.btnCustomSet.Size = new System.Drawing.Size(283, 34);
+            this.btnCustomSet.TabIndex = 11;
+            this.btnCustomSet.Text = "Kreiranje vlastitog seta podataka\r\n";
+            this.btnCustomSet.UseVisualStyleBackColor = true;
+            this.btnCustomSet.Click += new System.EventHandler(this.btnCustomSet_Click);
             // 
-            // cbIntervalTimes
+            // openFileDialog1
             // 
-            this.cbIntervalTimes.FormattingEnabled = true;
-            this.cbIntervalTimes.Location = new System.Drawing.Point(629, 649);
-            this.cbIntervalTimes.Name = "cbIntervalTimes";
-            this.cbIntervalTimes.Size = new System.Drawing.Size(166, 24);
-            this.cbIntervalTimes.TabIndex = 8;
-            this.cbIntervalTimes.SelectedIndexChanged += new System.EventHandler(this.cbIntervalTimes_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 618);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 17);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Kamera:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(409, 618);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(125, 17);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Klasifikator za lice:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(647, 618);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(148, 17);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Vrijeme okidanja slika:";
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -267,6 +306,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1362, 763);
+            this.Controls.Add(this.btnCustomSet);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.groupBox2);
@@ -310,6 +350,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbClassificatorList;
+        private System.Windows.Forms.Button btnCustomSet;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

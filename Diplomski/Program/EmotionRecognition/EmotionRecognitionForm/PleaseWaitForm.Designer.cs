@@ -35,17 +35,17 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(46, 61);
+            this.label1.Location = new System.Drawing.Point(35, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(191, 64);
+            this.label1.Size = new System.Drawing.Size(241, 96);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Treniranje \r\nklasifikatora...";
+            this.label1.Text = "Molimo pričekajte\r\ndok se klasifikator\r\ntestira.";
             // 
             // PleaseWaitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(282, 197);
+            this.ClientSize = new System.Drawing.Size(319, 112);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;

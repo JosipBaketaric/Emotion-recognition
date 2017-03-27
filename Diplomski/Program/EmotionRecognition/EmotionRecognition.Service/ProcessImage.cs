@@ -8,7 +8,7 @@ namespace EmotionRecognition.Service
     public static class ProcessImage
     {       
         public static List<double> Process(Bitmap image)
-        {
+        {            
             try
             {
                 //50x85 1% lower than 150x200

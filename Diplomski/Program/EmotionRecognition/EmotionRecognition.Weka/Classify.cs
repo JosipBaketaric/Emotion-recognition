@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using weka.core;
 
 namespace EmotionRecognition.Weka
@@ -14,31 +11,54 @@ namespace EmotionRecognition.Weka
         private weka.classifiers.Classifier Classifier = null;
         private static Classify Instance = null;
         private ClassifierTransfer cf;
+        private bool fEvaluated;
+        private bool fSet;
+        public ResultTransfer rf { get; set; }
 
         private Classify()
         {
-            string featurePathDebug = Path.Combine(System.Environment.CurrentDirectory, @"..\..\..\..\Data\TrainingFeatures\FeaturesArff.arff");
-            string featurePathFinal = Path.Combine(System.Environment.CurrentDirectory, @"\Data\TrainingFeatures\FeaturesArff.arff");
+            fEvaluated = false;
+            fSet = false;
+        }
 
-            featurePathDebug = Path.GetFullPath(featurePathDebug);
-            featurePathFinal = Path.GetFullPath(featurePathFinal);
+        public void setClassifier(String location)
+        {
+            if (File.Exists(location))
+            {
+                cf = Classifiers.getClassifier(location);
+                Classifier = cf.Classifier;
+                fSet = true;
+            }        
+            else
+                throw new FileNotFoundException();
+        }
 
-            if(File.Exists(featurePathDebug))
+        public void evaluateClassifier(String dataLocation)
+        {
+            if (File.Exists(dataLocation) && fSet == true)
             {
-                cf = Classifiers.SVMKFoldEval(featurePathDebug);
-            }
-            else if (File.Exists(System.Environment.CurrentDirectory + "\\Data\\TrainingFeatures\\FeaturesArff.arff"))
-            {
-                cf = Classifiers.SVMKFoldEval(System.Environment.CurrentDirectory + "\\Data\\TrainingFeatures\\FeaturesArff.arff");
+                //Load data
+                Instances data = new Instances(new java.io.FileReader(dataLocation));
+                data.setClassIndex(data.numAttributes() - 1);
+
+                //Use classifier coppy
+                weka.classifiers.Classifier classifierCopy = Classifier;
+                //Evaluate
+                cf = Classifiers.ClassifierEvaluation(classifierCopy, data);
+
+                //Map data
+                rf = new ResultTransfer();
+                rf.Accurancy = cf.Accurancy;
+                rf.ConfusionMatrix = cf.ConfusionMatrix;
+                rf.TimeToTrain = cf.TimeToTrain;
+
+                fEvaluated = true;
             }
             else
             {
                 throw new FileNotFoundException();
             }
-
-
-
-            Classifier = cf.Classifier;
+                          
         }
 
         public static Classify GetInstance()
@@ -51,6 +71,12 @@ namespace EmotionRecognition.Weka
 
         public ResultTransfer GetClass(List<double> data)
         {
+            //Classifier not set
+            if (!fSet)
+            {
+                return null;
+            }
+
             //Create attributes
             List<weka.core.Attribute> attributes = new List<weka.core.Attribute>();
             for(int i = 0; i < data.Count; i++)
@@ -94,7 +120,16 @@ namespace EmotionRecognition.Weka
 
             var result = Classifier.classifyInstance(dataset.instance(0));
 
-            ResultTransfer rt = new ResultTransfer() { Result = result, Accurancy = cf.Accurancy, ConfusionMatrix = cf.ConfusionMatrix, TimeToTrain = cf.TimeToTrain };
+            ResultTransfer rt = new ResultTransfer();
+
+            rt.Result = result;
+
+            if (fEvaluated)
+            {
+                rt.Accurancy = cf.Accurancy;
+                rt.ConfusionMatrix = cf.ConfusionMatrix;
+                rt.TimeToTrain = cf.TimeToTrain;
+            }
 
             return rt;
         }

@@ -12,5 +12,9 @@ namespace EmotionRecognition.Weka
         public double Accurancy { get; set; }
         public weka.classifiers.Classifier Classifier { get; set; }
         public double TimeToTrain { get; set; }
+        public List<double> fMeasure { get; set; }
+        public List<double> areaUnderPRC { get; set; }
+        public List<double> areaUnderROC { get; set; }
+        public List<double> precision { get; set; }
     }
 }

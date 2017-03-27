@@ -10,6 +10,7 @@ namespace EmotionRecognition.FeatureExtraction
     class Program
     {
         public static int featureNumber { get; set; }
+        public static String emotionCodes = "{AF,AN,DI,HA,NE,SA,SU}";
 
         static void Main(string[] args)
         {
@@ -61,14 +62,14 @@ namespace EmotionRecognition.FeatureExtraction
                     {
                         featureNumber = features.Count;
                         headerAppended = true;
-                        WriteFeatures.AppendHeader(featurePath + @"\Features.txt", featureNumber);
-                        WriteFeatures_Arff.AppendHeader(featurePath + @"\FeaturesArff.arff", featureNumber);
+                        Service.Write.WriteCSV.AppendHeader(featurePath + @"\Features.txt", featureNumber);
+                        Service.Write.WriteArff.AppendHeader(featurePath + @"\FeaturesArff.arff", featureNumber, emotionCodes);
                     }
                     //Write features
                     if(featureNumber == features.Count)
                     {
-                        WriteFeatures.Write(features, emotionCode);
-                        WriteFeatures_Arff.Write(features, emotionCode);
+                        Service.Write.WriteCSV.Write(features, emotionCode);
+                        Service.Write.WriteArff.Write(features, emotionCode);
                     }
                     
                 }

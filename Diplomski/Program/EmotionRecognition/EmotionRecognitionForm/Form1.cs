@@ -18,41 +18,38 @@ namespace EmotionRecognitionForm
     {
         private List<string> haarNamesList;
         private List<string> haarPathList;
-
         private List<String> modelNamesList;
         private List<string> modelPathList;
-
-
-        private int TimerInterval = 2000;
         private List<int> ComboIntervalTimes;
         
         private FilterInfoCollection VideoCaptureDevices;   //All devices
         private VideoCaptureDevice FinalVideoSource;    //Used one
         private Classifier faceClassifier;
-        private System.Timers.Timer myTimer;
+
         private volatile string[] Emotions = new string[7] { "Strah", "Srdžba", "Gađenje", "Radost", "Neutralno", "Tuga", "Iznenađenje" };
-        //private bool FirstStart = true;
+
         private PleaseWaitForm pleaseWait;
         private InfoForm infoForm;
         private TestForm testForm;
-        private object lockObject = new object();
-        private ResultTransfer rf;
 
-        private bool testDone = false;
+        private object lockObject = new object();
+
+        private ResultTransfer rf;
+       
         private double[,] TestResultMatrix;
 
         private volatile bool fEvaluated;
         private volatile bool fAutomatic;
+        private bool testDone = false;
+
 
         public Form1()
-        {
+        {         
             try
             {
                 InitializeComponent();
 
                 comboSetup();
-
-                myTimer = new System.Timers.Timer();
                 pleaseWait = new PleaseWaitForm();
 
                 fEvaluated = false;
@@ -136,6 +133,7 @@ namespace EmotionRecognitionForm
             if (FinalVideoSource != null && FinalVideoSource.IsRunning)
             {
                 FinalVideoSource.Stop();
+                Application.Exit();
             }
         }
 
@@ -260,6 +258,7 @@ namespace EmotionRecognitionForm
                 while (fAutomatic)
                 {
                     Process();
+                    Thread.Sleep(500);
                 }
             }).Start();
            
@@ -267,6 +266,7 @@ namespace EmotionRecognitionForm
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            fAutomatic = true;
             Application.Exit();
         }
 
@@ -753,6 +753,33 @@ namespace EmotionRecognitionForm
             CustomDataForm customDataForm = new CustomDataForm(faceClassifier);
             customDataForm.Show();
             Application.DoEvents();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            fAutomatic = true;
+            Application.Exit();
+        }
+
+        private void pictureBox1_DragDrop(object sender, DragEventArgs e)
+        {
+        }
+
+        private void pictureBox1_DragEnter(object sender, DragEventArgs e)
+        {
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+           
+        }
+
+        private void Form1_DragEnter(object sender, DragEventArgs e)
+        {
+        }
+
+        private void Form1_DragDrop(object sender, DragEventArgs e)
+        {
         }
     }
 }

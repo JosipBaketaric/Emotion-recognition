@@ -45,6 +45,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(641, 572);
             this.Controls.Add(this.rtbTest);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "TestForm";
             this.Text = "TestForm";
             this.ResumeLayout(false);

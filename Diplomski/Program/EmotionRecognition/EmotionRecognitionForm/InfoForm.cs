@@ -17,6 +17,8 @@ namespace EmotionRecognitionForm
         {
             InitializeComponent();
 
+            LoadChart(result, Emotions);
+
             rtbInfo.AppendText("Vrijeme potrebno za treniranje: " + result.TimeToTrain.ToString() + "\n\n");
 
             rtbInfo.AppendText("Preciznost: " + result.Accurancy.ToString() + "\n\n");
@@ -162,11 +164,29 @@ namespace EmotionRecognitionForm
             {
                 rtbInfo.AppendText("COUNT ERROR!");
             }
+        }
 
 
+        private void LoadChart(ResultTransfer rf, string[] Emotions)
+        {
+            for(int i = 0; i < rf.foldResultsPrecision.Count; i++)
+            {
+                chartPrecision.Series["Preciznost"].Points.AddXY(i+1, rf.foldResultsWeightedPrecision.ElementAt(i) );
+                chartPrecision.Series["F-Mjera"].Points.AddXY(i + 1, rf.foldResultsWeightedFMeasure.ElementAt(i) );
+            }
 
+            //
+            for(int i = 0; i < 7; i++)
+            {
+                chartPrecisionClass.Series["Preciznost"].Points.AddXY(Emotions[i], rf.precision.ElementAt(i));
+                chartPrecisionClass.Series["F-Mjera"].Points.AddXY(Emotions[i], rf.fMeasure.ElementAt(i));
+            }
+           
 
         }
+
+
+
 
         private void rtbInfo_TextChanged(object sender, EventArgs e)
         {

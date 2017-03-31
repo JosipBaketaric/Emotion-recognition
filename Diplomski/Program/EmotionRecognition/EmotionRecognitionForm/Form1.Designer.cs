@@ -35,10 +35,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbClassificatorList = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbIntervalTimes = new System.Windows.Forms.ComboBox();
             this.cbClassifiers = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -102,10 +100,8 @@
             // 
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.cbClassificatorList);
-            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.cbIntervalTimes);
             this.groupBox2.Controls.Add(this.cbClassifiers);
             this.groupBox2.Controls.Add(this.pictureBox1);
             this.groupBox2.Controls.Add(this.btnLoadImg);
@@ -139,15 +135,6 @@
             this.cbClassificatorList.TabIndex = 12;
             this.cbClassificatorList.SelectedIndexChanged += new System.EventHandler(this.cbClassificatorList_SelectedIndexChanged);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(761, 618);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(148, 17);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Vrijeme okidanja slika:";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -165,15 +152,6 @@
             this.label1.Size = new System.Drawing.Size(61, 17);
             this.label1.TabIndex = 9;
             this.label1.Text = "Kamera:";
-            // 
-            // cbIntervalTimes
-            // 
-            this.cbIntervalTimes.FormattingEnabled = true;
-            this.cbIntervalTimes.Location = new System.Drawing.Point(764, 649);
-            this.cbIntervalTimes.Name = "cbIntervalTimes";
-            this.cbIntervalTimes.Size = new System.Drawing.Size(166, 24);
-            this.cbIntervalTimes.TabIndex = 8;
-            this.cbIntervalTimes.SelectedIndexChanged += new System.EventHandler(this.cbIntervalTimes_SelectedIndexChanged);
             // 
             // cbClassifiers
             // 
@@ -346,14 +324,12 @@
         private System.Windows.Forms.PictureBox pbResult;
         private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.ComboBox cbClassifiers;
-        private System.Windows.Forms.ComboBox cbIntervalTimes;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbClassificatorList;
         private System.Windows.Forms.Button btnCustomSet;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        public System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

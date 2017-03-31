@@ -19,8 +19,8 @@ namespace EmotionRecognitionForm
         private List<string> haarNamesList;
         private List<string> haarPathList;
 
-        List<String> modelNamesList;
-        List<string> modelPathList;
+        private List<String> modelNamesList;
+        private List<string> modelPathList;
 
 
         private int TimerInterval = 2000;
@@ -41,24 +41,34 @@ namespace EmotionRecognitionForm
         private bool testDone = false;
         private double[,] TestResultMatrix;
 
-        private bool fEvaluated;
+        private volatile bool fEvaluated;
+        private volatile bool fAutomatic;
 
         public Form1()
         {
-            InitializeComponent();
-            comboSetup();                         
+            try
+            {
+                InitializeComponent();
 
-            myTimer = new System.Timers.Timer();
-            pleaseWait = new PleaseWaitForm();
+                comboSetup();
 
-            fEvaluated = false;
+                myTimer = new System.Timers.Timer();
+                pleaseWait = new PleaseWaitForm();
 
-            //Buttons
-            btnStop.Enabled = false;
-            btnProcess.Enabled = false;
-            button1.Enabled = false;
-            btnProcess.Enabled = false;
-            btnPokreni.Enabled = true;
+                fEvaluated = false;
+                fAutomatic = false;
+
+                //Buttons
+                btnStop.Enabled = false;
+                btnProcess.Enabled = false;
+                button1.Enabled = false;
+                btnProcess.Enabled = false;
+                btnPokreni.Enabled = true;
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Exception: " + e);
+            }
 
         }
 
@@ -66,6 +76,8 @@ namespace EmotionRecognitionForm
         {
             //Combo setup
             ComboIntervalTimes = new List<int>();
+            modelNamesList = new List<string>();
+            modelPathList = new List<string>();
 
             //Camera combo
             VideoCaptureDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
@@ -74,26 +86,6 @@ namespace EmotionRecognitionForm
 
             comboBox1.SelectedIndex = 0;
 
-            //Face classifiers combo
-            LoadHaarComboList();
-            foreach (var item in haarNamesList)
-                cbClassifiers.Items.Add(item);
-
-            cbClassifiers.SelectedIndex = 0;
-
-            //Time intervals combo
-            ComboIntervalTimes.Add(2000);
-            ComboIntervalTimes.Add(2500);
-            ComboIntervalTimes.Add(3000);
-            ComboIntervalTimes.Add(3500);
-            ComboIntervalTimes.Add(4000);
-            ComboIntervalTimes.Add(4500);
-            ComboIntervalTimes.Add(5000);
-
-            foreach (var item in ComboIntervalTimes)
-                cbIntervalTimes.Items.Add(item);
-
-            cbIntervalTimes.SelectedIndex = 0;
 
             //Models combo
             LoadModelsList();
@@ -101,6 +93,13 @@ namespace EmotionRecognitionForm
                 cbClassificatorList.Items.Add(item);
 
             cbClassificatorList.SelectedIndex = 0;
+
+            //Face classifiers combo
+            LoadHaarComboList();
+            foreach (var item in haarNamesList)
+                cbClassifiers.Items.Add(item);
+
+            cbClassifiers.SelectedIndex = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -241,36 +240,29 @@ namespace EmotionRecognitionForm
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            if (button1.Text.Equals("Automatski"))
+            if (!fAutomatic)
             {
-                button1.Text = "Zaustavi";               
-                myTimer.Elapsed += new ElapsedEventHandler(TimerMethod);
-                myTimer.Interval = TimerInterval; // 2000 ms is two seconds
-                myTimer.Start();
-
-                btnProcess.Enabled = false;
-                btnLoadImg.Enabled = false;
-            }
+                fAutomatic = true;
+                button1.Text = "Zaustavi";
+                automatic();              
+            }             
             else
             {
+                fAutomatic = false;
                 button1.Text = "Automatski";
-                myTimer.Stop();
-
-                btnProcess.Enabled = true;
-                btnLoadImg.Enabled = true;
             }
+                
         }
 
-        public void TimerMethod(object source, ElapsedEventArgs e)
+        public void automatic()
         {
-            try
-            {
-                Process();
-            }
-               catch(Exception)
-            {
-                MessageBox.Show("Greška se dogodila prilikom upotrebe opcije za automatsko prepoznavanje");
-            }     
+            new Thread(delegate () {
+                while (fAutomatic)
+                {
+                    Process();
+                }
+            }).Start();
+           
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -391,15 +383,17 @@ namespace EmotionRecognitionForm
             }
             else
             {
+                openFileDialog1.InitialDirectory = Directory.GetCurrentDirectory().ToString();
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     string dataSetPath = openFileDialog1.FileName;
-                    evaluate(dataSetPath);
-                }
-               
-            }           
-            
+                    new Thread(delegate () {
+                        evaluate(dataSetPath);
+                    }).Start();               
+                }               
+            }                       
         }
+
 
         private void evaluate(string path)
         {
@@ -409,7 +403,6 @@ namespace EmotionRecognitionForm
                 MessageBox.Show("Error! dataset not found: " + path);
                 return;
             }
-
             pleaseWait.Show();
             Application.DoEvents();
 
@@ -419,6 +412,26 @@ namespace EmotionRecognitionForm
             else
                 this.btnInfo.Enabled = false;
 
+            if (this.btnInfo.InvokeRequired)
+                this.btnProcess.BeginInvoke((MethodInvoker)delegate () { this.btnProcess.Enabled = false; });
+            else
+                this.btnProcess.Enabled = false;
+
+            if (this.button1.InvokeRequired)
+                this.button1.BeginInvoke((MethodInvoker)delegate () { this.button1.Enabled = false; });
+            else
+                this.button1.Enabled = false;
+
+            if (this.btnLoadImg.InvokeRequired)
+                this.btnLoadImg.BeginInvoke((MethodInvoker)delegate () { this.btnLoadImg.Enabled = false; });
+            else
+                this.btnLoadImg.Enabled = false;
+            if (this.btnTest.InvokeRequired)
+                this.btnTest.BeginInvoke((MethodInvoker)delegate () { this.btnTest.Enabled = false; });
+            else
+                this.btnTest.Enabled = false;
+
+
             //Evaluate
             Classify.GetInstance().evaluateClassifier(path);
             rf = Classify.GetInstance().rf;
@@ -427,19 +440,39 @@ namespace EmotionRecognitionForm
 
             //Button enable
             if (this.btnInfo.InvokeRequired)
-                    this.btnInfo.BeginInvoke((MethodInvoker)delegate () { this.btnInfo.Enabled = true; });
-                else
-                    this.btnInfo.Enabled = true;
+                this.btnInfo.BeginInvoke((MethodInvoker)delegate () { this.btnInfo.Enabled = true; });
+            else
+                this.btnInfo.Enabled = true;
 
-                //Show results
-                if (rf != null)
+            if (this.btnInfo.InvokeRequired)
+                this.btnProcess.BeginInvoke((MethodInvoker)delegate () { this.btnProcess.Enabled = true; });
+            else
+                this.btnProcess.Enabled = true;
+
+            if (this.button1.InvokeRequired)
+                this.button1.BeginInvoke((MethodInvoker)delegate () { this.button1.Enabled = true; });
+            else
+                this.button1.Enabled = true;
+
+            if (this.btnLoadImg.InvokeRequired)
+                this.btnLoadImg.BeginInvoke((MethodInvoker)delegate () { this.btnLoadImg.Enabled = true; });
+            else
+                this.btnLoadImg.Enabled = true;
+
+            if (this.btnTest.InvokeRequired)
+                this.btnTest.BeginInvoke((MethodInvoker)delegate () { this.btnTest.Enabled = true; });
+            else
+                this.btnTest.Enabled = true;
+
+            //Show results
+            if (rf != null)
                 {
+
+                if (this.btnInfo.InvokeRequired)
+                    this.btnInfo.BeginInvoke((MethodInvoker)delegate () { this.btnInfo.Text = "Results"; });
+                else
                     this.btnInfo.Text = "Results";
                     fEvaluated = true;
-                    infoForm = new InfoForm(rf, Emotions);
-                    infoForm.Show();
-                    Application.DoEvents();
-
             }
                 else
                 {
@@ -507,7 +540,6 @@ namespace EmotionRecognitionForm
                         TestResultMatrix[i, j] = 0;
                     }
                 }
-
 
                 string database = @"C:\Users\" + Environment.UserName + @"\Desktop\cohn-kanade-images\";
                 string emotionCodesDatabase = @"C:\Users\" + Environment.UserName + @"\Desktop\Emotion\";
@@ -626,7 +658,7 @@ namespace EmotionRecognitionForm
 
         private void cbIntervalTimes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TimerInterval = ComboIntervalTimes.ElementAt(cbIntervalTimes.SelectedIndex);
+
         }
 
 
@@ -634,10 +666,23 @@ namespace EmotionRecognitionForm
         {
             modelNamesList = new List<string>();
             modelPathList = new List<string>();
+            String[] allModels;  
+                 
+            String modelsFolderPath = Directory.GetCurrentDirectory().ToString() + "\\Data\\Models\\";
+           
+            if(Directory.Exists(modelsFolderPath))
+            {
+                allModels = Directory.GetFiles(modelsFolderPath);
+            }
+            else
+            {
+                string directory = System.IO.Directory.GetParent(System.IO.Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString();
+                directory = System.IO.Directory.GetParent(directory).ToString();
+                directory = System.IO.Directory.GetParent(directory).ToString();
+                String debugModelsFolderPath = directory + "\\Data\\Models\\";
+                allModels = Directory.GetFiles(debugModelsFolderPath);
+            }
 
-            String modelsFolderPath = Environment.CurrentDirectory + "\\Data\\Models\\";
-            String[] allModels = Directory.GetFiles(modelsFolderPath);
-            MessageBox.Show("MODELS:" + modelsFolderPath);
             foreach (var model in allModels)
             {
                 var modelSplit = model.Split('\\');
@@ -652,10 +697,24 @@ namespace EmotionRecognitionForm
         {
             haarNamesList = new List<string>();
             haarPathList = new List<string>();
+            String[] allHaars;
 
-            String modelsFolderPath = Environment.CurrentDirectory + "\\Data\\HaarCascade\\";
-            String[] allHaars = Directory.GetFiles(modelsFolderPath);
-            MessageBox.Show("HAAR:" + modelsFolderPath);
+            String modelsFolderPath = Directory.GetCurrentDirectory().ToString() + "\\Data\\HaarCascade\\";
+           
+            if (Directory.Exists(modelsFolderPath))
+            {
+                allHaars = Directory.GetFiles(modelsFolderPath);
+            }
+            else
+            {
+                string directory = System.IO.Directory.GetParent(System.IO.Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString();
+                directory = System.IO.Directory.GetParent(directory).ToString();
+                directory = System.IO.Directory.GetParent(directory).ToString();
+                String debugModelsFolderPath = directory + "\\Data\\HaarCascade\\";
+
+                allHaars = Directory.GetFiles(debugModelsFolderPath);
+            }
+
 
             foreach (var model in allHaars)
             {

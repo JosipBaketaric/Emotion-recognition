@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,8 +18,8 @@ namespace EmotionRecognition.Service.Write
         {
             if (HasHeader && Path != null && !Path.Equals(""))
             {
-                var writer = System.IO.File.AppendText(Path);
-
+                var writer = File.AppendText(Path);
+                
                 foreach (var feature in featuresArray)
                 {
                     writer.Write(feature.ToGBString());
@@ -37,7 +38,7 @@ namespace EmotionRecognition.Service.Write
             Path = path;
             HasHeader = true;
 
-            var writer = System.IO.File.AppendText(Path);
+            var writer = File.AppendText(Path);
             writer.Write("%Title: Emotions Database");
             writer.Write(writer.NewLine);
             writer.Write("%Sources:");

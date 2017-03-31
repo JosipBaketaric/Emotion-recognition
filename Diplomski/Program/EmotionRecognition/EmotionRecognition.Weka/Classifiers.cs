@@ -124,6 +124,7 @@ namespace EmotionRecognition.Weka
                 Evaluation evalCurrent = new Evaluation(randData);
 
                 eval.evaluateModel(clsCopy, test);
+                evalCurrent.evaluateModel(clsCopy, test);
                 evaluationList.Add(evalCurrent);
             }
             stopWatch.Stop();
@@ -147,15 +148,32 @@ namespace EmotionRecognition.Weka
             double result = (double)eval.correct() / (double)(eval.incorrect() + eval.correct());
             double timeToTrain = (double)((double)stopWatch.ElapsedMilliseconds / (double)1000 / (double)60);
 
+            List<double> foldResultsWeightedPrecision = new List<double>();
+            List<double> foldResultsPrecision = new List<double>();
+            List<double> foldResultsWeightedFMeasure = new List<double>();
+            //folds
+            foreach (var item in evaluationList)
+            {
+                foldResultsWeightedPrecision.Add( item.weightedPrecision() );
+                foldResultsPrecision.Add( (double)( item.correct() ) / (double)( item.incorrect() + item.correct() ) );
+                foldResultsWeightedFMeasure.Add( item.weightedFMeasure() );
+            }
+
             ClassifierTransfer cf = new ClassifierTransfer();
             cf.Classifier = classifier;
-            cf.Accurancy = result;
+            cf.result = result;
+            cf.Accurancy = weightedPrecision;
             cf.TimeToTrain = timeToTrain;
             cf.areaUnderPRC = areaUnderPRC;
             cf.areaUnderROC = areaUnderROC;
             cf.ConfusionMatrix = cm;
             cf.fMeasure = fMeasure;
             cf.precision = precision;
+            cf.weightedFMeasure = eval.weightedFMeasure();
+
+            cf.foldResultsPrecision = foldResultsPrecision;
+            cf.foldResultsWeightedFMeasure = foldResultsWeightedFMeasure;
+            cf.foldResultsWeightedPrecision = foldResultsWeightedPrecision;
 
             return cf;
         }

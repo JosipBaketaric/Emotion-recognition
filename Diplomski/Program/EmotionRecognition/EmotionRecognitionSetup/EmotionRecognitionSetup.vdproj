@@ -22,7 +22,7 @@
         "Entry"
         {
         "MsmKey" = "8:_02295E175859E0937B0D5EA98C89B8B3"
-        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
+        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -51,6 +51,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
+        "OwnerKey" = "8:_EDA8EEAAF2A3D1B4FE87357A66C9695F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
+        "OwnerKey" = "8:_4ED4602ACC31487AA431FF3EAD1F209E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0CC934519FF043D9915B798D2FC686DF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -70,7 +82,7 @@
         "Entry"
         {
         "MsmKey" = "8:_1F4B0364851E36CD244245FB8C83FDBE"
-        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
+        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -112,7 +124,7 @@
         "Entry"
         {
         "MsmKey" = "8:_3D68606D2F73A29FF8AC8D6E1BC6B3DB"
-        "OwnerKey" = "8:_92A8B8C5646A25445399D6C1F8346F50"
+        "OwnerKey" = "8:_7654A30F4F5BA93FD55F252E31754CB9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -136,7 +148,7 @@
         "Entry"
         {
         "MsmKey" = "8:_4758811043CA265376808FA9BE41CC74"
-        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
+        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -233,24 +245,6 @@
         {
         "MsmKey" = "8:_57464F51B78F49629E02D847E9345234"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_5A9A692B1B2C584551F93573760962F5"
-        "OwnerKey" = "8:_4ED4602ACC31487AA431FF3EAD1F209E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_5A9A692B1B2C584551F93573760962F5"
-        "OwnerKey" = "8:_DC1DF49F5F2D11BAC5BC3E116BE102F6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_5A9A692B1B2C584551F93573760962F5"
-        "OwnerKey" = "8:_92A8B8C5646A25445399D6C1F8346F50"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -370,7 +364,7 @@
         "Entry"
         {
         "MsmKey" = "8:_73396BC43F1F2B019FB8A031C64A35A5"
-        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
+        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -381,13 +375,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
-        "OwnerKey" = "8:_DC1DF49F5F2D11BAC5BC3E116BE102F6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
+        "MsmKey" = "8:_7654A30F4F5BA93FD55F252E31754CB9"
         "OwnerKey" = "8:_4ED4602ACC31487AA431FF3EAD1F209E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -400,7 +388,7 @@
         "Entry"
         {
         "MsmKey" = "8:_766E5EB2D7DDA169BB6456E485C931E3"
-        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
+        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -424,7 +412,7 @@
         "Entry"
         {
         "MsmKey" = "8:_838361DF2DD91C8C173858D60BB059B4"
-        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
+        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -442,7 +430,7 @@
         "Entry"
         {
         "MsmKey" = "8:_8455F796AC84A979161597F8E03AA1A8"
-        "OwnerKey" = "8:_92A8B8C5646A25445399D6C1F8346F50"
+        "OwnerKey" = "8:_7654A30F4F5BA93FD55F252E31754CB9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -454,7 +442,7 @@
         "Entry"
         {
         "MsmKey" = "8:_86617696B216E15737D92C266B0CC3D6"
-        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
+        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -520,7 +508,7 @@
         "Entry"
         {
         "MsmKey" = "8:_89CC8E72EEAC1378660E50455881AEED"
-        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
+        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -532,18 +520,12 @@
         "Entry"
         {
         "MsmKey" = "8:_8BFB1285AC57FD7E277CD1BAFF4833F4"
-        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
+        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_8BFB1285AC57FD7E277CD1BAFF4833F4"
-        "OwnerKey" = "8:_4ED4602ACC31487AA431FF3EAD1F209E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_92A8B8C5646A25445399D6C1F8346F50"
         "OwnerKey" = "8:_4ED4602ACC31487AA431FF3EAD1F209E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -562,7 +544,7 @@
         "Entry"
         {
         "MsmKey" = "8:_A66E5218237F172A04BCB898305563C8"
-        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
+        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -640,7 +622,7 @@
         "Entry"
         {
         "MsmKey" = "8:_AA7FED7134B06E57A1A478C76FB6FEB4"
-        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
+        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -730,7 +712,7 @@
         "Entry"
         {
         "MsmKey" = "8:_D8FB57DE5A75255141C8EB7CBA0A7815"
-        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
+        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -777,8 +759,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DC1DF49F5F2D11BAC5BC3E116BE102F6"
+        "MsmKey" = "8:_DA2F9F78F1BACB2226C42352190FBF68"
         "OwnerKey" = "8:_4ED4602ACC31487AA431FF3EAD1F209E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DA2F9F78F1BACB2226C42352190FBF68"
+        "OwnerKey" = "8:_EDA8EEAAF2A3D1B4FE87357A66C9695F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DA2F9F78F1BACB2226C42352190FBF68"
+        "OwnerKey" = "8:_7654A30F4F5BA93FD55F252E31754CB9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -789,14 +783,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_EEC34C2381A7C927072A3D614FB5BB08"
-        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
+        "MsmKey" = "8:_EDA8EEAAF2A3D1B4FE87357A66C9695F"
+        "OwnerKey" = "8:_4ED4602ACC31487AA431FF3EAD1F209E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_EEC34C2381A7C927072A3D614FB5BB08"
-        "OwnerKey" = "8:_DC1DF49F5F2D11BAC5BC3E116BE102F6"
+        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EEC34C2381A7C927072A3D614FB5BB08"
+        "OwnerKey" = "8:_EDA8EEAAF2A3D1B4FE87357A66C9695F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -832,7 +832,7 @@
         "Entry"
         {
         "MsmKey" = "8:_F08CD4C0F52997494DC9131DE60AAFA7"
-        "OwnerKey" = "8:_92A8B8C5646A25445399D6C1F8346F50"
+        "OwnerKey" = "8:_7654A30F4F5BA93FD55F252E31754CB9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -856,25 +856,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DC1DF49F5F2D11BAC5BC3E116BE102F6"
+        "OwnerKey" = "8:_EDA8EEAAF2A3D1B4FE87357A66C9695F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
+        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_92A8B8C5646A25445399D6C1F8346F50"
+        "OwnerKey" = "8:_7654A30F4F5BA93FD55F252E31754CB9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5A9A692B1B2C584551F93573760962F5"
+        "OwnerKey" = "8:_DA2F9F78F1BACB2226C42352190FBF68"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1191,6 +1191,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0BF182CF0CCC128C381AEED140E531F2"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:weka, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_0BF182CF0CCC128C381AEED140E531F2"
+                    {
+                    "Name" = "8:weka.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:weka.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_AD2E6990B52740CD99D6006589285C67"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0CC934519FF043D9915B798D2FC686DF"
             {
             "SourcePath" = "8:..\\Data\\HaarCascade\\01 haarcascade_frontalface_alt_tree.xml"
@@ -1477,37 +1508,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5A9A692B1B2C584551F93573760962F5"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:EmotionRecognition.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_5A9A692B1B2C584551F93573760962F5"
-                    {
-                    "Name" = "8:EmotionRecognition.Common.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:EmotionRecognition.Common.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_AD2E6990B52740CD99D6006589285C67"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5B30BE5D492D479AAAEB417ED52D9286"
             {
             "SourcePath" = "8:..\\Data\\CustomFeatures\\Readme.txt"
@@ -1734,20 +1734,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_73A30D5CFAF47E465C15B7D34DF8F3EC"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7654A30F4F5BA93FD55F252E31754CB9"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:weka, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:EmotionRecognition.Service, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64"
                 "ScatterAssemblies"
                 {
-                    "_73A30D5CFAF47E465C15B7D34DF8F3EC"
+                    "_7654A30F4F5BA93FD55F252E31754CB9"
                     {
-                    "Name" = "8:weka.dll"
+                    "Name" = "8:EmotionRecognition.Service.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:weka.dll"
+            "SourcePath" = "8:EmotionRecognition.Service.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_AD2E6990B52740CD99D6006589285C67"
@@ -1934,37 +1934,6 @@
                     }
                 }
             "SourcePath" = "8:IKVM.OpenJDK.Jdbc.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_AD2E6990B52740CD99D6006589285C67"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_92A8B8C5646A25445399D6C1F8346F50"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:EmotionRecognition.Service, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_92A8B8C5646A25445399D6C1F8346F50"
-                    {
-                    "Name" = "8:EmotionRecognition.Service.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:EmotionRecognition.Service.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_AD2E6990B52740CD99D6006589285C67"
@@ -2239,20 +2208,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DC1DF49F5F2D11BAC5BC3E116BE102F6"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DA2F9F78F1BACB2226C42352190FBF68"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:EmotionRecognition.Weka, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:EmotionRecognition.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64"
                 "ScatterAssemblies"
                 {
-                    "_DC1DF49F5F2D11BAC5BC3E116BE102F6"
+                    "_DA2F9F78F1BACB2226C42352190FBF68"
                     {
-                    "Name" = "8:EmotionRecognition.Weka.dll"
+                    "Name" = "8:EmotionRecognition.Common.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:EmotionRecognition.Weka.dll"
+            "SourcePath" = "8:EmotionRecognition.Common.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_AD2E6990B52740CD99D6006589285C67"
@@ -2288,6 +2257,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EDA8EEAAF2A3D1B4FE87357A66C9695F"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:EmotionRecognition.Weka, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64"
+                "ScatterAssemblies"
+                {
+                    "_EDA8EEAAF2A3D1B4FE87357A66C9695F"
+                    {
+                    "Name" = "8:EmotionRecognition.Weka.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:EmotionRecognition.Weka.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_AD2E6990B52740CD99D6006589285C67"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EEC34C2381A7C927072A3D614FB5BB08"
@@ -2484,7 +2484,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Emotion Recognition"
         "ProductCode" = "8:{BB5C5CFD-1D44-4CA6-8C4C-20B2705AB92A}"
-        "PackageCode" = "8:{064A71BE-84A2-4F2A-8BBB-77A7F640C8EF}"
+        "PackageCode" = "8:{0FF2D10F-3F8D-4DAD-B906-06F0392F0D06}"
         "UpgradeCode" = "8:{B6E1F63D-A53A-49FA-95E5-FB2D29CFD8B0}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

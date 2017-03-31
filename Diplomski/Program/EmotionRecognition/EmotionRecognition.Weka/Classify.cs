@@ -51,6 +51,15 @@ namespace EmotionRecognition.Weka
                 rf.Accurancy = cf.Accurancy;
                 rf.ConfusionMatrix = cf.ConfusionMatrix;
                 rf.TimeToTrain = cf.TimeToTrain;
+                rf.areaUnderPRC = cf.areaUnderPRC;
+                rf.areaUnderROC = cf.areaUnderROC;
+                rf.fMeasure = cf.fMeasure;
+                rf.foldResultsPrecision = cf.foldResultsPrecision;
+                rf.foldResultsWeightedFMeasure = cf.foldResultsWeightedFMeasure;
+                rf.foldResultsWeightedPrecision = cf.foldResultsWeightedPrecision;
+                rf.precision = cf.precision;
+                rf.Result = cf.result;
+                rf.weightedFMeasure = cf.weightedFMeasure;
 
                 fEvaluated = true;
             }
@@ -129,6 +138,15 @@ namespace EmotionRecognition.Weka
                 rt.Accurancy = cf.Accurancy;
                 rt.ConfusionMatrix = cf.ConfusionMatrix;
                 rt.TimeToTrain = cf.TimeToTrain;
+                rt.areaUnderPRC = cf.areaUnderPRC;
+                rt.areaUnderROC = cf.areaUnderROC;
+                rt.fMeasure = cf.fMeasure;
+                rt.foldResultsPrecision = cf.foldResultsPrecision;
+                rt.foldResultsWeightedFMeasure = cf.foldResultsWeightedFMeasure;
+                rt.foldResultsWeightedPrecision = cf.foldResultsWeightedPrecision;
+                rt.precision = cf.precision;
+                rt.Result = cf.result;
+                rt.weightedFMeasure = cf.weightedFMeasure;
             }
 
             return rt;

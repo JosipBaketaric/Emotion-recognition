@@ -23,6 +23,8 @@ namespace EmotionRecognitionForm
 
             PrintConfusionMatrix(result, Emotions);
             PrintAccurencyDetails(result, Emotions);
+
+            printInfo(result, Emotions);
         }
 
         private void PrintConfusionMatrix(ResultTransfer result, string[] Emotions)
@@ -82,6 +84,88 @@ namespace EmotionRecognitionForm
 
             returnResult = (result.ConfusionMatrix[x][x]) / (sumCol);
             return returnResult;
+        }
+
+        private void printInfo(ResultTransfer rf, string[] Emotions)
+        {
+            rtbInfo.AppendText("\n\n\n");
+            rtbInfo.AppendText("--------------------DETALJI--------------------");
+            rtbInfo.AppendText("\n\n");
+
+            //AVERAGE
+            rtbInfo.AppendText("----------PROSJEČNO----------");
+            rtbInfo.AppendText("\n");
+
+            rtbInfo.AppendText("F-mjera: " + rf.weightedFMeasure);
+            rtbInfo.AppendText("\n");
+
+            rtbInfo.AppendText("Preciznost: " + rf.Accurancy);
+            rtbInfo.AppendText("\n");
+
+            rtbInfo.AppendText("\n\n");
+
+            //FOLDS
+            rtbInfo.AppendText("----------PO PROLASCIMA----------");
+            rtbInfo.AppendText("\n\n");
+
+            if ( (rf.foldResultsPrecision.Count == rf.foldResultsWeightedFMeasure.Count) &&
+                (rf.foldResultsWeightedPrecision.Count == rf.foldResultsPrecision.Count) )
+            {
+                for (int i = 0; i < rf.foldResultsPrecision.Count; i++)
+                {
+                    rtbInfo.AppendText("------PROLAZAK " + (i + 1) + "------");
+                    rtbInfo.AppendText("\n");
+
+                    rtbInfo.AppendText("F-mjera: " + rf.foldResultsWeightedFMeasure.ElementAt(i));
+                    rtbInfo.AppendText("\n");
+
+                    rtbInfo.AppendText("Preciznost: " + rf.foldResultsPrecision.ElementAt(i));
+                    rtbInfo.AppendText("\n");
+                    rtbInfo.AppendText("\n");
+                }
+                rtbInfo.AppendText("\n\n");
+            }
+
+            else
+            {
+                rtbInfo.AppendText("COUNT ERROR!");
+            }
+
+            //FOLDS
+            rtbInfo.AppendText("----------PO KLASAMA----------");
+            rtbInfo.AppendText("\n\n");
+
+            if ((rf.fMeasure.Count == rf.precision.Count) &&
+                (rf.areaUnderPRC.Count == rf.areaUnderROC.Count) &&
+                (rf.fMeasure.Count == rf.areaUnderPRC.Count) )
+            {
+                for(int i = 0; i < rf.fMeasure.Count; i++)
+                {
+                    rtbInfo.AppendText("------KLASA " + (i + 1) + ": " + Emotions[i] + "------");
+                    rtbInfo.AppendText("\n");
+
+                    rtbInfo.AppendText("F-mjera: " + rf.fMeasure.ElementAt(i));
+                    rtbInfo.AppendText("\n");
+
+                    rtbInfo.AppendText("Preciznost: " + rf.precision.ElementAt(i));
+                    rtbInfo.AppendText("\n");
+
+                    rtbInfo.AppendText("Područje ispod PRC: " + rf.areaUnderPRC.ElementAt(i));
+                    rtbInfo.AppendText("\n");
+
+                    rtbInfo.AppendText("Područje ispod ROC: " + rf.areaUnderROC.ElementAt(i));
+                    rtbInfo.AppendText("\n\n");
+                }
+                rtbInfo.AppendText("\n\n");
+            }
+            else
+            {
+                rtbInfo.AppendText("COUNT ERROR!");
+            }
+
+
+
+
         }
 
         private void rtbInfo_TextChanged(object sender, EventArgs e)

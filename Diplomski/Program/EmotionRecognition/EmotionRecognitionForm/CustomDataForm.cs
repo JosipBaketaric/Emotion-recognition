@@ -6,6 +6,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,7 +23,6 @@ namespace EmotionRecognitionForm
         private bool headerAppended;
         private int featureNumber;
         private string featurePath;
-        private string featurePathDebug;
         private string nameCustom;
         private bool fBuilt;
 
@@ -32,8 +33,19 @@ namespace EmotionRecognitionForm
             headerAppended = false;
             fBuilt = false;
 
-            nameCustom = "custom-" + DateTime.Now.Hour + "-" + DateTime.Now.Minute + "-" + DateTime.Now.Second;         
+            nameCustom = "custom-" + GetTimestamp(DateTime.Now); ;         
             rbFormat1.Checked = true;
+
+            //Access
+            string dir1 = Directory.GetCurrentDirectory().ToString() + "\\Data\\CustomFeatures\\";
+            string dir2 = Directory.GetCurrentDirectory().ToString() + "\\Data\\Models\\";
+
+            
+            /**
+            setAccessRights(dir1);
+            setAccessRights(dir2);
+            */
+
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -148,7 +160,7 @@ namespace EmotionRecognitionForm
             //Append header
             if (!headerAppended)
             {
-                featurePath = Environment.CurrentDirectory + "\\Data\\CustomFeatures\\" + nameCustom + ".arff";
+                featurePath = Directory.GetCurrentDirectory().ToString() + "\\Data\\CustomFeatures\\" + nameCustom + ".arff";
                 featureNumber = features.Count;
                 headerAppended = true;
                 EmotionRecognition.Service.Write.WriteArff.AppendHeader(featurePath, featureNumber, emotionCods);
@@ -200,8 +212,8 @@ namespace EmotionRecognitionForm
         {
             if (fBuilt)
             {
-                string saveLocation = Environment.CurrentDirectory + "\\Data\\Models\\" + nameCustom + ".model";
-                featurePath = Environment.CurrentDirectory + "\\Data\\CustomFeatures\\" + nameCustom + ".arff";
+                string saveLocation = Directory.GetCurrentDirectory().ToString() + "\\Data\\Models\\" + nameCustom + ".model";
+                featurePath = Directory.GetCurrentDirectory().ToString() + "\\Data\\CustomFeatures\\" + nameCustom + ".arff";
 
                 EmotionRecognition.Weka.Classifiers.SVMBuildAndSave(featurePath, saveLocation);
 
@@ -213,5 +225,33 @@ namespace EmotionRecognitionForm
             }
             
         }
+
+        public static String GetTimestamp(DateTime value)
+        {
+            return value.ToString("yyyyMMddHHmmssffff");
+        }
+
+        private void setAccessRights(string path)
+        {
+            var rule = allAccess();
+            DirectorySecurity dirSecurity = Directory.GetAccessControl(path);
+            dirSecurity.AddAccessRule(rule);
+
+            Directory.SetAccessControl(path, dirSecurity);
+        }
+
+        private FileSystemAccessRule allAccess()
+        {
+            IdentityReference everybodyIdentity = new SecurityIdentifier(WellKnownSidType.WorldSid, null);
+
+            FileSystemAccessRule rule = new FileSystemAccessRule(
+                everybodyIdentity,
+                FileSystemRights.FullControl,
+                InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit,
+                PropagationFlags.None,
+                AccessControlType.Allow);
+            return rule;
+        }
+
     }
 }

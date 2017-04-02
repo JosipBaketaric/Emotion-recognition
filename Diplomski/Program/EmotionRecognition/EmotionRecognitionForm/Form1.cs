@@ -47,7 +47,7 @@ namespace EmotionRecognitionForm
         {         
             try
             {
-                InitializeComponent();
+                InitializeComponent();               
 
                 comboSetup();
                 pleaseWait = new PleaseWaitForm();

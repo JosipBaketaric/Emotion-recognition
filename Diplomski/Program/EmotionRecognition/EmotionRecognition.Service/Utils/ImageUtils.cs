@@ -248,6 +248,29 @@ namespace EmotionRecognition.Service
         }
 
 
+        public static Bitmap treshold(Bitmap image)
+        {
+            var bgr = new Emgu.CV.Structure.Bgr();
+            var bgr2 = new Emgu.CV.Structure.Bgr();
+
+            bgr.Blue = 255;
+            bgr.Green = 255;
+            bgr.Red = 255;
+
+            bgr2.Blue = 2;
+            bgr2.Green = 2;
+            bgr2.Red = 2;
+
+            Image<Bgr, byte> img = new Image<Bgr, byte>(image);
+            var adaptive = img.ThresholdAdaptive(bgr, Emgu.CV.CvEnum.AdaptiveThresholdType.GaussianC,
+                Emgu.CV.CvEnum.ThresholdType.Binary, 11, bgr2);
+
+            Bitmap adaptiveBitmap = adaptive.ToBitmap();
+
+            return adaptiveBitmap;
+        }
+
+
 
     }
 }

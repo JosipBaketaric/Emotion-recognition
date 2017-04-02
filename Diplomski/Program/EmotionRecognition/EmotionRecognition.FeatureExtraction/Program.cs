@@ -15,10 +15,10 @@ namespace EmotionRecognition.FeatureExtraction
         static void Main(string[] args)
         {
             //79.04 :D :P     
-            string trainingSet = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Data\HaarCascade\haarcascade_frontalface_alt_tree.xml");
+            string trainingSet = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Data\HaarCascade\01 haarcascade_frontalface_alt_tree.xml");
             trainingSet = Path.GetFullPath(trainingSet);
 
-            string featurePath = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Data\SaveFeatures");
+            string featurePath = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Data\");
             featurePath = Path.GetFullPath(featurePath);
 
             //Must be on desktop

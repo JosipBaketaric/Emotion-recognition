@@ -28,7 +28,6 @@ namespace EmotionRecognitionForm
 
         private volatile string[] Emotions = new string[7] { "Strah", "Srdžba", "Gađenje", "Radost", "Neutralno", "Tuga", "Iznenađenje" };
 
-        private PleaseWaitForm pleaseWait;
         private InfoForm infoForm;
         private TestForm testForm;
 
@@ -50,7 +49,6 @@ namespace EmotionRecognitionForm
                 InitializeComponent();               
 
                 comboSetup();
-                pleaseWait = new PleaseWaitForm();
 
                 fEvaluated = false;
                 fAutomatic = false;
@@ -242,7 +240,16 @@ namespace EmotionRecognitionForm
             {
                 fAutomatic = true;
                 button1.Text = "Zaustavi";
-                automatic();              
+
+                try
+                {
+                    automatic();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.InnerException);
+                }
+                    
             }             
             else
             {
@@ -273,9 +280,12 @@ namespace EmotionRecognitionForm
         private void btnLoadImg_Click(object sender, EventArgs e)
         {
             try
-            {
+            {               
                 string path;
                 OpenFileDialog file = new OpenFileDialog();
+                //Filters
+                file.Filter = "Images|*.jpg;*.jpeg;*.png;*.bmp;";
+
                 if (file.ShowDialog() == DialogResult.OK)
                 {
                     path = file.FileName;
@@ -397,12 +407,14 @@ namespace EmotionRecognitionForm
 
         private void evaluate(string path)
         {
+            PleaseWaitForm pleaseWait = new PleaseWaitForm("Molimo pričekajte dok se klasifikator testira");
 
             if (!File.Exists(path))
             {
                 MessageBox.Show("Error! dataset not found: " + path);
                 return;
             }
+
             pleaseWait.Show();
             Application.DoEvents();
 
@@ -469,9 +481,9 @@ namespace EmotionRecognitionForm
                 {
 
                 if (this.btnInfo.InvokeRequired)
-                    this.btnInfo.BeginInvoke((MethodInvoker)delegate () { this.btnInfo.Text = "Results"; });
+                    this.btnInfo.BeginInvoke((MethodInvoker)delegate () { this.btnInfo.Text = "Rezultati"; });
                 else
-                    this.btnInfo.Text = "Results";
+                    this.btnInfo.Text = "Rezultati";
                     fEvaluated = true;
             }
                 else
@@ -739,7 +751,7 @@ namespace EmotionRecognitionForm
             {
                 Classify.GetInstance().setClassifier( modelPathList.ElementAt(cbClassificatorList.SelectedIndex) );
                 fEvaluated = false;
-                btnInfo.Text = "Evaluate";
+                btnInfo.Text = "Ocijeni";
             }
             catch (FileNotFoundException ex)
             {
@@ -780,6 +792,11 @@ namespace EmotionRecognitionForm
 
         private void Form1_DragDrop(object sender, DragEventArgs e)
         {
+        }
+
+        private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
     }
 }

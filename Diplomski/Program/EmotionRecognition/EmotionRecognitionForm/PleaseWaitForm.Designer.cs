@@ -28,37 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.rtbWaitMessage = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
-            // label1
+            // rtbWaitMessage
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(35, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(241, 96);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Molimo pričekajte\r\ndok se klasifikator\r\ntestira.";
+            this.rtbWaitMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rtbWaitMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.rtbWaitMessage.Location = new System.Drawing.Point(12, 12);
+            this.rtbWaitMessage.Name = "rtbWaitMessage";
+            this.rtbWaitMessage.ReadOnly = true;
+            this.rtbWaitMessage.Size = new System.Drawing.Size(345, 151);
+            this.rtbWaitMessage.TabIndex = 0;
+            this.rtbWaitMessage.Text = "";
             // 
             // PleaseWaitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(319, 112);
+            this.ClientSize = new System.Drawing.Size(369, 175);
             this.ControlBox = false;
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.rtbWaitMessage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PleaseWaitForm";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RichTextBox rtbWaitMessage;
     }
 }

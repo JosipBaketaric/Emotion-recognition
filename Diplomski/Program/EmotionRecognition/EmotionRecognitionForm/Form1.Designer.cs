@@ -58,12 +58,14 @@
             // 
             // btnTest
             // 
+            this.btnTest.Enabled = false;
             this.btnTest.Location = new System.Drawing.Point(1050, 711);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(121, 34);
             this.btnTest.TabIndex = 10;
             this.btnTest.Text = "Test";
             this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Visible = false;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // btnExit
@@ -280,6 +282,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // Form1
             // 

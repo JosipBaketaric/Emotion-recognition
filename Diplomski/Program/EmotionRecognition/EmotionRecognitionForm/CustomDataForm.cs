@@ -52,10 +52,16 @@ namespace EmotionRecognitionForm
         {
             if (CheckInputs())
             {
+                PleaseWaitForm pleaseWait = new PleaseWaitForm("Molimo pričekajte dok se ne izgradi skup podataka");
+                pleaseWait.Show();
+                Application.DoEvents();
+
                 ProcessEmotionCodes();
                 ProcessData();
                 MessageBox.Show("Done!");
                 fBuilt = true;
+
+                pleaseWait.Hide();
             }
             else
             {
@@ -212,11 +218,16 @@ namespace EmotionRecognitionForm
         {
             if (fBuilt)
             {
+                PleaseWaitForm pleaseWait = new PleaseWaitForm("Molimo pričekajte dok se ne izgradi model");
+                pleaseWait.Show();
+                Application.DoEvents();
+
                 string saveLocation = Directory.GetCurrentDirectory().ToString() + "\\Data\\Models\\" + nameCustom + ".model";
                 featurePath = Directory.GetCurrentDirectory().ToString() + "\\Data\\CustomFeatures\\" + nameCustom + ".arff";
 
                 EmotionRecognition.Weka.Classifiers.SVMBuildAndSave(featurePath, saveLocation);
 
+                pleaseWait.Hide();
                 MessageBox.Show("Done!");
             }
             else

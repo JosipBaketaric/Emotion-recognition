@@ -12,9 +12,11 @@ namespace EmotionRecognitionForm
 {
     public partial class PleaseWaitForm : Form
     {
-        public PleaseWaitForm()
+        public PleaseWaitForm(string text)
         {
             InitializeComponent();
+
+            rtbWaitMessage.AppendText(text);
         }
 
         private void btnExit_Click(object sender, EventArgs e)

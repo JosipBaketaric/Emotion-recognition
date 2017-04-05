@@ -58,7 +58,6 @@ namespace EmotionRecognition.Weka
                 rf.foldResultsWeightedFMeasure = cf.foldResultsWeightedFMeasure;
                 rf.foldResultsWeightedPrecision = cf.foldResultsWeightedPrecision;
                 rf.precision = cf.precision;
-                rf.Result = cf.result;
                 rf.weightedFMeasure = cf.weightedFMeasure;
 
                 fEvaluated = true;
@@ -145,7 +144,6 @@ namespace EmotionRecognition.Weka
                 rt.foldResultsWeightedFMeasure = cf.foldResultsWeightedFMeasure;
                 rt.foldResultsWeightedPrecision = cf.foldResultsWeightedPrecision;
                 rt.precision = cf.precision;
-                rt.Result = cf.result;
                 rt.weightedFMeasure = cf.weightedFMeasure;
             }
 

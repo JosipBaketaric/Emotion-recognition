@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnTest = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnLoadImg = new System.Windows.Forms.Button();
@@ -56,21 +55,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbResult)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnTest
-            // 
-            this.btnTest.Enabled = false;
-            this.btnTest.Location = new System.Drawing.Point(1050, 711);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(121, 34);
-            this.btnTest.TabIndex = 10;
-            this.btnTest.Text = "Test";
-            this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Visible = false;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
-            // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(1212, 711);
+            this.btnExit.Location = new System.Drawing.Point(1138, 711);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(121, 34);
             this.btnExit.TabIndex = 9;
@@ -292,7 +279,6 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1362, 763);
             this.Controls.Add(this.btnCustomSet);
-            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -317,8 +303,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnLoadImg;

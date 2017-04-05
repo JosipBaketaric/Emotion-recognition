@@ -22,7 +22,7 @@
         "Entry"
         {
         "MsmKey" = "8:_02295E175859E0937B0D5EA98C89B8B3"
-        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
+        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -51,19 +51,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
-        "OwnerKey" = "8:_EDA8EEAAF2A3D1B4FE87357A66C9695F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
-        "OwnerKey" = "8:_4ED4602ACC31487AA431FF3EAD1F209E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0CC934519FF043D9915B798D2FC686DF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_143F2BD7B6AB48A188F5309A2536E9AF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -82,7 +76,7 @@
         "Entry"
         {
         "MsmKey" = "8:_1F4B0364851E36CD244245FB8C83FDBE"
-        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
+        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -124,13 +118,7 @@
         "Entry"
         {
         "MsmKey" = "8:_3D68606D2F73A29FF8AC8D6E1BC6B3DB"
-        "OwnerKey" = "8:_7654A30F4F5BA93FD55F252E31754CB9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_45FF869454DC486DA7C8783738219EA6"
-        "OwnerKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_92A8B8C5646A25445399D6C1F8346F50"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -148,7 +136,7 @@
         "Entry"
         {
         "MsmKey" = "8:_4758811043CA265376808FA9BE41CC74"
-        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
+        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -249,7 +237,31 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5A9A692B1B2C584551F93573760962F5"
+        "OwnerKey" = "8:_4ED4602ACC31487AA431FF3EAD1F209E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5A9A692B1B2C584551F93573760962F5"
+        "OwnerKey" = "8:_DC1DF49F5F2D11BAC5BC3E116BE102F6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5A9A692B1B2C584551F93573760962F5"
+        "OwnerKey" = "8:_92A8B8C5646A25445399D6C1F8346F50"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_5B30BE5D492D479AAAEB417ED52D9286"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6276A78B5BA24E299A9124C4CD01B3A0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -364,7 +376,7 @@
         "Entry"
         {
         "MsmKey" = "8:_73396BC43F1F2B019FB8A031C64A35A5"
-        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
+        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -375,7 +387,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_7654A30F4F5BA93FD55F252E31754CB9"
+        "MsmKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
+        "OwnerKey" = "8:_DC1DF49F5F2D11BAC5BC3E116BE102F6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
         "OwnerKey" = "8:_4ED4602ACC31487AA431FF3EAD1F209E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -388,7 +406,7 @@
         "Entry"
         {
         "MsmKey" = "8:_766E5EB2D7DDA169BB6456E485C931E3"
-        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
+        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -412,7 +430,7 @@
         "Entry"
         {
         "MsmKey" = "8:_838361DF2DD91C8C173858D60BB059B4"
-        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
+        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -423,6 +441,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_84040B92EDC1438297A63BBC42C885AD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8455F796AC84A979161597F8E03AA1A8"
         "OwnerKey" = "8:_4ED4602ACC31487AA431FF3EAD1F209E"
         "MsmSig" = "8:_UNDEFINED"
@@ -430,7 +454,7 @@
         "Entry"
         {
         "MsmKey" = "8:_8455F796AC84A979161597F8E03AA1A8"
-        "OwnerKey" = "8:_7654A30F4F5BA93FD55F252E31754CB9"
+        "OwnerKey" = "8:_92A8B8C5646A25445399D6C1F8346F50"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -442,7 +466,7 @@
         "Entry"
         {
         "MsmKey" = "8:_86617696B216E15737D92C266B0CC3D6"
-        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
+        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -508,7 +532,7 @@
         "Entry"
         {
         "MsmKey" = "8:_89CC8E72EEAC1378660E50455881AEED"
-        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
+        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -520,7 +544,7 @@
         "Entry"
         {
         "MsmKey" = "8:_8BFB1285AC57FD7E277CD1BAFF4833F4"
-        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
+        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -531,8 +555,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_986AB31F91A3408AABC81CF0FE54191F"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_92A8B8C5646A25445399D6C1F8346F50"
+        "OwnerKey" = "8:_4ED4602ACC31487AA431FF3EAD1F209E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -544,7 +568,7 @@
         "Entry"
         {
         "MsmKey" = "8:_A66E5218237F172A04BCB898305563C8"
-        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
+        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -622,7 +646,7 @@
         "Entry"
         {
         "MsmKey" = "8:_AA7FED7134B06E57A1A478C76FB6FEB4"
-        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
+        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -712,7 +736,7 @@
         "Entry"
         {
         "MsmKey" = "8:_D8FB57DE5A75255141C8EB7CBA0A7815"
-        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
+        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -759,20 +783,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DA2F9F78F1BACB2226C42352190FBF68"
+        "MsmKey" = "8:_DC1DF49F5F2D11BAC5BC3E116BE102F6"
         "OwnerKey" = "8:_4ED4602ACC31487AA431FF3EAD1F209E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DA2F9F78F1BACB2226C42352190FBF68"
-        "OwnerKey" = "8:_EDA8EEAAF2A3D1B4FE87357A66C9695F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DA2F9F78F1BACB2226C42352190FBF68"
-        "OwnerKey" = "8:_7654A30F4F5BA93FD55F252E31754CB9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -783,20 +795,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_EDA8EEAAF2A3D1B4FE87357A66C9695F"
-        "OwnerKey" = "8:_4ED4602ACC31487AA431FF3EAD1F209E"
+        "MsmKey" = "8:_ED532659AD594DD4B532B4B696EE2B5B"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_EEC34C2381A7C927072A3D614FB5BB08"
-        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
+        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_EEC34C2381A7C927072A3D614FB5BB08"
-        "OwnerKey" = "8:_EDA8EEAAF2A3D1B4FE87357A66C9695F"
+        "OwnerKey" = "8:_DC1DF49F5F2D11BAC5BC3E116BE102F6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -832,7 +844,7 @@
         "Entry"
         {
         "MsmKey" = "8:_F08CD4C0F52997494DC9131DE60AAFA7"
-        "OwnerKey" = "8:_7654A30F4F5BA93FD55F252E31754CB9"
+        "OwnerKey" = "8:_92A8B8C5646A25445399D6C1F8346F50"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -856,25 +868,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EDA8EEAAF2A3D1B4FE87357A66C9695F"
+        "OwnerKey" = "8:_DC1DF49F5F2D11BAC5BC3E116BE102F6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0BF182CF0CCC128C381AEED140E531F2"
+        "OwnerKey" = "8:_73A30D5CFAF47E465C15B7D34DF8F3EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7654A30F4F5BA93FD55F252E31754CB9"
+        "OwnerKey" = "8:_92A8B8C5646A25445399D6C1F8346F50"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DA2F9F78F1BACB2226C42352190FBF68"
+        "OwnerKey" = "8:_5A9A692B1B2C584551F93573760962F5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1147,11 +1159,6 @@
             "AssemblyAsmDisplayName" = "8:IKVM.OpenJDK.Remoting, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_02295E175859E0937B0D5EA98C89B8B3"
-                    {
-                    "Name" = "8:IKVM.OpenJDK.Remoting.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:IKVM.OpenJDK.Remoting.dll"
             "TargetName" = "8:"
@@ -1191,23 +1198,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0BF182CF0CCC128C381AEED140E531F2"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0CC934519FF043D9915B798D2FC686DF"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:weka, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_0BF182CF0CCC128C381AEED140E531F2"
-                    {
-                    "Name" = "8:weka.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:weka.dll"
-            "TargetName" = "8:"
+            "SourcePath" = "8:..\\Data\\HaarCascade\\01 haarcascade_frontalface_alt_tree.xml"
+            "TargetName" = "8:01 haarcascade_frontalface_alt_tree.xml"
             "Tag" = "8:"
-            "Folder" = "8:_AD2E6990B52740CD99D6006589285C67"
+            "Folder" = "8:_D70B3AF690204DD2A914A20A665E1AE4"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1219,15 +1215,15 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0CC934519FF043D9915B798D2FC686DF"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_143F2BD7B6AB48A188F5309A2536E9AF"
             {
-            "SourcePath" = "8:..\\Data\\HaarCascade\\01 haarcascade_frontalface_alt_tree.xml"
-            "TargetName" = "8:01 haarcascade_frontalface_alt_tree.xml"
+            "SourcePath" = "8:..\\Data\\Models\\02 Cohn-Kanade-Model.model"
+            "TargetName" = "8:02 Cohn-Kanade-Model.model"
             "Tag" = "8:"
-            "Folder" = "8:_D70B3AF690204DD2A914A20A665E1AE4"
+            "Folder" = "8:_678D14033497479B8BAA46884E3F484A"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1249,11 +1245,6 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_1D257F26F5B0E2DEA13F64D337BF80AC"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -1280,11 +1271,6 @@
             "AssemblyAsmDisplayName" = "8:IKVM.OpenJDK.Media, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_1F4B0364851E36CD244245FB8C83FDBE"
-                    {
-                    "Name" = "8:IKVM.OpenJDK.Media.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:IKVM.OpenJDK.Media.dll"
             "TargetName" = "8:"
@@ -1311,11 +1297,6 @@
             "AssemblyAsmDisplayName" = "8:IKVM.OpenJDK.XML.Parse, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_25726250056788CA113AD465D972725D"
-                    {
-                    "Name" = "8:IKVM.OpenJDK.XML.Parse.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:IKVM.OpenJDK.XML.Parse.dll"
             "TargetName" = "8:"
@@ -1362,11 +1343,6 @@
             "AssemblyAsmDisplayName" = "8:Accord.Imaging, Version=3.3.1.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_3D68606D2F73A29FF8AC8D6E1BC6B3DB"
-                    {
-                    "Name" = "8:Accord.Imaging.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Accord.Imaging.dll"
             "TargetName" = "8:"
@@ -1386,26 +1362,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_45FF869454DC486DA7C8783738219EA6"
-            {
-            "SourcePath" = "8:..\\Data\\Models\\SVM.model"
-            "TargetName" = "8:SVM.model"
-            "Tag" = "8:"
-            "Folder" = "8:_678D14033497479B8BAA46884E3F484A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4626B21FA1EBA65A551F1896435AC90B"
             {
             "AssemblyRegister" = "3:1"
@@ -1413,11 +1369,6 @@
             "AssemblyAsmDisplayName" = "8:AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_4626B21FA1EBA65A551F1896435AC90B"
-                    {
-                    "Name" = "8:AForge.Video.DirectShow.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:AForge.Video.DirectShow.dll"
             "TargetName" = "8:"
@@ -1444,11 +1395,6 @@
             "AssemblyAsmDisplayName" = "8:IKVM.OpenJDK.Util, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_4758811043CA265376808FA9BE41CC74"
-                    {
-                    "Name" = "8:IKVM.OpenJDK.Util.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:IKVM.OpenJDK.Util.dll"
             "TargetName" = "8:"
@@ -1508,12 +1454,58 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5A9A692B1B2C584551F93573760962F5"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:EmotionRecognition.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                }
+            "SourcePath" = "8:EmotionRecognition.Common.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_AD2E6990B52740CD99D6006589285C67"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5B30BE5D492D479AAAEB417ED52D9286"
             {
             "SourcePath" = "8:..\\Data\\CustomFeatures\\Readme.txt"
             "TargetName" = "8:Readme.txt"
             "Tag" = "8:"
             "Folder" = "8:_DA2E661FEF754B9F95D86DDE85BFED36"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6276A78B5BA24E299A9124C4CD01B3A0"
+            {
+            "SourcePath" = "8:..\\Data\\TrainingFeatures\\KDF-FeaturesArff.arff"
+            "TargetName" = "8:KDF-FeaturesArff.arff"
+            "Tag" = "8:"
+            "Folder" = "8:_858438E8F2E945CFA9A478ED9E7BDC12"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1535,11 +1527,6 @@
             "AssemblyAsmDisplayName" = "8:Accord, Version=3.3.1.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_64E0378C91BE2E627B295D76BB0AA0E2"
-                    {
-                    "Name" = "8:Accord.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Accord.dll"
             "TargetName" = "8:"
@@ -1586,11 +1573,6 @@
             "AssemblyAsmDisplayName" = "8:Accord.Math.Core, Version=3.3.1.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_6C82636A92B34D1F4124E4554FFF97A9"
-                    {
-                    "Name" = "8:Accord.Math.Core.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Accord.Math.Core.dll"
             "TargetName" = "8:"
@@ -1617,11 +1599,6 @@
             "AssemblyAsmDisplayName" = "8:IKVM.OpenJDK.Misc, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_6CEE95DDB2966E83079C08B82BE335FF"
-                    {
-                    "Name" = "8:IKVM.OpenJDK.Misc.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:IKVM.OpenJDK.Misc.dll"
             "TargetName" = "8:"
@@ -1648,11 +1625,6 @@
             "AssemblyAsmDisplayName" = "8:AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_723DF0A3D0648A546DD5F593E18EF340"
-                    {
-                    "Name" = "8:AForge.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:AForge.dll"
             "TargetName" = "8:"
@@ -1679,11 +1651,6 @@
             "AssemblyAsmDisplayName" = "8:Accord.Math, Version=3.3.1.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_728490D76A83FA100D3E9150DB10688B"
-                    {
-                    "Name" = "8:Accord.Math.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Accord.Math.dll"
             "TargetName" = "8:"
@@ -1710,11 +1677,6 @@
             "AssemblyAsmDisplayName" = "8:IKVM.OpenJDK.Management, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_73396BC43F1F2B019FB8A031C64A35A5"
-                    {
-                    "Name" = "8:IKVM.OpenJDK.Management.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:IKVM.OpenJDK.Management.dll"
             "TargetName" = "8:"
@@ -1734,20 +1696,15 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7654A30F4F5BA93FD55F252E31754CB9"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_73A30D5CFAF47E465C15B7D34DF8F3EC"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:EmotionRecognition.Service, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64"
+            "AssemblyAsmDisplayName" = "8:weka, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_7654A30F4F5BA93FD55F252E31754CB9"
-                    {
-                    "Name" = "8:EmotionRecognition.Service.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
-            "SourcePath" = "8:EmotionRecognition.Service.dll"
+            "SourcePath" = "8:weka.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_AD2E6990B52740CD99D6006589285C67"
@@ -1772,11 +1729,6 @@
             "AssemblyAsmDisplayName" = "8:IKVM.OpenJDK.Beans, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_766E5EB2D7DDA169BB6456E485C931E3"
-                    {
-                    "Name" = "8:IKVM.OpenJDK.Beans.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:IKVM.OpenJDK.Beans.dll"
             "TargetName" = "8:"
@@ -1803,11 +1755,6 @@
             "AssemblyAsmDisplayName" = "8:IKVM.OpenJDK.XML.Bind, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_838361DF2DD91C8C173858D60BB059B4"
-                    {
-                    "Name" = "8:IKVM.OpenJDK.XML.Bind.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:IKVM.OpenJDK.XML.Bind.dll"
             "TargetName" = "8:"
@@ -1827,6 +1774,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_84040B92EDC1438297A63BBC42C885AD"
+            {
+            "SourcePath" = "8:..\\Data\\Models\\01 KDF-Model.model"
+            "TargetName" = "8:01 KDF-Model.model"
+            "Tag" = "8:"
+            "Folder" = "8:_678D14033497479B8BAA46884E3F484A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8455F796AC84A979161597F8E03AA1A8"
             {
             "AssemblyRegister" = "3:1"
@@ -1834,11 +1801,6 @@
             "AssemblyAsmDisplayName" = "8:Emgu.CV.World, Version=3.1.0.2282, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_8455F796AC84A979161597F8E03AA1A8"
-                    {
-                    "Name" = "8:Emgu.CV.World.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Emgu.CV.World.dll"
             "TargetName" = "8:"
@@ -1865,11 +1827,6 @@
             "AssemblyAsmDisplayName" = "8:IKVM.OpenJDK.XML.API, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_86617696B216E15737D92C266B0CC3D6"
-                    {
-                    "Name" = "8:IKVM.OpenJDK.XML.API.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:IKVM.OpenJDK.XML.API.dll"
             "TargetName" = "8:"
@@ -1896,11 +1853,6 @@
             "AssemblyAsmDisplayName" = "8:IKVM.OpenJDK.Security, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_89CC8E72EEAC1378660E50455881AEED"
-                    {
-                    "Name" = "8:IKVM.OpenJDK.Security.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:IKVM.OpenJDK.Security.dll"
             "TargetName" = "8:"
@@ -1927,11 +1879,6 @@
             "AssemblyAsmDisplayName" = "8:IKVM.OpenJDK.Jdbc, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_8BFB1285AC57FD7E277CD1BAFF4833F4"
-                    {
-                    "Name" = "8:IKVM.OpenJDK.Jdbc.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:IKVM.OpenJDK.Jdbc.dll"
             "TargetName" = "8:"
@@ -1951,12 +1898,18 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_986AB31F91A3408AABC81CF0FE54191F"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_92A8B8C5646A25445399D6C1F8346F50"
             {
-            "SourcePath" = "8:..\\Data\\TrainingFeatures\\FeaturesArff.arff"
-            "TargetName" = "8:FeaturesArff.arff"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:EmotionRecognition.Service, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                }
+            "SourcePath" = "8:EmotionRecognition.Service.dll"
+            "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_858438E8F2E945CFA9A478ED9E7BDC12"
+            "Folder" = "8:_AD2E6990B52740CD99D6006589285C67"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1968,7 +1921,7 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A66E5218237F172A04BCB898305563C8"
@@ -1978,11 +1931,6 @@
             "AssemblyAsmDisplayName" = "8:IKVM.OpenJDK.Text, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_A66E5218237F172A04BCB898305563C8"
-                    {
-                    "Name" = "8:IKVM.OpenJDK.Text.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:IKVM.OpenJDK.Text.dll"
             "TargetName" = "8:"
@@ -2009,11 +1957,6 @@
             "AssemblyAsmDisplayName" = "8:IKVM.Runtime, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_AA7FED7134B06E57A1A478C76FB6FEB4"
-                    {
-                    "Name" = "8:IKVM.Runtime.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:IKVM.Runtime.dll"
             "TargetName" = "8:"
@@ -2040,11 +1983,6 @@
             "AssemblyAsmDisplayName" = "8:AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_B8ECC4FCD4F9E3301E16C5210AD110B0"
-                    {
-                    "Name" = "8:AForge.Video.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:AForge.Video.dll"
             "TargetName" = "8:"
@@ -2071,11 +2009,6 @@
             "AssemblyAsmDisplayName" = "8:IKVM.OpenJDK.Corba, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_C13B3CF11F4A426FB690F3ECDF2D5062"
-                    {
-                    "Name" = "8:IKVM.OpenJDK.Corba.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:IKVM.OpenJDK.Corba.dll"
             "TargetName" = "8:"
@@ -2122,11 +2055,6 @@
             "AssemblyAsmDisplayName" = "8:IKVM.OpenJDK.Charsets, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_D71CC2E52303626B350C7D36F9B32463"
-                    {
-                    "Name" = "8:IKVM.OpenJDK.Charsets.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:IKVM.OpenJDK.Charsets.dll"
             "TargetName" = "8:"
@@ -2153,11 +2081,6 @@
             "AssemblyAsmDisplayName" = "8:IKVM.OpenJDK.SwingAWT, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_D8FB57DE5A75255141C8EB7CBA0A7815"
-                    {
-                    "Name" = "8:IKVM.OpenJDK.SwingAWT.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:IKVM.OpenJDK.SwingAWT.dll"
             "TargetName" = "8:"
@@ -2184,11 +2107,6 @@
             "AssemblyAsmDisplayName" = "8:IKVM.OpenJDK.Naming, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_D97BAEE5CA9F9BF985EB975D0F65C7B5"
-                    {
-                    "Name" = "8:IKVM.OpenJDK.Naming.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:IKVM.OpenJDK.Naming.dll"
             "TargetName" = "8:"
@@ -2208,20 +2126,15 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DA2F9F78F1BACB2226C42352190FBF68"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DC1DF49F5F2D11BAC5BC3E116BE102F6"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:EmotionRecognition.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64"
+            "AssemblyAsmDisplayName" = "8:EmotionRecognition.Weka, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_DA2F9F78F1BACB2226C42352190FBF68"
-                    {
-                    "Name" = "8:EmotionRecognition.Common.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
-            "SourcePath" = "8:EmotionRecognition.Common.dll"
+            "SourcePath" = "8:EmotionRecognition.Weka.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_AD2E6990B52740CD99D6006589285C67"
@@ -2259,23 +2172,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EDA8EEAAF2A3D1B4FE87357A66C9695F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_ED532659AD594DD4B532B4B696EE2B5B"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:EmotionRecognition.Weka, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64"
-                "ScatterAssemblies"
-                {
-                    "_EDA8EEAAF2A3D1B4FE87357A66C9695F"
-                    {
-                    "Name" = "8:EmotionRecognition.Weka.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:EmotionRecognition.Weka.dll"
-            "TargetName" = "8:"
+            "SourcePath" = "8:..\\Data\\TrainingFeatures\\Cohn-Kanade-FeaturesArff.arff"
+            "TargetName" = "8:Cohn-Kanade-FeaturesArff.arff"
             "Tag" = "8:"
-            "Folder" = "8:_AD2E6990B52740CD99D6006589285C67"
+            "Folder" = "8:_858438E8F2E945CFA9A478ED9E7BDC12"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2287,7 +2189,7 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EEC34C2381A7C927072A3D614FB5BB08"
@@ -2297,11 +2199,6 @@
             "AssemblyAsmDisplayName" = "8:IKVM.OpenJDK.Core, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_EEC34C2381A7C927072A3D614FB5BB08"
-                    {
-                    "Name" = "8:IKVM.OpenJDK.Core.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:IKVM.OpenJDK.Core.dll"
             "TargetName" = "8:"
@@ -2328,11 +2225,6 @@
             "AssemblyAsmDisplayName" = "8:Accord.Statistics, Version=3.3.1.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_F08CD4C0F52997494DC9131DE60AAFA7"
-                    {
-                    "Name" = "8:Accord.Statistics.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Accord.Statistics.dll"
             "TargetName" = "8:"
@@ -2484,7 +2376,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Emotion Recognition"
         "ProductCode" = "8:{BB5C5CFD-1D44-4CA6-8C4C-20B2705AB92A}"
-        "PackageCode" = "8:{0FF2D10F-3F8D-4DAD-B906-06F0392F0D06}"
+        "PackageCode" = "8:{4D230A61-1F31-4F27-8F7D-FA4F3AA51D0E}"
         "UpgradeCode" = "8:{B6E1F63D-A53A-49FA-95E5-FB2D29CFD8B0}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

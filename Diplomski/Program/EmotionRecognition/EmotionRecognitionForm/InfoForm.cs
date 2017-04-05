@@ -169,14 +169,22 @@ namespace EmotionRecognitionForm
 
         private void LoadChart(ResultTransfer rf, string[] Emotions)
         {
-            for(int i = 0; i < rf.foldResultsPrecision.Count; i++)
+            chartPrecision.ChartAreas[0].AxisX.Title = "Prolazak";
+            chartPrecision.ChartAreas[0].AxisY.Title = "Vrijednost";
+            chartPrecision.ChartAreas[0].AxisY.Maximum = 1;
+
+            for (int i = 0; i < rf.foldResultsPrecision.Count; i++)
             {
                 chartPrecision.Series["Preciznost"].Points.AddXY(i+1, rf.foldResultsWeightedPrecision.ElementAt(i) );
                 chartPrecision.Series["F-Mjera"].Points.AddXY(i + 1, rf.foldResultsWeightedFMeasure.ElementAt(i) );
             }
 
+            chartPrecisionClass.ChartAreas[0].AxisX.Title = "Emocija";
+            chartPrecisionClass.ChartAreas[0].AxisY.Title = "Vrijednost";
+            chartPrecisionClass.ChartAreas[0].AxisY.Maximum = 1;
+
             //
-            for(int i = 0; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
                 chartPrecisionClass.Series["Preciznost"].Points.AddXY(Emotions[i], rf.precision.ElementAt(i));
                 chartPrecisionClass.Series["F-Mjera"].Points.AddXY(Emotions[i], rf.fMeasure.ElementAt(i));

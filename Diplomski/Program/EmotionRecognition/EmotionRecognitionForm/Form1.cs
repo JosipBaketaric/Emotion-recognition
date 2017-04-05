@@ -7,7 +7,6 @@ using AForge.Video;
 using AForge.Video.DirectShow;
 using EmotionRecognition.Service;
 using EmotionRecognition.Weka;
-using System.Timers;
 using System.Threading;
 using EmotionRecognition.Common;
 using System.IO;
@@ -29,13 +28,10 @@ namespace EmotionRecognitionForm
         private volatile string[] Emotions = new string[7] { "Strah", "Srdžba", "Gađenje", "Radost", "Neutralno", "Tuga", "Iznenađenje" };
 
         private InfoForm infoForm;
-        private TestForm testForm;
 
         private object lockObject = new object();
 
         private ResultTransfer rf;
-       
-        private double[,] TestResultMatrix;
 
         private volatile bool fEvaluated;
         private volatile bool fAutomatic;
@@ -394,6 +390,7 @@ namespace EmotionRecognitionForm
             else
             {
                 openFileDialog1.InitialDirectory = Directory.GetCurrentDirectory().ToString();
+                openFileDialog1.Filter = "Arff Files|*.arff;";
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     string dataSetPath = openFileDialog1.FileName;
@@ -438,10 +435,7 @@ namespace EmotionRecognitionForm
                 this.btnLoadImg.BeginInvoke((MethodInvoker)delegate () { this.btnLoadImg.Enabled = false; });
             else
                 this.btnLoadImg.Enabled = false;
-            if (this.btnTest.InvokeRequired)
-                this.btnTest.BeginInvoke((MethodInvoker)delegate () { this.btnTest.Enabled = false; });
-            else
-                this.btnTest.Enabled = false;
+
 
 
             //Evaluate
@@ -471,11 +465,6 @@ namespace EmotionRecognitionForm
             else
                 this.btnLoadImg.Enabled = true;
 
-            if (this.btnTest.InvokeRequired)
-                this.btnTest.BeginInvoke((MethodInvoker)delegate () { this.btnTest.Enabled = true; });
-            else
-                this.btnTest.Enabled = true;
-
             //Show results
             if (rf != null)
                 {
@@ -495,155 +484,8 @@ namespace EmotionRecognitionForm
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //Process everything
-                if (testDone == false)
-                {
-                    MessageBox.Show("Ovo može potrajati minutu - dvije (ovisno o performansama računala)\nPrilikom izvođenja testiranja preporučava se ne korištenje programa");
-                    new Thread(() =>
-                    {
-                        if (this.btnTest.InvokeRequired)
-                            this.btnTest.BeginInvoke((MethodInvoker)delegate () { this.btnTest.Enabled = false; });
-                        else
-                            this.btnTest.Enabled = false;
-
-                        TestResultMatrix = ProcessTest(); //Return results
-
-                        if (this.btnTest.InvokeRequired)
-                            this.btnTest.BeginInvoke((MethodInvoker)delegate () { this.btnTest.Enabled = true; btnTest.Text = "Rezultati"; });
-                        else
-                        {
-                            this.btnTest.Enabled = true;
-                            btnTest.Text = "Rezultati";
-                        }
-
-                        faceClassifier = new Classifier(haarPathList.ElementAt(cbClassifiers.SelectedIndex), 80, 700, 2, 1.05);
-
-                        testDone = true;
-                    }).Start();
-
-                }
-
-                if (TestResultMatrix != null)
-                {
-                    testForm = new TestForm(TestResultMatrix);  //Send results
-                    testForm.Show();
-                    Application.DoEvents();
-                    testDone = true;
-                }                             
-            }
-           catch(Exception)
-            {
-                MessageBox.Show("Greška prilikom pokušaja izvršenja testa");
-            }
         }
 
-        private double[,] ProcessTest()
-        {
-            try
-            {
-                TestResultMatrix = new double[7, 7];
-                //Init
-                for (int i = 0; i < TestResultMatrix.Length / 7; i++)
-                {
-                    for (int j = 0; j < TestResultMatrix.Length / 7; j++)
-                    {
-                        TestResultMatrix[i, j] = 0;
-                    }
-                }
-
-                string database = @"C:\Users\" + Environment.UserName + @"\Desktop\cohn-kanade-images\";
-                string emotionCodesDatabase = @"C:\Users\" + Environment.UserName + @"\Desktop\Emotion\";
-
-                if (!Directory.Exists(database))
-                {
-                    MessageBox.Show("Nedostaje: " + database);
-                    return null;
-                }
-                if (!Directory.Exists(emotionCodesDatabase))
-                {
-                    MessageBox.Show("Nedostaje: " + emotionCodesDatabase);
-                    return null;
-                }
-
-
-                //string[] Emotions = new string[7] { "Strah", "Srdžba", "Gađenje", "Radost", "Neutralno", "Tuga", "Iznenađenje" };
-                int[] emotionCodes = new int[8] { 4, 1, -1, 2, 0, 3, 5, 6 };
-
-                List<string> dirs = new List<string>(System.IO.Directory.EnumerateDirectories(database));
-
-                foreach (var directory in dirs)
-                {
-                    List<string> subDirs = new List<string>(System.IO.Directory.EnumerateDirectories(directory));
-                    foreach (var subDirectory in subDirs)
-                    {
-                        List<string> files = new List<string>(System.IO.Directory.EnumerateFiles(subDirectory));
-                        //Target image
-                        Bitmap targetItem = new Bitmap(files.Last());
-                        //Find emotion code
-                        string emotionCode;
-                        try
-                        {
-                            string emotionCodePath = emotionCodesDatabase + Path.GetFileName(Path.GetDirectoryName(subDirectory)) + @"\" + Path.GetFileName(subDirectory);
-                            List<string> emotionCodeFiles = new List<string>(System.IO.Directory.EnumerateFiles(emotionCodePath));
-
-                            emotionCode = File.ReadAllText(emotionCodeFiles.First());
-                            if (emotionCode.Equals(""))
-                                continue;
-                        }
-                        catch
-                        {
-                            continue;
-                        }
-                        int emotionCodeInt = -1; ;
-
-                        for (int i = 0; i < emotionCode.Length; i++)
-                        {
-                            if (emotionCode.Substring(i, 1).Equals("0") || emotionCode.Substring(i, 1).Equals("1") || emotionCode.Substring(i, 1).Equals("2")
-                                || emotionCode.Substring(i, 1).Equals("3") || emotionCode.Substring(i, 1).Equals("4") || emotionCode.Substring(i, 1).Equals("5")
-                                || emotionCode.Substring(i, 1).Equals("6") || emotionCode.Substring(i, 1).Equals("7"))
-                            {
-                                int.TryParse(emotionCode.Substring(i, 1), out emotionCodeInt);
-                                break;
-                            }
-                        }
-
-                        if (emotionCodeInt == -1 || emotionCodeInt == 2)    //2 = contempt
-                            continue;
-
-                        //Classfy
-                        var faceImg = faceClassifier.Find(targetItem);
-                        if (faceImg == null)
-                            continue;
-                        var data = ProcessImage.Process(faceImg);
-                        var result = Classify.GetInstance().GetClass(data);
-
-                        int emotion;
-                        int.TryParse(result.Result.ToString(), out emotion);
-                        //True
-                        if (emotion.Equals(emotionCodes[emotionCodeInt]))
-                        {
-                            TestResultMatrix[emotion, emotion] += 1;
-                        }
-                        //Failed
-                        else
-                        {
-                            TestResultMatrix[emotionCodes[emotionCodeInt], emotion] += 1;
-                        }
-
-                    }
-
-                }
-                return TestResultMatrix;
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Greška prilikom izvršenja testa! \n " + ex);
-                return null;
-            }
-            
-        }
 
         private void lblTestWait_Click(object sender, EventArgs e)
         {

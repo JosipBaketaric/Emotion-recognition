@@ -1,0 +1,5 @@
+C:\Users\Josip\Desktop\Emotion-recognition\Diplomski\Program\EmotionRecognition\EmotionRecognition.Common\bin\x64\Release\EmotionRecognition.Common.dll
+C:\Users\Josip\Desktop\Emotion-recognition\Diplomski\Program\EmotionRecognition\EmotionRecognition.Common\bin\x64\Release\EmotionRecognition.Common.pdb
+C:\Users\Josip\Desktop\Emotion-recognition\Diplomski\Program\EmotionRecognition\EmotionRecognition.Common\obj\x64\Release\EmotionRecognition.Common.dll
+C:\Users\Josip\Desktop\Emotion-recognition\Diplomski\Program\EmotionRecognition\EmotionRecognition.Common\obj\x64\Release\EmotionRecognition.Common.pdb
+C:\Users\Josip\Desktop\Emotion-recognition\Diplomski\Program\EmotionRecognition\EmotionRecognition.Common\obj\x64\Release\EmotionRecognition.Common.csprojResolveAssemblyReference.cache

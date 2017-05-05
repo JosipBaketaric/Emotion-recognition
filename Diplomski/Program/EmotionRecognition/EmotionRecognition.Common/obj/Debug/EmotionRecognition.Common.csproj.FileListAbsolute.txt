@@ -1,0 +1,4 @@
+C:\Users\Josip\Desktop\Emotion-recognition\Diplomski\Program\EmotionRecognition\EmotionRecognition.Common\bin\Debug\EmotionRecognition.Common.dll
+C:\Users\Josip\Desktop\Emotion-recognition\Diplomski\Program\EmotionRecognition\EmotionRecognition.Common\bin\Debug\EmotionRecognition.Common.pdb
+C:\Users\Josip\Desktop\Emotion-recognition\Diplomski\Program\EmotionRecognition\EmotionRecognition.Common\obj\Debug\EmotionRecognition.Common.dll
+C:\Users\Josip\Desktop\Emotion-recognition\Diplomski\Program\EmotionRecognition\EmotionRecognition.Common\obj\Debug\EmotionRecognition.Common.pdb

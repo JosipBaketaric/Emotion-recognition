@@ -60,6 +60,20 @@ namespace EmotionRecognition.Weka
                 rf.precision = cf.precision;
                 rf.weightedFMeasure = cf.weightedFMeasure;
 
+                //New
+                rf.errorRate = cf.errorRate;
+                rf.meanAbsoluteError = cf.meanAbsoluteError;
+                rf.rootMeanSquaredError = cf.rootMeanSquaredError;
+                rf.kappa = cf.kappa;
+                rf.weightedAreaUnderROC = cf.weightedAreaUnderROC;
+                rf.weightedRecall = cf.weightedRecall;
+
+                rf.foldKappa = cf.foldKappa;
+                rf.foldAreaUnderROC = cf.foldAreaUnderROC;
+                rf.foldWeightedRecall = cf.foldWeightedRecall;
+                rf.foldMeanAbsoluteError = cf.foldMeanAbsoluteError;
+                rf.foldRootMeanSquaredError = cf.foldRootMeanSquaredError;
+
                 fEvaluated = true;
             }
             else

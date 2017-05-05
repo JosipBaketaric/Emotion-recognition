@@ -104,6 +104,24 @@ namespace EmotionRecognitionForm
             rtbInfo.AppendText("Preciznost: " + rf.Accurancy);
             rtbInfo.AppendText("\n");
 
+            rtbInfo.AppendText("Stopa pogrešaka: " + rf.errorRate);
+            rtbInfo.AppendText("\n");
+
+            rtbInfo.AppendText("Kappa: " + rf.kappa);
+            rtbInfo.AppendText("\n");
+
+            rtbInfo.AppendText("Srednja apsolutna pogreška: " + rf.meanAbsoluteError);
+            rtbInfo.AppendText("\n");
+
+            rtbInfo.AppendText("Korijen iz srednje apsolutne pogreške: " + rf.rootMeanSquaredError);
+            rtbInfo.AppendText("\n");
+
+            rtbInfo.AppendText("Površina ispod ROC: " + rf.weightedAreaUnderROC);
+            rtbInfo.AppendText("\n");
+
+            rtbInfo.AppendText("Odziv: " + rf.weightedRecall);
+            rtbInfo.AppendText("\n");
+
             rtbInfo.AppendText("\n\n");
 
             //FOLDS
@@ -123,6 +141,22 @@ namespace EmotionRecognitionForm
 
                     rtbInfo.AppendText("Preciznost: " + rf.foldResultsPrecision.ElementAt(i));
                     rtbInfo.AppendText("\n");
+
+                    rtbInfo.AppendText("Površina ispod ROC: " + rf.foldAreaUnderROC.ElementAt(i));
+                    rtbInfo.AppendText("\n");
+
+                    rtbInfo.AppendText("Kappa: " + rf.foldKappa.ElementAt(i));
+                    rtbInfo.AppendText("\n");
+
+                    rtbInfo.AppendText("Srednja apsolutna pogreška: " + rf.foldMeanAbsoluteError.ElementAt(i));
+                    rtbInfo.AppendText("\n");
+
+                    rtbInfo.AppendText("Korijen iz srednje apsolutne pogreške: " + rf.foldRootMeanSquaredError.ElementAt(i));
+                    rtbInfo.AppendText("\n");
+
+                    rtbInfo.AppendText("Odziv: " + rf.foldWeightedRecall.ElementAt(i));
+                    rtbInfo.AppendText("\n");
+
                     rtbInfo.AppendText("\n");
                 }
                 rtbInfo.AppendText("\n\n");
@@ -176,7 +210,19 @@ namespace EmotionRecognitionForm
             for (int i = 0; i < rf.foldResultsPrecision.Count; i++)
             {
                 chartPrecision.Series["Preciznost"].Points.AddXY(i+1, rf.foldResultsWeightedPrecision.ElementAt(i) );
-                chartPrecision.Series["F-Mjera"].Points.AddXY(i + 1, rf.foldResultsWeightedFMeasure.ElementAt(i) );
+                chartPrecision.Series["F-Mjera"].Points.AddXY(i + 1, rf.foldResultsWeightedFMeasure.ElementAt(i) );                              
+            }
+
+
+            chartROCRecallKappa.ChartAreas[0].AxisX.Title = "Prolazak";
+            chartROCRecallKappa.ChartAreas[0].AxisY.Title = "Vrijednost";
+            chartROCRecallKappa.ChartAreas[0].AxisY.Maximum = 1;
+
+            for (int i = 0; i < rf.foldAreaUnderROC.Count; i++)
+            {
+                chartROCRecallKappa.Series["ROC"].Points.AddXY(i + 1, rf.foldAreaUnderROC.ElementAt(i));
+                chartROCRecallKappa.Series["Odziv"].Points.AddXY(i + 1, rf.foldWeightedRecall.ElementAt(i));
+                chartROCRecallKappa.Series["Kappa"].Points.AddXY(i + 1, rf.foldKappa.ElementAt(i));
             }
 
             chartPrecisionClass.ChartAreas[0].AxisX.Title = "Emocija";
@@ -197,6 +243,11 @@ namespace EmotionRecognitionForm
 
 
         private void rtbInfo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chartPrecision_Click(object sender, EventArgs e)
         {
 
         }

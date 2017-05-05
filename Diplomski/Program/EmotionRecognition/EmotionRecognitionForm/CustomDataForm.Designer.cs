@@ -304,7 +304,7 @@
             this.Name = "CustomDataForm";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "CustomDataForm";
+            this.Text = "P42";
             this.gbNameFormat.ResumeLayout(false);
             this.gbNameFormat.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numLength)).EndInit();

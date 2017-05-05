@@ -153,9 +153,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(85, 48);
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(50, 42);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(929, 559);
+            this.pictureBox1.Size = new System.Drawing.Size(938, 559);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -287,7 +288,7 @@
             this.Name = "Form1";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "Program za prepoznavanje emocija";
+            this.Text = "P42";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
@@ -307,7 +308,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnLoadImg;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btnProcess;
         private System.Windows.Forms.Button btnStop;
@@ -324,6 +324,7 @@
         private System.Windows.Forms.ComboBox cbClassificatorList;
         private System.Windows.Forms.Button btnCustomSet;
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
+        public System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

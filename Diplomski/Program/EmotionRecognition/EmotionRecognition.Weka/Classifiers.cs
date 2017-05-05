@@ -33,18 +33,6 @@ namespace EmotionRecognition.Weka
 
         }
 
-        public static ClassifierTransfer RandomForestKFoldEval(string trainingData)
-        {
-            weka.core.Instances data = new weka.core.Instances(new java.io.FileReader(trainingData));
-            data.setClassIndex(data.numAttributes() - 1);
-
-            weka.classifiers.Classifier classifier = new weka.classifiers.trees.RandomForest();
-
-            //Evaluate
-            ClassifierTransfer cf = ClassifierEvaluation(classifier, data);
-            return cf;
-        }
-
 
         public static ClassifierTransfer SVMKFoldEval(string trainingData)
         {
@@ -54,6 +42,17 @@ namespace EmotionRecognition.Weka
             weka.classifiers.functions.SMO classifier = new weka.classifiers.functions.SMO();
             classifier.setC(0.095);
 
+            //Evaluate
+            ClassifierTransfer cf = ClassifierEvaluation(classifier, data);
+            return cf;
+        }
+
+        public static ClassifierTransfer RandomForrestFoldEval(string trainingData)
+        {
+            weka.core.Instances data = new weka.core.Instances(new java.io.FileReader(trainingData));
+            data.setClassIndex(data.numAttributes() - 1);
+
+            weka.classifiers.trees.RandomForest classifier = new weka.classifiers.trees.RandomForest();
             //Evaluate
             ClassifierTransfer cf = ClassifierEvaluation(classifier, data);
             return cf;
@@ -130,7 +129,7 @@ namespace EmotionRecognition.Weka
             stopWatch.Stop();
 
             // metrics
-            var cm = eval.confusionMatrix();
+            var cm = eval.confusionMatrix();            
 
             List<double> fMeasure = new List<double>();
             List<double> areaUnderPRC = new List<double>();
@@ -147,16 +146,35 @@ namespace EmotionRecognition.Weka
             double weightedPrecision = eval.weightedPrecision();
             double result = (double)eval.correct() / (double)(eval.incorrect() + eval.correct());
             double timeToTrain = (double)((double)stopWatch.ElapsedMilliseconds / (double)1000 / (double)60);
+            //New
+            double errorRate = eval.errorRate();
+            double meanAbsoluteError = eval.meanAbsoluteError();
+            double rootMeanSquaredError = eval.rootMeanSquaredError();
+            double kappa = eval.kappa();
+            double weightedAreaUnderROC = eval.weightedAreaUnderROC();
+            double weightedRecall = eval.weightedRecall();
 
             List<double> foldResultsWeightedPrecision = new List<double>();
             List<double> foldResultsPrecision = new List<double>();
             List<double> foldResultsWeightedFMeasure = new List<double>();
+            //New
+            List<double> foldKappa = new List<double>();
+            List<double> foldAreaUnderROC = new List<double>();
+            List<double> foldWeightedRecall = new List<double>();
+            List<double> foldMeanAbsoluteError = new List<double>();
+            List<double> foldRootMeanSquaredError = new List<double>();
+
             //folds
             foreach (var item in evaluationList)
             {
                 foldResultsWeightedPrecision.Add( item.weightedPrecision() );
                 foldResultsPrecision.Add( (double)( item.correct() ) / (double)( item.incorrect() + item.correct() ) );
                 foldResultsWeightedFMeasure.Add( item.weightedFMeasure() );
+                foldKappa.Add(item.kappa());
+                foldAreaUnderROC.Add(item.weightedAreaUnderROC());
+                foldWeightedRecall.Add(item.weightedRecall());
+                foldMeanAbsoluteError.Add(item.meanAbsoluteError());
+                foldRootMeanSquaredError.Add(item.rootMeanSquaredError());
             }
 
             ClassifierTransfer cf = new ClassifierTransfer();
@@ -174,6 +192,20 @@ namespace EmotionRecognition.Weka
             cf.foldResultsPrecision = foldResultsPrecision;
             cf.foldResultsWeightedFMeasure = foldResultsWeightedFMeasure;
             cf.foldResultsWeightedPrecision = foldResultsWeightedPrecision;
+
+            //New
+            cf.errorRate = errorRate;
+            cf.meanAbsoluteError = meanAbsoluteError;
+            cf.rootMeanSquaredError = rootMeanSquaredError;
+            cf.kappa = kappa;
+            cf.weightedAreaUnderROC = weightedAreaUnderROC;
+            cf.weightedRecall = weightedRecall;
+
+            cf.foldKappa = foldKappa;
+            cf.foldAreaUnderROC = foldAreaUnderROC;
+            cf.foldWeightedRecall = foldWeightedRecall;
+            cf.foldMeanAbsoluteError = foldMeanAbsoluteError;
+            cf.foldRootMeanSquaredError = foldRootMeanSquaredError;
 
             return cf;
         }

@@ -21,5 +21,20 @@ namespace EmotionRecognition.Weka
         public List<double> foldResultsWeightedPrecision { get; set; }
         public List<double> foldResultsPrecision { get; set; }
         public List<double> foldResultsWeightedFMeasure { get; set; }
+
+        //New
+        public double errorRate { get; set; }
+        public double meanAbsoluteError { get; set; }
+        public double rootMeanSquaredError { get; set; }
+        public double kappa { get; set; }
+        public double weightedAreaUnderROC { get; set; }
+        public double weightedRecall { get; set; }
+
+
+        public List<double> foldKappa { get; set; }
+        public List<double> foldAreaUnderROC { get; set; }
+        public List<double> foldWeightedRecall { get; set; }
+        public List<double> foldMeanAbsoluteError { get; set; }
+        public List<double> foldRootMeanSquaredError { get; set; }
     }
 }

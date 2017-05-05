@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using AForge.Video;
+using AForge.Imaging.Filters;
 using AForge.Video.DirectShow;
 using EmotionRecognition.Service;
 using EmotionRecognition.Weka;
@@ -35,15 +36,13 @@ namespace EmotionRecognitionForm
 
         private volatile bool fEvaluated;
         private volatile bool fAutomatic;
-        private bool testDone = false;
 
 
         public Form1()
         {         
             try
             {
-                InitializeComponent();               
-
+                InitializeComponent();
                 comboSetup();
 
                 fEvaluated = false;
@@ -95,9 +94,9 @@ namespace EmotionRecognitionForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(FinalVideoSource == null || !FinalVideoSource.IsRunning)
+            if (FinalVideoSource == null || !FinalVideoSource.IsRunning)
             {
-                FinalVideoSource = new VideoCaptureDevice(VideoCaptureDevices[comboBox1.SelectedIndex].MonikerString);
+                FinalVideoSource = new AForge.Video.DirectShow.VideoCaptureDevice(VideoCaptureDevices[comboBox1.SelectedIndex].MonikerString);
                 FinalVideoSource.NewFrame += new NewFrameEventHandler(FinalVideoSource_NewFrame);
                 FinalVideoSource.Start();
 
@@ -108,13 +107,25 @@ namespace EmotionRecognitionForm
                 btnProcess.Enabled = true;
                 btnPokreni.Enabled = false;
             }
+            else
+            {
+                MessageBox.Show("Već je pokrenuto");
+            }
 
         }
 
         private void FinalVideoSource_NewFrame(object sender, NewFrameEventArgs eventArgs)
-        {
+        {       
             Bitmap image = (Bitmap)eventArgs.Frame.Clone();
-            pictureBox1.Image = image;
+
+            //Inverse image
+            Mirror filter = new Mirror(false, true);
+            filter.ApplyInPlace(image);
+
+            if (this.pictureBox1.InvokeRequired)
+                this.pictureBox1.BeginInvoke((MethodInvoker)delegate () { this.pictureBox1.Image = image; ; });
+            else
+                pictureBox1.Image = image;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

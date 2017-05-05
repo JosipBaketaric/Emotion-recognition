@@ -53,6 +53,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PleaseWaitForm";
+            this.Text = "P42";
             this.ResumeLayout(false);
 
         }
